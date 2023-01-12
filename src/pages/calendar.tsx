@@ -40,7 +40,7 @@ export default function Rules() {
     };
     getEvents();
     setUrl(window.location.href);
-  }, []);
+  }, [isLoading, isError, data, url, setData, setIsLoading, setIsError]);
 
   return (
     <>
