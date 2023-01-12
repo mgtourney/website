@@ -1,0 +1,62 @@
+{
+    "Members": [
+      {
+        "Directors": [
+          {
+            "Name": "Checksum",
+            "Image": "Checksum.gif",
+            "Roles": [
+              "ORGNZR",
+              "DRCTR"
+            ],
+            "ScoreSaberID": "76561198347791418",
+            "Discord": "573909482619273255",
+            "Twitter": "checksum__",
+            "Twitch": "checksum__"
+          },
+          {
+            "Name": "Xoomies",
+            "Image": "Xoomies.jpg",
+            "Roles": [
+              "ORGNZR",
+              "DRCTR"
+            ],
+            "ScoreSaberID": "76561199253219625",
+            "Discord": "953442284442120282",
+            "Twitter": "",
+            "Twitch": "Xuumies"
+          }
+        ]
+      },
+      {
+        "Developers": [
+          {
+            "Name": "NightHawk",
+            "Image": "Hawk.png",
+            "Roles": [
+              "Website/UI DEV"
+            ],
+            "ScoreSaberID": "76561198086326146",
+            "Discord": "592779895084679188",
+            "Twitter": "ThaNightHawkTV",
+            "Twitch": "ThaNightHawk"
+          }
+        ]
+      },
+      {
+        "Casters": [
+          
+        ]
+      },
+      {
+        "Coordinators": [
+          
+        ]
+      },
+      {
+        "Map Poolers": [
+          
+        ]
+      }
+    ]
+  }
