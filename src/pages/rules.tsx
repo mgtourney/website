@@ -9,27 +9,23 @@ import H3 from "@comp/UI/General/H3";
 import { RulesType } from "@lib/types/rules";
 import Link from "next/link";
 
-let url: string;
 let jsonData: any;
-let load: boolean = true;
 export default function Rules() {
   const [rules, setData] = useState<RulesType[]>([]);
+  const [load, setLoad] = useState<boolean>(true);
+  const [url, setUrl] = useState<string>("");
   useEffect(() => {
     fetch(`/assets/staff/rules.json`, { next: { revalidate: 120 } })
       .then((response) => response.json())
       .then((json) => {
-        jsonData = json;
-        setData(jsonData.Rules);
-        load = false;
+        setData(json.Rules);
+        setLoad(false);
+        setUrl(window.location.href)
       });
 
-    load
-      ? null
-      : (document
-          .querySelector(".rulesDiv")!
-          .classList.add("translate-y-[5px]"),
-        document.querySelector(".rulesDiv")!.classList.remove("opacity-0"));
-    url = window.location.href;
+      { !load &&
+        document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]"),
+        document.querySelector(".rulesDiv")!.classList.remove("opacity-0")}
   }, []);
 
   return (

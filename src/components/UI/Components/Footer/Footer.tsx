@@ -28,10 +28,7 @@ const navigation = [
     name: "Twitch",
     href: "https://www.twitch.tv/mgtourney",
     icon: (props: any) => (
-      <svg
-      fill="currentColor"
-      viewBox="0 -45 560 560" 
-      {...props}>
+      <svg fill="currentColor" viewBox="0 -45 560 560" {...props}>
         <path d="M391.17,103.47H352.54v109.7h38.63ZM285,103H246.37V212.75H285ZM120.83,0,24.31,91.42V420.58H140.14V512l96.53-91.42h77.25L487.69,256V0ZM449.07,237.75l-77.22,73.12H294.61l-67.6,64v-64H140.14V36.58H449.07Z" />
       </svg>
     ),
@@ -62,7 +59,7 @@ export default function Footer() {
               <item.icon
                 h={24}
                 w={24}
-                className="h-6 w-6 fill-[#009FFB] dark:fill-[#009FFB] border-b-2 border-transparent hover:border-slate-200 transition-all duration-500"
+                className="h-6 w-6 fill-[#009FFB] dark:fill-[#009FFB] transition-all duration-500"
                 aria-hidden="true"
               />
             </a>

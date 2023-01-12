@@ -16,7 +16,6 @@
     "moment": "^2.29.4",
     "next": "latest",
     "next-themes": "^0.2.1",
-    "powerglitch": "^2.3.2",
     "prettier": "^2.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

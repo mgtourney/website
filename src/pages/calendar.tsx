@@ -5,11 +5,11 @@ import PageHeader from "@comp/UI/General/PageHeader";
 import Calendar from "@ui/Calendar/Calendar";
 import { APICalendarEvent } from "@lib/types/calendar";
 
-let url: string;
 export default function Rules() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<APICalendarEvent[]>([]);
+  const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
     document.querySelector(".calendarDiv")!.classList.add("translate-y-[5px]");
@@ -39,7 +39,7 @@ export default function Rules() {
       setIsLoading(false);
     };
     getEvents();
-    url = window.location.href;
+    setUrl(window.location.href);
   }, []);
 
   return (

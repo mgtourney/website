@@ -3,7 +3,6 @@ import React from "react";
 import Header from "@comp/Meta/Title";
 import Link from "next/link";
 import Image from "next/image";
-import { PowerGlitch } from "powerglitch";
 import {
   Discord,
   GitHub,
@@ -11,34 +10,21 @@ import {
   Twitter,
 } from "@comp/UI/Components/Frontpage/Logos";
 
-let url = "";
 export default function Home() {
   const [load, setLoading] = useState(true);
+  const [url, setUrl] = useState<string>("");
   useEffect(() => {
     setLoading(false);
-    url = window.location.href;
-    PowerGlitch.glitch(".Magnesium", {
-      playMode: "always",
-      createContainers: true,
-      hideOverflow: true,
-      timing: {
-        duration: 4000,
-      },
-      glitchTimeSpan: {
-        start: 0.2,
-        end: 0.7,
-      },
-      shake: false,
-      slice: {
-        count: 3,
-        velocity: 1,
-        minHeight: 0.01,
-        maxHeight: 0.04,
-        hueRotate: false,
-      },
-      pulse: false,
-    });
-  }, []);
+    setUrl(window.location.href);
+    {
+      !load &&
+          document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
+          document.querySelector(".ImgDiv")!.classList.add("translate-y-[10px]");
+          document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
+          document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
+    }
+  }, [load, setLoading, url, setUrl]);
+
   return (
     <>
       <Header
@@ -51,8 +37,8 @@ export default function Home() {
           <div>
             <div className="relative">
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-200 dark:bg-[#111111] transition-all duration-500" />
-              <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
+              <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-500">
+                <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden ImgDiv opacity-0 transition-all duration-500">
                   <div className="absolute inset-0">
                     <Image
                       width={1920}
@@ -63,17 +49,17 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-[#7B52A4] mix-blend-multiply" />
                   </div>
-                  <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                    <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                  <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 transition-all duration-500">
+                    <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl transition-all duration-500">
                       <span className="block text-white">TAKE CONTROL</span>
                       <span className="block text-gray-100">
                         THIS IS{" "}
-                        <p className="Magnesium text-[#009FFB] dark:text-[#8190FF] italic text-[6rem]">
+                        <p className="Magnesium text-[#009FFB] dark:text-[#8190FF] italic sm:text-[3rem] lg:text-[6rem] text-[2rem] transition-all duration-500">
                           MAGNESIUM
                         </p>
                       </span>
                     </h1>
-                    <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl opacity-[70%]">
+                    <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl opacity-[70%] transition-all duration-500">
                       Bringing new elements to the table.
                     </p>
                     <div className="mt-10 max-w-sm mx-auto flex justify-center">
@@ -89,11 +75,11 @@ export default function Home() {
               </div>
             </div>
             <div className="dark:bg-[#111111] bg-gray-200 transition-all duration-500">
-              <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 TxtDiv opacity-0 transition-all duration-500">
                 <p className="text-center text-[3rem] font-bold uppercase text-[#009FFB] dark:text-[#008DDE] tracking-wide">
                   FIND US ON
                 </p>
-                <div className="mt-8 gap-12 flex justify-center">
+                <div className="mt-8 gap-12 flex justify-center transition-all duration-500">
                   <Link
                     href="https://discord.com/invite/4jSDUA6z6U"
                     target={"_blank"}

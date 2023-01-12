@@ -1,9 +1,36 @@
-# WEBSITE | Next.js + Tailwind
+# Website 🖥️
 
-The official website for Magnesium!
+The official website for Magnesium, build with React/NextJS w/ Tailwind & Flowbite components
 
-STILL IN DEVELOPMENT! ^^
+## Consists of
 
+| Page | Route |
+| :----: | :-: |
+| Frontpage | `/` |
+| Team | `/team` |
+| Calendar | `/calendar` |
+| Rules | `/rules` |
+
+## JSON-paths:
+| File | Hydrates |
+| :----: | :-: |
+| `/public/assets/staff/data.json` | `/calendar` |
+| `/public/assets/staff/rules.json` | `/rules` |
+| `/public/assets/staff/team.json` | `/team` |
+
+## TODO:
+
+
+### Frontend
+- [ ]  Restyle calendar/rules-page
+- [ ]  Panel for controlling calendar/rules/team-page
+
+### Backend
+- [ ]  API routes for calendar/rules/team-page
+     - [ ]  Move everything to a database of sorts.
+
+
+# Want to help?
 ## Getting Started
 
 First, install the dependencies:
@@ -23,8 +50,6 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-No API-routes as of yet, apart from the default `/api/hello` route.
 
 ## Scripts
 
@@ -51,3 +76,7 @@ To learn more about Flowbite, take a look at the following resources:
 
 - [Flowbite Documentation](https://flowbite.com/docs) - learn about Flowbite features and API.
 - [Flowbite Community](https://community.flowbite.com) - a community for Flowbite users.
+
+## License 📜
+
+This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details
