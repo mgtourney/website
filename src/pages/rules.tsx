@@ -23,9 +23,7 @@ export default function Rules() {
     {
       setTimeout(() => {
         !load &&
-          document
-            .querySelector(".rulesDiv")!
-            .classList.add("translate-y-[5px]");
+          document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]");
         document.querySelector(".rulesDiv")!.classList.remove("opacity-0");
       }, 150);
     }
@@ -49,7 +47,7 @@ export default function Rules() {
           </>
         ) : (
           <>
-            <div className="rulesDiv bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg divide-y divide-gray-200 transition-all opcaity-0">
+            <div className="rulesDiv bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg divide-y divide-gray-200 transition-all duration-500 opcaity-0">
               <div className="px-4 py-5 sm:px-6">
                 <p className="rulesInfoHeader">
                   The general guidelines of the website.

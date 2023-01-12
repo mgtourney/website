@@ -74,7 +74,7 @@ export default function Home() {
               </div>
             </div>
             <div className="dark:bg-[#111111] bg-gray-200 transition-all duration-500">
-              <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 TxtDiv opacity-0 transition-all duration-500">
+              <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 TxtDiv opacity-0 transition-all duration-1000">
                 <p className="text-center text-[3rem] font-bold uppercase text-[#009FFB] dark:text-[#008DDE] tracking-wide">
                   FIND US ON
                 </p>

@@ -11,7 +11,8 @@ export default function Team() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-    fetch(`/assets/staff/team.json`)
+    fetch(
+      `https://raw.githubusercontent.com/mgtourney/website/team/data/team.json`)
       .then((res) => res.json())
       .then((data) => {
         setTeam(data.Members);
@@ -21,9 +22,7 @@ export default function Team() {
     {
       setTimeout(() => {
         !load &&
-          document
-            .querySelector(".teamDiv")!
-            .classList.add("translate-y-[5px]");
+          document.querySelector(".teamDiv")!.classList.add("translate-y-[10px]");
         document.querySelector(".teamDiv")!.classList.remove("opacity-0");
       }, 150);
     }
@@ -38,7 +37,7 @@ export default function Team() {
       />
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="TEAM" />
-        <div className="teamDiv opacity-0 transition-all">
+        <div className="teamDiv opacity-0 transition-all duration-500">
           {team.map((item, index) => (
             <React.Fragment key={index}>
               {Object.keys(item).map((key) => (

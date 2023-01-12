@@ -47,7 +47,7 @@ export default function StaffPanel({
                         alt="PFP"
                         placeholder="empty"
                         className="staffImage select-none skew-x-[10deg]"
-                        src={`/assets/staff/images/${item.Image}`}
+                        src={`https://raw.githubusercontent.com/mgtourney/website/team/data/images/${item.Image}`}
                       />
                       <div className="flex flex-col -ml-[60px] pt-3 min-w-[220px] items-start">
                         <span className="text-[#008DDE] text-[22px] font-semibold dark:text-slate-200 z-10 hover:cursor-default">
