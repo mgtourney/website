@@ -11,14 +11,15 @@ export default function Team() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-    fetch(`/assets/staff/team.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTeam(data.Members);
-        setLoad(false);
-        setUrl(window.location.href);
-      });
-
+    if (load) {
+      fetch(`/assets/staff/team.json`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTeam(data.Members);
+          setLoad(false);
+          setUrl(window.location.href);
+        });
+    }
     { setTimeout(() => { !load && document.querySelector(".teamDiv")!.classList.add("translate-y-[5px]"); document.querySelector(".teamDiv")!.classList.remove("opacity-0"); }, 150); }
   }, [team, load, url, setTeam, setLoad, setUrl]);
 

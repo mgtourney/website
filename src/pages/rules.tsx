@@ -14,15 +14,16 @@ export default function Rules() {
   const [load, setLoad] = useState<boolean>(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
-    fetch(`/assets/staff/rules.json`, { next: { revalidate: 120 } })
-      .then((response) => response.json())
-      .then((json) => {
-        setData(json.Rules);
-        setLoad(false);
-        setUrl(window.location.href)
-      });
-
-      { setTimeout(() => { !load && document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]"); document.querySelector(".rulesDiv")!.classList.remove("opacity-0"); }, 150) }
+    if (load) {
+      fetch(`/assets/staff/rules.json`, { next: { revalidate: 120 } })
+        .then((response) => response.json())
+        .then((json) => {
+          setData(json.Rules);
+          setLoad(false);
+          setUrl(window.location.href)
+        });
+    }
+    { setTimeout(() => { !load && document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]"); document.querySelector(".rulesDiv")!.classList.remove("opacity-0"); }, 150) }
   }, [rules, load, url, setData, setLoad, setUrl]);
 
   return (

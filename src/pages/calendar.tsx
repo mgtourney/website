@@ -6,7 +6,7 @@ import Calendar from "@ui/Calendar/Calendar";
 import { APICalendarEvent } from "@lib/types/calendar";
 
 export default function Rules() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<APICalendarEvent[]>([]);
   const [url, setUrl] = useState<string>("");
@@ -15,30 +15,31 @@ export default function Rules() {
     document.querySelector(".calendarDiv")!.classList.add("translate-y-[5px]");
     document.querySelector(".calendarDiv")!.classList.remove("opacity-0");
     const getEvents = async (): Promise<void> => {
-      setIsLoading(true);
-      const response = await fetch(
-        `/assets/staff/data.json`
-      );
-      const { events }: { events: APICalendarEvent[] } = await response.json();
 
-      events.forEach((event) => {
-        const startDate = new Date(event.startDate);
-        const endDate = new Date(event.endDate);
-        const currentDate = new Date();
-        event.isLive = startDate <= currentDate && currentDate <= endDate;
-        event.complete = currentDate > endDate && !event.cancelled;
-      });
+      if (isLoading) {
+        const response = await fetch(
+          `/assets/staff/data.json`
+        );
+        const { events }: { events: APICalendarEvent[] } = await response.json();
 
-      events.sort((a, b) => {
-        const aDate = new Date(a.startDate).getTime();
-        const bDate = new Date(b.startDate).getTime();
-        return aDate - bDate;
-      });
+        events.forEach((event) => {
+          const startDate = new Date(event.startDate);
+          const endDate = new Date(event.endDate);
+          const currentDate = new Date();
+          event.isLive = startDate <= currentDate && currentDate <= endDate;
+          event.complete = currentDate > endDate && !event.cancelled;
+        });
 
-      setData(events);
-      setIsLoading(false);
+        events.sort((a, b) => {
+          const aDate = new Date(a.startDate).getTime();
+          const bDate = new Date(b.startDate).getTime();
+          return aDate - bDate;
+        });
+        setData(events);
+      }
     };
     getEvents();
+    setIsLoading(false);
     setUrl(window.location.href);
   }, [isLoading, isError, data, url, setData, setIsLoading, setIsError]);
 
