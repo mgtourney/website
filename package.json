@@ -16,11 +16,12 @@
     "moment": "^2.29.4",
     "next": "latest",
     "next-themes": "^0.2.1",
-    "notiflix": "^3.2.6",
+    "powerglitch": "^2.3.2",
     "prettier": "^2.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.6.1",
+    "sharp": "^0.31.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

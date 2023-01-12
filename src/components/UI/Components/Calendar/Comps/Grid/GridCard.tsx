@@ -110,9 +110,6 @@ export function GridCard(props: GridCardProps) {
                 <a
                   className="inline-flex items-center text-slate-700 "
                   onClick={() => handleClick(`${event.url}`)}
-                  // onClick={() => {
-                  //   NotYetImplemented();
-                  // }}
                 >
                   More Info
                 </a>

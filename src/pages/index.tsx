@@ -3,6 +3,7 @@ import React from "react";
 import Header from "@comp/Meta/Title";
 import Link from "next/link";
 import Image from "next/image";
+import { PowerGlitch } from "powerglitch";
 import {
   Discord,
   GitHub,
@@ -16,7 +17,27 @@ export default function Home() {
   useEffect(() => {
     setLoading(false);
     url = window.location.href;
-    document.querySelector(".Magnesium")!.classList.add("skew-x-[-15deg]");
+    PowerGlitch.glitch(".Magnesium", {
+      playMode: "always",
+      createContainers: true,
+      hideOverflow: true,
+      timing: {
+        duration: 4000,
+      },
+      glitchTimeSpan: {
+        start: 0.2,
+        end: 0.7,
+      },
+      shake: false,
+      slice: {
+        count: 3,
+        velocity: 1,
+        minHeight: 0.01,
+        maxHeight: 0.04,
+        hueRotate: false,
+      },
+      pulse: false,
+    });
   }, []);
   return (
     <>
@@ -34,6 +55,8 @@ export default function Home() {
                 <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
                   <div className="absolute inset-0">
                     <Image
+                      width={1920}
+                      height={1080}
                       className="h-full w-full object-cover blur-[5px]"
                       src="/assets/images/base/Hero.png"
                       alt="Hero image"
@@ -45,15 +68,13 @@ export default function Home() {
                       <span className="block text-white">TAKE CONTROL.</span>
                       <span className="block text-gray-100">
                         THIS IS{" "}
-                        <p className="Magnesium text-[#009FFB] dark:text-[#8190FF] hover:skew-x-[-15deg] transition-all duration-1000">
+                        <p className="Magnesium text-[#009FFB] dark:text-[#8190FF] italic">
                           MAGNESIUM
                         </p>
                       </span>
                     </h1>
-                    <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
+                    <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl opacity-[70%]">
+                      Bringing new elements to the table.
                     </p>
                     <div className="mt-10 max-w-sm mx-auto flex justify-center">
                       <Link
@@ -74,7 +95,7 @@ export default function Home() {
                 </p>
                 <div className="mt-8 gap-12 flex justify-center">
                   <Link
-                    href="#"
+                    href="https://discord.com/invite/4jSDUA6z6U"
                     target={"_blank"}
                     className="border-b-[2px] border-spacing-[4px] border-transparent dark:hover:border-[#7289da] hover:drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)] transition-all duration-500"
                   >
