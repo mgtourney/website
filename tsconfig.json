@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@comp/*": ["./src/components/*"],
+      "@ui/*": ["./src/components/UI/Components/*"],
+      "@calu/*": ["./src/components/UI/Components/Calendar/utils/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@style/*": ["./src/styles/*"],
+      "@sescomp": ["./src/lib/api/sessioncomp.ts"],
+      "@public": ["./public/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

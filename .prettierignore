@@ -1,0 +1,9 @@
+.next/
+.vercel/
+.vs/
+.public/
+node_modules/
+package-lock.json
+package.json
+README.md
+TODO.md
