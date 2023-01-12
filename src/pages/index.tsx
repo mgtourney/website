@@ -17,11 +17,10 @@ export default function Home() {
     setLoading(false);
     setUrl(window.location.href);
     {
-      !load &&
-          document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
-          document.querySelector(".ImgDiv")!.classList.add("translate-y-[10px]");
-          document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
-          document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
+      !load && document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
+      document.querySelector(".ImgDiv")!.classList.add("translate-y-[10px]");
+      document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
+      document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
     }
   }, [load, setLoading, url, setUrl]);
 

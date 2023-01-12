@@ -15,7 +15,6 @@ interface GridCardProps {
 export function GridCard(props: GridCardProps) {
   const { event, handleClick } = props;
 
-  //If the event is between startDate and endDate set it to live
   const isLive = (event: APICalendarEvent): boolean => {
     const now = new Date();
     const startDate = new Date(event.startDate);

@@ -1,6 +1,6 @@
 # Website 🖥️
 
-The official website for Magnesium, build with React/NextJS w/ Tailwind & Flowbite components
+The official website for Magnesium!
 
 ## Consists of
 
@@ -8,7 +8,7 @@ The official website for Magnesium, build with React/NextJS w/ Tailwind & Flowbi
 | :----: | :-: |
 | Frontpage | `/` |
 | Team | `/team` |
-| Calendar | `/calendar` |
+| Calendar (WIP) | `/calendar` |
 | Rules | `/rules` |
 
 ## JSON-paths:
@@ -23,12 +23,13 @@ The official website for Magnesium, build with React/NextJS w/ Tailwind & Flowbi
 
 ### Frontend
 - [ ]  Restyle calendar/rules-page
+
 - [ ]  Panel for controlling calendar/rules/team-page
 
 ### Backend
+- [ ]  Error handling on data-fetching
 - [ ]  API routes for calendar/rules/team-page
      - [ ]  Move everything to a database of sorts.
-
 
 # Want to help?
 ## Getting Started

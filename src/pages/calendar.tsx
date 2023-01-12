@@ -17,7 +17,7 @@ export default function Rules() {
     const getEvents = async (): Promise<void> => {
       setIsLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL}/assets/staff/data.json`
+        `/assets/staff/data.json`
       );
       const { events }: { events: APICalendarEvent[] } = await response.json();
 

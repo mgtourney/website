@@ -7,7 +7,6 @@ import { Tabs } from "flowbite-react";
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import H3 from "@comp/UI/General/H3";
 import { RulesType } from "@lib/types/rules";
-import Link from "next/link";
 
 let jsonData: any;
 export default function Rules() {
@@ -23,10 +22,8 @@ export default function Rules() {
         setUrl(window.location.href)
       });
 
-      { !load &&
-        document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]"),
-        document.querySelector(".rulesDiv")!.classList.remove("opacity-0")}
-  }, []);
+      { setTimeout(() => { !load && document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]"); document.querySelector(".rulesDiv")!.classList.remove("opacity-0"); }, 150) }
+  }, [rules, load, url, setData, setLoad, setUrl]);
 
   return (
     <>
@@ -57,16 +54,6 @@ export default function Rules() {
                 <p className="text-gray-900 dark:text-white text-[18px] mt-2">
                   If you have any questions, please contact a staff member.
                 </p>
-                <DividerLeft />
-                <p className="text-[18px] mt-2 italic opacity-[75%] ">
-                  BannedMods-checker:{" "}
-                  <Link
-                    className="text-gray-900 underline font-bold dark:text-[#b86969]"
-                    href="/bannedmods"
-                  >
-                    Click here
-                  </Link>
-                </p>
               </div>
               <div className="px-4 py-5 sm:p-6">
                 <Tabs.Group
@@ -91,7 +78,6 @@ export default function Rules() {
                               {item}
                             </p>
                           ))}
-                          <DividerLeft />
                         </React.Fragment>
                       ))}
                     </Tabs.Item>
