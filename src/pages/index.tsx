@@ -22,7 +22,7 @@ export default function Home() {
       document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
       document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
     }
-  }, []);
+  }, [load, setLoading, setUrl]);
 
   return (
     <>

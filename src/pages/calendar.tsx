@@ -15,25 +15,24 @@ export default function Rules() {
     document.querySelector(".calendarDiv")!.classList.add("translate-y-[5px]");
     document.querySelector(".calendarDiv")!.classList.remove("opacity-0");
     const getEvents = async (): Promise<void> => {
-        const response = await fetch(`/assets/staff/data.json`);
-        const { events }: { events: APICalendarEvent[] } =
-          await response.json();
+      const response = await fetch(`/assets/staff/data.json`);
+      const { events }: { events: APICalendarEvent[] } = await response.json();
 
-        events.forEach((event) => {
-          const startDate = new Date(event.startDate);
-          const endDate = new Date(event.endDate);
-          const currentDate = new Date();
-          event.isLive = startDate <= currentDate && currentDate <= endDate;
-          event.complete = currentDate > endDate && !event.cancelled;
-        });
+      events.forEach((event) => {
+        const startDate = new Date(event.startDate);
+        const endDate = new Date(event.endDate);
+        const currentDate = new Date();
+        event.isLive = startDate <= currentDate && currentDate <= endDate;
+        event.complete = currentDate > endDate && !event.cancelled;
+      });
 
-        events.sort((a, b) => {
-          const aDate = new Date(a.startDate).getTime();
-          const bDate = new Date(b.startDate).getTime();
-          return aDate - bDate;
-        });
-        setData(events);
-        setIsLoading(false);
+      events.sort((a, b) => {
+        const aDate = new Date(a.startDate).getTime();
+        const bDate = new Date(b.startDate).getTime();
+        return aDate - bDate;
+      });
+      setData(events);
+      setIsLoading(false);
     };
     getEvents();
     setUrl(window.location.href);

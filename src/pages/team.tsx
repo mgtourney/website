@@ -11,13 +11,13 @@ export default function Team() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-      fetch(`/assets/staff/team.json`)
-        .then((res) => res.json())
-        .then((data) => {
-          setTeam(data.Members);
-          setLoad(false);
-          setUrl(window.location.href);
-        });
+    fetch(`/assets/staff/team.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTeam(data.Members);
+        setLoad(false);
+        setUrl(window.location.href);
+      });
     {
       setTimeout(() => {
         !load &&
