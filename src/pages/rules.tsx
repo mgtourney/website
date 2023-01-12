@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import React from "react";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
-import DividerLeft from "@comp/UI/General/DividerLeft";
 import { Tabs } from "flowbite-react";
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import H3 from "@comp/UI/General/H3";
@@ -14,7 +13,6 @@ export default function Rules() {
   const [load, setLoad] = useState<boolean>(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
-    if (load) {
       fetch(`/assets/staff/rules.json`, { next: { revalidate: 120 } })
         .then((response) => response.json())
         .then((json) => {
@@ -22,7 +20,6 @@ export default function Rules() {
           setLoad(false);
           setUrl(window.location.href);
         });
-    }
     {
       setTimeout(() => {
         !load &&

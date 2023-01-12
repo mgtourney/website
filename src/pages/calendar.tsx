@@ -15,7 +15,6 @@ export default function Rules() {
     document.querySelector(".calendarDiv")!.classList.add("translate-y-[5px]");
     document.querySelector(".calendarDiv")!.classList.remove("opacity-0");
     const getEvents = async (): Promise<void> => {
-      if (isLoading) {
         const response = await fetch(`/assets/staff/data.json`);
         const { events }: { events: APICalendarEvent[] } =
           await response.json();
@@ -34,10 +33,9 @@ export default function Rules() {
           return aDate - bDate;
         });
         setData(events);
-      }
+        setIsLoading(false);
     };
     getEvents();
-    setIsLoading(false);
     setUrl(window.location.href);
   }, []);
 

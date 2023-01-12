@@ -11,7 +11,6 @@ export default function Team() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-    if (load) {
       fetch(`/assets/staff/team.json`)
         .then((res) => res.json())
         .then((data) => {
@@ -19,7 +18,6 @@ export default function Team() {
           setLoad(false);
           setUrl(window.location.href);
         });
-    }
     {
       setTimeout(() => {
         !load &&
