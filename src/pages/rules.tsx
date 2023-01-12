@@ -27,7 +27,7 @@ export default function Rules() {
         document.querySelector(".rulesDiv")!.classList.remove("opacity-0");
       }, 150);
     }
-  }, []);
+  }, [load]);
 
   return (
     <>

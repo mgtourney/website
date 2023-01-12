@@ -12,7 +12,8 @@ export default function Team() {
 
   useEffect(() => {
     fetch(
-      `https://raw.githubusercontent.com/mgtourney/website/team/data/team.json`)
+      `https://raw.githubusercontent.com/mgtourney/website/team/data/team.json`
+    )
       .then((res) => res.json())
       .then((data) => {
         setTeam(data.Members);
@@ -22,11 +23,13 @@ export default function Team() {
     {
       setTimeout(() => {
         !load &&
-          document.querySelector(".teamDiv")!.classList.add("translate-y-[10px]");
+          document
+            .querySelector(".teamDiv")!
+            .classList.add("translate-y-[10px]");
         document.querySelector(".teamDiv")!.classList.remove("opacity-0");
       }, 150);
     }
-  }, []);
+  }, [load]);
 
   return (
     <>

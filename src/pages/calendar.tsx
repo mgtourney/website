@@ -36,7 +36,7 @@ export default function Rules() {
     };
     getEvents();
     setUrl(window.location.href);
-  }, []);
+  }, [isLoading]);
 
   return (
     <>
