@@ -20,10 +20,18 @@ export default function Rules() {
         .then((json) => {
           setData(json.Rules);
           setLoad(false);
-          setUrl(window.location.href)
+          setUrl(window.location.href);
         });
     }
-    { setTimeout(() => { !load && document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]"); document.querySelector(".rulesDiv")!.classList.remove("opacity-0"); }, 150) }
+    {
+      setTimeout(() => {
+        !load &&
+          document
+            .querySelector(".rulesDiv")!
+            .classList.add("translate-y-[5px]");
+        document.querySelector(".rulesDiv")!.classList.remove("opacity-0");
+      }, 150);
+    }
   }, [rules, load, url, setData, setLoad, setUrl]);
 
   return (

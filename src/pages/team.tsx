@@ -20,7 +20,15 @@ export default function Team() {
           setUrl(window.location.href);
         });
     }
-    { setTimeout(() => { !load && document.querySelector(".teamDiv")!.classList.add("translate-y-[5px]"); document.querySelector(".teamDiv")!.classList.remove("opacity-0"); }, 150); }
+    {
+      setTimeout(() => {
+        !load &&
+          document
+            .querySelector(".teamDiv")!
+            .classList.add("translate-y-[5px]");
+        document.querySelector(".teamDiv")!.classList.remove("opacity-0");
+      }, 150);
+    }
   }, [team, load, url, setTeam, setLoad, setUrl]);
 
   return (
