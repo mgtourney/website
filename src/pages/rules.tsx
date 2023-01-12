@@ -32,7 +32,7 @@ export default function Rules() {
         document.querySelector(".rulesDiv")!.classList.remove("opacity-0");
       }, 150);
     }
-  }, [rules, load, url, setData, setLoad, setUrl]);
+  }, []);
 
   return (
     <>
