@@ -1,4 +1,4 @@
-# Website | Production-branch 🖥️
+# Website 🖥️
 
 The official website for Magnesium!
 
