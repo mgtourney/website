@@ -244,7 +244,96 @@
       },
       {
         "Map Poolers": [
-          
+          {
+            "Name": "Anammelech",
+            "Image": "Anammelech.jpg",
+            "Roles": [
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198101647485",
+            "Discord": "817945404384608257",
+            "Twitter": "",
+            "Twitch": "anammelech_"
+          },
+          {
+            "Name": "August",
+            "Image": "August.jpg",
+            "Roles": [
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561199073044136",
+            "Discord": "463806235402174475",
+            "Twitter": "",
+            "Twitch": "auguxts"
+          },
+          {
+            "Name": "Mrsuperqwerasd",
+            "Image": "Mrsuperqwerasd.jpg",
+            "Roles": [
+              "CASTER",
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198054519035",
+            "Discord": "165219042460696576",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Mr_Bjo",
+            "Image": "Mr_bjo.jpg",
+            "Roles": [
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198305748823",
+            "Discord": "371002487219683348",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Nucleii",
+            "Image": "Nucleii.jpg",
+            "Roles": [
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198305748823",
+            "Discord": "691353965656277032",
+            "Twitter": "",
+            "Twitch": "nucleii_"
+          },
+          {
+            "Name": "Rocker",
+            "Image": "Rocker.gif",
+            "Roles": [
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198166289091",
+            "Discord": "132449590527000576",
+            "Twitter": "rocker1904",
+            "Twitch": "rocker1904"
+          },
+          {
+            "Name": "Spiza",
+            "Image": "Spiza.jpg",
+            "Roles": [
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198143438696",
+            "Discord": "450892136003665920",
+            "Twitter": "ItsASpiza",
+            "Twitch": "spiza"
+          },
+          {
+            "Name": "William",
+            "Image": "William.jpg",
+            "Roles": [
+              "COORDINATOR",
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198256440057",
+            "Discord": "205919380880490497",
+            "Twitter": "",
+            "Twitch": "wiiiiaml"
+          }
         ]
       }
     ]
