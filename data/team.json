@@ -162,7 +162,84 @@
       },
       {
         "Coordinators": [
-          
+          {
+            "Name": "Batthew",
+            "Image": "Batthew.jpg",
+            "Roles": [
+              "COORDINATOR"
+            ],
+            "ScoreSaberID": "76561198121538359",
+            "Discord": "319419755926650882",
+            "Twitter": "",
+            "Twitch": "batthew727"
+          },
+          {
+            "Name": "Beno",
+            "Image": "Beno.jpg",
+            "Roles": [
+              "COORDINATOR"
+            ],
+            "ScoreSaberID": "76561198197878446",
+            "Discord": "102133026196029440",
+            "Twitter": "",
+            "Twitch": "ben13535"
+          },
+          {
+            "Name": "Private",
+            "Image": "Private.jpg",
+            "Roles": [
+              "COORDINATOR"
+            ],
+            "ScoreSaberID": "76561198094455550",
+            "Discord": "862662344248918016",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "ShadowPixel",
+            "Image": "ShadowPixel.jpg",
+            "Roles": [
+              "COORDINATOR"
+            ],
+            "ScoreSaberID": "76561198245321138",
+            "Discord": "277542487596466176",
+            "Twitter": "ShadowPixel12",
+            "Twitch": "shadowpixel27"
+          },
+          {
+            "Name": "Slamsyk",
+            "Image": "Slamsyk.jpg",
+            "Roles": [
+              "COORDINATOR"
+            ],
+            "ScoreSaberID": "76561198114515066",
+            "Discord": "165492338037227523",
+            "Twitter": "",
+            "Twitch": "slamsyk"
+          },
+          {
+            "Name": "TheWhiteShadow",
+            "Image": "TheWhiteShadow.jpg",
+            "Roles": [
+              "COORDINATOR"
+            ],
+            "ScoreSaberID": "76561198111014608",
+            "Discord": "275336475288010752",
+            "Twitter": "TheWhiteShadowC",
+            "Twitch": "thewhiteshadowc"
+          },
+          {
+            "Name": "William",
+            "Image": "William.jpg",
+            "Roles": [
+              "COORDINATOR",
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198256440057",
+            "Discord": "205919380880490497",
+            "Twitter": "",
+            "Twitch": "wiiiiaml"
+          }
         ]
       },
       {
