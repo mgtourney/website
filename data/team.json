@@ -7,7 +7,8 @@
             "Image": "Checksum.gif",
             "Roles": [
               "ORGNZR",
-              "DRCTR"
+              "DRCTR",
+              "DEV"
             ],
             "ScoreSaberID": "76561198347791418",
             "Discord": "573909482619273255",
@@ -19,17 +20,29 @@
             "Image": "Xoomies.jpg",
             "Roles": [
               "ORGNZR",
-              "DRCTR"
+              "DRCTR",
+              "DEV"
             ],
             "ScoreSaberID": "76561199253219625",
             "Discord": "953442284442120282",
-            "Twitter": "",
+            "Twitter": "Xoomies",
             "Twitch": "Xuumies"
           }
         ]
       },
       {
         "Developers": [
+          {
+            "Name": "Goosy",
+            "Image": "Goosy.jpg",
+            "Roles": [
+              "Overlay/UI DEV"
+            ],
+            "ScoreSaberID": "76561198436848521",
+            "Discord": "488324471657332736",
+            "Twitter": "",
+            "Twitch": "Goosychan"
+          },
           {
             "Name": "NightHawk",
             "Image": "Hawk.png",
@@ -40,12 +53,111 @@
             "Discord": "592779895084679188",
             "Twitter": "ThaNightHawkTV",
             "Twitch": "ThaNightHawk"
+          },
+          {
+            "Name": "Sargon",
+            "Image": "Sargon.jpg",
+            "Roles": [
+              "DEV"
+            ],
+            "ScoreSaberID": "76561198225699596",
+            "Discord": "592779895084679188",
+            "Twitter": "Sargon_64_",
+            "Twitch": "sargon64"
           }
         ]
       },
       {
         "Casters": [
-          
+          {
+            "Name": "Bantalope",
+            "Image": "Bantalope.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198179181242",
+            "Discord": "260502929604214784",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "BigOlDumplin",
+            "Image": "Dumplin.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198326089365",
+            "Discord": "579018678280912906",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Ghilo",
+            "Image": "Ghilo.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198161493499",
+            "Discord": "259474708062404608",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Gio",
+            "Image": "Gio.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198171051938",
+            "Discord": "703982260059111494",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Justin | EggTime",
+            "Image": "JustinEggTime.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198117409561",
+            "Discord": "195661231787474944",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Magician",
+            "Image": "Magician.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198217008717",
+            "Discord": "168313783091986432",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Mrsuperqwerasd",
+            "Image": "Mrsuperqwerasd.jpg",
+            "Roles": [
+              "CASTER",
+              "MAP POOLER"
+            ],
+            "ScoreSaberID": "76561198054519035",
+            "Discord": "165219042460696576",
+            "Twitter": "",
+            "Twitch": ""
+          },
+          {
+            "Name": "Supaconnor",
+            "Image": "Supaconnor.jpg",
+            "Roles": [
+              "CASTER"
+            ],
+            "ScoreSaberID": "76561198362909903",
+            "Discord": "490511138946023425",
+            "Twitter": "",
+            "Twitch": ""
+          }
         ]
       },
       {
