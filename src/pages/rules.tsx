@@ -23,7 +23,9 @@ export default function Rules() {
     {
       setTimeout(() => {
         !load &&
-          document.querySelector(".rulesDiv")!.classList.add("translate-y-[5px]");
+          document
+            .querySelector(".rulesDiv")!
+            .classList.add("translate-y-[5px]");
         document.querySelector(".rulesDiv")!.classList.remove("opacity-0");
       }, 150);
     }

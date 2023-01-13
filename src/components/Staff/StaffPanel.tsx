@@ -53,7 +53,7 @@ export default function StaffPanel({
                         <span className="text-[#008DDE] text-[22px] font-semibold dark:text-slate-200 z-10 hover:cursor-default">
                           {item.Name}
                         </span>
-                        <span className="text-black opacity-[50%] text-sm font-medium dark:text-white dark:opacity-[40%] italic z-10 hover:cursor-default">
+                        <span className="text-black opacity-[50%] text-sm font-medium dark:text-white dark:opacity-[40%] italic z-10 hover:cursor-default skew-x-[20deg]">
                           {item.Roles.map((role: String, index: React.Key) => (
                             <React.Fragment key={index}>
                               {role}
