@@ -44,7 +44,7 @@ export default function StaffPanel({
                       className="staffCard skew-x-[-10deg] group select-none"
                     >
                       {/* Edit this span, to edit the hover-effect when hovering the staffCard. Remember to use group-hover: <3 */}
-                      <span className="staffCard h-[120px] absolute group-hover:animate-pulse dark:group-hover:bg-[#7a3d9600] group-hover:bg-[#ffffff00]" />
+                      <span className="staffCard h-[120px] absolute group-hover:animate-pulse dark:group-hover:bg-[#3C416B] group-hover:bg-[#ffffff00]" />
                       <Image
                         width={124}
                         height={124}
