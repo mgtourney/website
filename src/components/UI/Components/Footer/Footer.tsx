@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navigation = [
   {
@@ -52,6 +53,7 @@ const navigation = [
 
 export default function Footer() {
   return (
+    <>
     <footer className="bg-white dark:bg-[#080808] fixed bottom-0 min-w-[100%] select-none transition-all duration-500">
       <div className="max-w-7xl mx-auto py-3 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
@@ -65,19 +67,20 @@ export default function Footer() {
               />
             </Link>
           ))}
-          <span className="ml-5 uppercase font-semibold text-[#009FFB] dark:text-[#009FFB]">
+          <a href={`https://github.com/${process.env.NEXT_PUBLIC_REPO}/commit/${process.env.NEXT_PUBLIC_SHA}`} target="blank_" className="ml-5 uppercase font-semibold text-[#009FFB] dark:text-[#009FFB]" title={process.env.NEXT_PUBLIC_SHA}>
             {process.env.NEXT_PUBLIC_VERSION}
-          </span>
+          </a>
         </div>
         <div className="md:order-1">
           <p className="dark:text-[#0069A8] uppercase font-semibold text-[#009FFB] flex">
             <span className="hidden md:block ml-2">
-              &copy; {process.env.NEXT_PUBLIC_YEAR} MAGNESIUM, Licensed under
+              &copy; {new Date().getFullYear() } MAGNESIUM, Licensed under
               GNU GPLv3.
             </span>
           </p>
         </div>
       </div>
     </footer>
+    </>
   );
 }
