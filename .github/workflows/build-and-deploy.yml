@@ -39,7 +39,7 @@ jobs:
           build-args: |
             NODE_ENV=DEV
             NEXT_PUBLIC_VERSION=D${{ steps.cc.outputs.version }}
-            NEXT_PUBLIC_REPO={{ github.repository }}
+            NEXT_PUBLIC_REPO=${{ github.repository }}
             NEXT_PUBLIC_SHA=${{ steps.vars.outputs.sha_short }}
           push: true
           tags: |
@@ -54,7 +54,7 @@ jobs:
           build-args: |
             NODE_ENV=PROD
             NEXT_PUBLIC_VERSION=P${{ steps.cc.outputs.version }}
-            NEXT_PUBLIC_REPO={{ github.repository }}
+            NEXT_PUBLIC_REPO=${{ github.repository }}
             NEXT_PUBLIC_SHA=${{ steps.vars.outputs.sha_short }}
           push: true
           tags: |
