@@ -48,7 +48,7 @@ export default function Rules() {
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="Calendar" />
         <>
-          <div className="calendarDiv bg-white dark:bg-gray-800 pb-1rem overflow-hidden shadow rounded-lg divide-y divide-gray-200 transition-all opcaity-0">
+          <div className="calendarDiv bg-white dark:bg-[#161616] pb-1rem overflow-hidden shadow rounded-lg divide-y-2 divide-gray-200 dark:divide-[#292929] transition-all opcaity-0">
             <div className="px-4 py-5 sm:px-6">
               <p className="rulesInfoHeader">The calendar</p>
               <p className="text-gray-900 dark:text-white text-[18px] mt-2">
@@ -56,7 +56,7 @@ export default function Rules() {
                 happened.
               </p>
             </div>
-            <header className="relative z-20 flex items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
+            <header className="relative z-20 flex items-center justify-between border-gray-200 py-4 px-6 lg:flex-none">
               <div className="container min-h-[400px]">
                 <Calendar
                   {...{

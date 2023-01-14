@@ -49,7 +49,7 @@ export default function Rules() {
           </>
         ) : (
           <>
-            <div className="rulesDiv bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg divide-y divide-gray-200 transition-all duration-500 opcaity-0">
+            <div className="rulesDiv bg-white dark:bg-[#161616] overflow-hidden shadow rounded-lg divide-y divide-gray-200 transition-all duration-500 opcaity-0">
               <div className="px-4 py-5 sm:px-6">
                 <p className="rulesInfoHeader">
                   The general guidelines of the website.
@@ -65,13 +65,14 @@ export default function Rules() {
                 <Tabs.Group
                   aria-label="Tabs with icons"
                   style="underline"
-                  className="text-gray-900 dark:text-white border-gray-200 dark:gray-900 rounded-md bg-gray-200 dark:bg-gray-800 w-auto"
+                  className="dark:text-white dark:gray-900 bg-white dark:bg-[#161616] transition-all duration-500"
                 >
                   {rules!.map((item, index) => (
                     <Tabs.Item
                       key={index}
                       title={item.tabHeader}
                       icon={BookOpenIcon}
+                      className="transition-all duration-500"
                     >
                       {item.tabContent.map((item, index) => (
                         <React.Fragment key={index}>
