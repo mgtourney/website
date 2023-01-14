@@ -1,0 +1,45 @@
+name: Docker
+
+on:
+  push:
+    branches: ["dev", "prod"]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: ${{ github.ref == 'refs/heads/dev' }}
+        name: Docker (dev)
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/magnesium-web:latest
+            ghcr.io/${{ github.repository_owner }}/magnesium-web:${{ steps.vars.outputs.sha_short }}
+
+      - if: ${{ github.ref == 'refs/heads/prod' }}
+        name: Docker (production)
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/magnesium-web:prod
+            ghcr.io/${{ github.repository_owner }}/magnesium-web:${{ steps.vars.outputs.sha_short }}
