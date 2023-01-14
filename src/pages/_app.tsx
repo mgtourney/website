@@ -8,7 +8,11 @@ import Footer from "@comp/UI/Components/Footer/Footer";
 function BST({ Component, pageProps: { ...pageProps } }: AppProps) {
   return (
     <>
-      <ThemeProvider enableSystem={false} attribute="class">
+      <ThemeProvider
+        enableSystem={true}
+        defaultTheme="system"
+        attribute="class"
+      >
         <Header />
         <Component {...pageProps} />
         <Footer />

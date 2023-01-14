@@ -40,7 +40,7 @@ export default function Team() {
       />
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="TEAM" />
-        <div className="teamDiv opacity-0 transition-all duration-500">
+        <div className="teamDiv opacity-0 transition-all duration-500 pb-5">
           {team.map((item, index) => (
             <React.Fragment key={index}>
               {Object.keys(item).map((key) => (

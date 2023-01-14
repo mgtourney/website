@@ -60,7 +60,7 @@ export default function Footer() {
               <item.icon
                 h={24}
                 w={24}
-                className="h-6 w-6 fill-[#009FFB] dark:fill-[#009FFB] transition-all duration-500"
+                className="h-6 w-6 fill-[#009FFB] dark:fill-[#009FFB]"
                 aria-hidden="true"
               />
             </Link>
@@ -72,8 +72,8 @@ export default function Footer() {
         <div className="md:order-1">
           <p className="dark:text-[#0069A8] uppercase font-semibold text-[#009FFB] flex">
             <span className="hidden md:block ml-2">
-              &copy; {process.env.NEXT_PUBLIC_YEAR} MAGNESIUM, All rights
-              reserved.
+              &copy; {process.env.NEXT_PUBLIC_YEAR} MAGNESIUM, Licensed under
+              GNU GPLv3.
             </span>
           </p>
         </div>
