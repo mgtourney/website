@@ -14,6 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Conventional Changelog Action
+        id: cc
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}
+          git-branch: "dev"
+
       - id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
@@ -29,6 +36,11 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
+          build-args: |
+            NODE_ENV=DEV
+            NEXT_PUBLIC_VERSION=${{ steps.cc.outputs.version }}
+            NEXT_PUBLIC_REPO={{ github.repository }}
+            NEXT_PUBLIC_SHA=${{ steps.vars.outputs.sha_short }}
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/magnesium-web:latest
@@ -39,6 +51,11 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
+          build-args: |
+            NODE_ENV=PROD
+            NEXT_PUBLIC_VERSION=${{ steps.cc.outputs.version }}
+            NEXT_PUBLIC_REPO={{ github.repository }}
+            NEXT_PUBLIC_SHA=${{ steps.vars.outputs.sha_short }}
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/magnesium-web:prod

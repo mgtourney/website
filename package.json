@@ -1,12 +1,15 @@
 {
+  "name": "magnesium-web",
+  "version": "0.0.0",
   "private": true,
+  "license": "GPL-3.0-only",
   "scripts": {
-    "dev": "prettier --write . && next dev",
     "build": "next build",
-    "start": "next start",
-    "prod": "prettier --write . && next build && next start",
+    "dev": "prettier --write . && next dev",
+    "format": "prettier --write .",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "prod": "prettier --write . && next build && next start",
+    "start": "next start"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
