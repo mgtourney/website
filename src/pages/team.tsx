@@ -11,9 +11,9 @@ export default function Team() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-    fetch(
-      `https://raw.githubusercontent.com/mgtourney/website/team/data/team.json`
-    )
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/staff`, {
+      next: { revalidate: 60 },
+    })
       .then((res) => res.json())
       .then((data) => {
         setTeam(data.Members);

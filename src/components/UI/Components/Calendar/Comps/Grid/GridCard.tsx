@@ -105,10 +105,12 @@ export function GridCard(props: GridCardProps) {
         {event.url && event.id && (
           <div className="absolute bottom-0 bg-gray-100 dark:bg-[#1b1b1b] inset-x-[-1px] px-4 py-1 sm:px-6 text-xs rounded-b-[10px]">
             <div className="text-center align-middle">
-                <a className="inline-flex items-center text-slate-700 dark:text-white hover:cursor-pointer"
-                  onClick={() => handleClick(`${event.url}`)}>
-                  More Info
-                </a>
+              <a
+                className="inline-flex items-center text-slate-700 dark:text-white hover:cursor-pointer"
+                onClick={() => handleClick(`${event.url}`)}
+              >
+                More Info
+              </a>
             </div>
           </div>
         )}

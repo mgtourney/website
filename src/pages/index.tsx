@@ -10,7 +10,7 @@ import {
   Twitter,
 } from "@comp/UI/Components/Frontpage/Logos";
 
-export default function Home() {
+export default function Home({ session }: { session: boolean | String }) {
   const [load, setLoading] = useState(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
