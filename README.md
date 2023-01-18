@@ -34,7 +34,7 @@ The official website for Magnesium!
 #
 
 ## Database 🗄️
-- [Explanation of the arrays in the database](DATABASE.md)
+- [Explanation of the arrays in the database](DATABASE.MD)
 - [SQL-file for creating the database](DB.sql)
 
 # Want to help?
