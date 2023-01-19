@@ -42,11 +42,10 @@ export default function FilterMenu({
   useEffect(() => {
     const allSelected = Object.values(filters).every((filter) => filter);
     if (allSelected) {
-      setSelectedMenuFilter(false /* "Deselect All =" */);
+      setSelectedMenuFilter(false);
     }
     setNoneSelected(Object.values(filters).every((filter) => filter === false));
 
-    // Note: "selected" is unchecked i.e false!
     setSomeSelected(Object.values(filters).some((filter) => !filter));
   }, [filters, setSelectedMenuFilter, setNoneSelected]);
 

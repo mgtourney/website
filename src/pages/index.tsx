@@ -11,18 +11,19 @@ import {
 } from "@comp/UI/Components/Frontpage/Logos";
 
 export default function Home({ session }: { session: boolean | String }) {
-  const [load, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
-    setLoading(false);
+    setIsLoading(false);
     setUrl(window.location.href);
     {
-      !load && document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
+      !isLoading &&
+        document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
       document.querySelector(".ImgDiv")!.classList.add("translate-y-[10px]");
       document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
       document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
     }
-  }, [load, setLoading, setUrl]);
+  }, [isLoading, setIsLoading, setUrl]);
 
   return (
     <>

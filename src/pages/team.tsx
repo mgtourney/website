@@ -7,7 +7,7 @@ import type { StaffTeam } from "@lib/types/staffTeam";
 
 export default function Team() {
   const [team, setTeam] = useState<StaffTeam[]>([]);
-  const [load, setLoad] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
@@ -17,19 +17,15 @@ export default function Team() {
       .then((res) => res.json())
       .then((data) => {
         setTeam(data.Members);
-        setLoad(false);
+        setIsLoading(false);
         setUrl(window.location.href);
       });
-    {
-      setTimeout(() => {
-        !load &&
-          document
-            .querySelector(".teamDiv")!
-            .classList.add("translate-y-[10px]");
-        document.querySelector(".teamDiv")!.classList.remove("opacity-0");
-      }, 150);
-    }
-  }, [load]);
+    setTimeout(() => {
+      !isLoading &&
+        document.querySelector(".teamDiv")!.classList.add("translate-y-[10px]");
+      document.querySelector(".teamDiv")!.classList.remove("opacity-0");
+    }, 150);
+  }, [isLoading, setIsLoading]);
 
   return (
     <>

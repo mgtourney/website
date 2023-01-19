@@ -3,7 +3,7 @@ import React from "react";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { User } from "@lib/types/users";
-import Unauthorized from "@lib/admin/unauthorized";
+import Unauthorized from "@lib/general/admin/unauthorized";
 import {
   AcademicCapIcon,
   CheckBadgeIcon,
@@ -75,23 +75,32 @@ function classNames(...classes: any[]) {
 
 let url: string;
 export default function AdminMods({ session }: { session: User }) {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [perm, setPerm] = useState(0);
 
   useEffect(() => {
     url = window.location.href;
     if (session) {
       setPerm(session.permissions);
+      if (perm) {
+        setIsLoading(false);
+        setTimeout(() => {
+          !isLoading &&
+            document
+              .querySelector(".adminPanel")!
+              .classList.remove("opacity-0");
+          document
+            .querySelector(".adminPanel")!
+            .classList.add("translate-y-[10px]");
+        }, 150);
+      }
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 250);
-  }, [session, perm, setPerm, loading, setLoading]);
+  }, [session, perm, setPerm, isLoading, setIsLoading]);
 
   return (
     <>
       <Header title={`Page`} />
-      {loading ? (
+      {isLoading ? (
         <>
           <div className="flex flex-col pt-[5rem] flex-wrap justify-center items-center">
             <div className="animate-spin rounded-full h-24 w-24 border-t-2 border-black dark:border-white drop-shadow-[0_0_1px_rgba(0,0,0,0.50)] mt-[1rem]"></div>
@@ -133,12 +142,11 @@ export default function AdminMods({ session }: { session: User }) {
                   }`}
                 />
                 <>
-                  <div className="bg-white dark:bg-[#161616] pb-1rem overflow-hidden rounded-lg divide-y dark:divide-[#202020] transition-all opcaity-0 duration-500">
+                  <div className="adminPanel bg-white dark:bg-[#161616] pb-1rem overflow-hidden rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
                     <div className="px-4 py-5 sm:px-6">
                       <p className="rulesInfoHeader">
                         Welcome back, {`${session.name}`}!
                       </p>
-                      {/* <p className="text-gray-900 dark:text-white text-[18px] mt-2"></p> */}
                     </div>
                     <div className="rounded-lg bg-gray-200 dark:bg-[#161616] overflow-hidden shadow divide-y sm:divide-y-0 dark:divide-[#202020] sm:grid sm:grid-cols-2 sm:gap-px transition-all duration-500">
                       {actions.map((action, actionIdx) => (

@@ -32,7 +32,6 @@ export async function deleteSession(cookie: string) {
     `DELETE FROM sessions WHERE "user_id" = $1`,
     [data.id]
   );
-  //If the query fails return false
   if (!result.rowCount) {
     return false;
   }
@@ -67,7 +66,7 @@ export async function getSession(cookie: any) {
     const session: User = {
       id: user.rows[0].id,
       name: user.rows[0].name,
-      avatar: `/assets/images/users/${user.rows[0].image}`,
+      image: `/assets/images/users/${user.rows[0].image}`,
       permissions: user.rows[0].permissions,
       roles: JSON.parse(user.rows[0].roles),
       scoresaberdata: JSON.parse(user.rows[0].scoresaberdata),

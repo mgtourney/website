@@ -58,7 +58,12 @@ export default async function LoginCallback(req: any, res: any) {
       `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}?size=1024`,
       user.id
     );
-    const data = createData(user.id, user.username, user.avatar, token.refresh_token);
+    const data = createData(
+      user.id,
+      user.username,
+      user.avatar,
+      token.refresh_token
+    );
 
     res.setHeader(
       "Set-Cookie",

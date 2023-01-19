@@ -232,24 +232,6 @@ export default function NavBar({ session }: { session: User }) {
                           </Link>
                         </React.Fragment>
                       )}
-                      <Link
-                        href="#"
-                        className="phoneButton phoneNavButtonLight phoneNavButtonDark"
-                      >
-                        Profile
-                      </Link>
-                      <Link
-                        href="#"
-                        className="phoneButton phoneNavButtonLight phoneNavButtonDark"
-                      >
-                        Settings
-                      </Link>
-                      <Link
-                        href="/api/auth/logout"
-                        className="phoneButton phoneNavButtonLight phoneNavButtonDark"
-                      >
-                        Logout
-                      </Link>
                       <ProfileMenu session={session} />
                     </>
                   )}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-const RedirectToFrontpage = () => {
+const Unauthorized = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -11,4 +11,4 @@ const RedirectToFrontpage = () => {
   return null;
 };
 
-export default RedirectToFrontpage;
+export default Unauthorized;

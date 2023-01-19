@@ -16,7 +16,7 @@ export default function ProfileMenu({ session }: { session: User }) {
           <Menu.Button className="rounded-md flex focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-pink-600 dark:focus:ring-indigo-500 hover:cursor-pointer">
             <Image
               className="h-8 w-8 rounded-md"
-              src={session.avatar}
+              src={session.image}
               alt={""}
               width={32}
               height={32}
@@ -37,7 +37,7 @@ export default function ProfileMenu({ session }: { session: User }) {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href="#"
+                  href={`/user/${session.id}`}
                   className={classNames(
                     active ? "bg-gray-100" : "",
                     "block px-4 py-2 text-sm text-gray-700"

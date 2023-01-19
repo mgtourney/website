@@ -72,7 +72,7 @@ endlocal`;
     path.join("public/assets/mods/", "ModsChecker.zip")
   );
   const archive = archiver("zip", {
-    zlib: { level: 9 }, // set the compression level
+    zlib: { level: 9 },
   });
 
   output.on("close", function () {
@@ -113,8 +113,6 @@ export function createModsFile(mods: Mods[]): void {
     "utf8"
   );
 }
-
-//Create async function
 
 export async function bannedModsFunc(): Promise<void> {
   const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/mods/`)
