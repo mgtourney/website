@@ -13,7 +13,9 @@ export default function RulesPage() {
   const [load, setLoad] = useState<boolean>(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/rules`, { next: { revalidate: 120 } })
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/rules`, {
+      next: { revalidate: 120 },
+    })
       .then((response) => response.json())
       .then((json) => {
         setData(json.Rules);
