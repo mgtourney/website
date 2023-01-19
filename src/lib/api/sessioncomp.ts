@@ -1,3 +1,4 @@
+import { saveUser } from "@lib/db/users";
 import CryptoJS from "crypto-js";
 import * as https from "https";
 
@@ -18,14 +19,16 @@ export function decrypt(text: string) {
 // Create a new session and return it
 export function createData(
   id: string,
+  username: string,
   avatar: string | any,
   refresh_token: string
 ) {
+  let userImage: string = "";
   https.get(
     `https://cdn.discordapp.com/avatars/${id}/${avatar}?size=1024`,
     (res) => {
       const contentType = res.headers["content-type"];
-      const userImage = `${id}${
+      userImage = `${id}${
         contentType === "image/gif"
           ? ".gif"
           : contentType === "image/png"
@@ -34,6 +37,7 @@ export function createData(
           ? ".webp"
           : ".jpg"
       }`;
+      saveUser(id, username, userImage);
     }
   );
   const data = { id, refresh_token, created_at: new Date().toISOString() };

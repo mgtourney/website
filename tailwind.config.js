@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const purgecss = require("@fullhuman/postcss-purgecss");
 const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
@@ -12,12 +12,12 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-        colors: {
-          sky: colors.sky,
-          teal: colors.teal,
-          rose: colors.rose,
-        },
+      colors: {
+        sky: colors.sky,
+        teal: colors.teal,
+        rose: colors.rose,
       },
+    },
     fontFamily: {
       hikou: ["Hikou", "sans-serif", "ui-sans-serif", "system-ui"],
       bebas: ["Bebas Neue", "sans-serif", "ui-sans-serif", "system-ui"],
