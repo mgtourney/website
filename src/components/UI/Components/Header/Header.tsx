@@ -125,7 +125,7 @@ export default function NavBar({ session }: { session: User }) {
               <div className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
                 <div className="hidden lg:ml-2 lg:flex lg:items-center">
                   <Menu as="div" className="flex">
-                    {session.permissions >= 8 && (
+                    {session.permissions >= 4 && (
                       <React.Fragment key={"AdminURL"}>
                         <Link
                           href={"/admin"}
@@ -222,7 +222,7 @@ export default function NavBar({ session }: { session: User }) {
                     </Link>
                   ) : (
                     <>
-                      {session.permissions >= 8 && (
+                      {session.permissions >= 4 && (
                         <React.Fragment key={"AdminURL"}>
                           <Link
                             href="/admin"

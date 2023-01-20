@@ -1,11 +1,20 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { deleteSession } from "@lib/db/sessions";
+import rateLimit from "@lib/api/ratelimit";
 
-export default async function checkSession(
+const ratelimit: number =
+  (parseInt(process.env.TOURNAMENT_RATELIMIT!) as number) || 10;
+const limiter = rateLimit({
+  interval: 60 * 1000,
+  uniqueTokenPerInterval: 500,
+});
+
+export default async function logout(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
+    await limiter.check(res, ratelimit, "CACHE_TOKEN");
     if (req.method == "GET") {
       if (!req.cookies.session) {
         return res.redirect(`${process.env.NEXT_PUBLIC_URL}`);

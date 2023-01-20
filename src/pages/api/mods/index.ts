@@ -11,13 +11,12 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 500,
 });
 
-export default async function checkSession(
+export default async function ModsListMaker(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await limiter.check(res, ratelimit, "CACHE_TOKEN");
-
   try {
+    await limiter.check(res, ratelimit, "CACHE_TOKEN");
     if (req.method === "GET") {
       createBatFile();
       const mods: Mods[] | any = await getMods();

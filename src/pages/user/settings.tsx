@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { User } from "@lib/types/users";
-import { Redirect } from "@lib/general/user/redirect";
+import SettingsPage from "@comp/Users/Settings";
 
-export default function AdminMods({
+export default function UserSettings({
   session,
   setSession,
 }: {
@@ -13,10 +13,10 @@ export default function AdminMods({
   setSession: Function;
 }) {
   const router = useRouter();
-  const { id } = router.query as unknown as { id: number };
-
   const [isSessionLoading, setIsSessionLoading] = useState(true);
+  const { id } = router.query as unknown as { id: number };
   const [isLoading, setIsLoading] = useState(true);
+  const [perm, setPerm] = useState(0);
   const [userData, setData] = useState<User | null>(null);
   const [url, setUrl] = useState<string>("");
 
@@ -33,31 +33,35 @@ export default function AdminMods({
           router.push("/");
         });
     }
-  }, [isSessionLoading, router.isReady, setSession, router]);
+  }, [isSessionLoading, router.isReady, setSession, setPerm, router]);
 
   useEffect(() => {
     if (router.isReady && !isSessionLoading) {
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.error) {
-            return router.push(`/`);
-          }
-          setData(data.user);
-          if (data) {
-            setIsLoading(false);
-            setUrl(window.location.href);
-            setTimeout(() => {
-              !isLoading &&
+      if (session) {
+        fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/${session.id}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.error) {
+              return router.push(`/user/${session.id}`);
+            }
+            setData(data.user);
+            if (data) {
+              setUrl(window.location.href);
+              setIsLoading(false);
+              setTimeout(() => {
+                !isLoading &&
+                  document
+                    .querySelector(".adminPanel")!
+                    .classList.add("translate-y-[10px]");
                 document
-                  .querySelector(".userDiv")!
-                  .classList.add("translate-y-[10px]");
-              document.querySelector(".userDiv")!.classList.remove("opacity-0");
-            }, 150);
-          }
-        });
+                  .querySelector(".adminPanel")!
+                  .classList.remove("opacity-0");
+              }, 150);
+            }
+          });
+      }
     }
-  }, [isSessionLoading, setData, setIsLoading, isLoading, id, router]);
+  }, [isSessionLoading, session, id, router, isLoading, setIsLoading]);
 
   return (
     <>
@@ -71,20 +75,16 @@ export default function AdminMods({
       ) : (
         <>
           <Header
-            title={`${userData?.name}'s Profile`}
+            title={`User settings`}
             link={url}
-            contents={`${userData?.name}'s Profile | User-profile on ${process.env.NEXT_PUBLIC_NAME}.`}
+            contents={`User Panel | The User Panel on ${process.env.NEXT_PUBLIC_NAME}.`}
           />
-
           <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
-            <PageHeader title={`${userData?.name}'s Profile`} />
+            <PageHeader title={`User-settings for ${userData?.name}`} />
             <>
-              <div className="userDiv bg-white dark:bg-[#161616] pb-1rem overflow-hidden rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
+              <div className="adminPanel bg-white dark:bg-[#161616] pb-1rem overflow-hidden rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
                 <div className="px-4 py-5 sm:px-6">
-                  <p className="rulesInfoHeader">
-                    Welcome back, {`${session.name}`}!
-                  </p>
-                  {/* <p className="text-gray-900 dark:text-white text-[18px] mt-2"></p> */}
+                  <SettingsPage session={session} userData={userData} />
                 </div>
                 <div className="rounded-lg bg-gray-200 dark:bg-[#161616] overflow-hidden shadow divide-y sm:divide-y-0 dark:divide-[#202020] sm:grid sm:grid-cols-2 sm:gap-px transition-all duration-500"></div>
               </div>

@@ -20,6 +20,80 @@ export async function saveUser(user_id: string, name: string, image: string) {
   }
 }
 
+export async function updateUser(req: any) {
+  if (req.banned == true) {
+    req.banned = 1;
+  } else {
+    req.banned = 0;
+  }
+  const data = {
+    id: req.userId,
+    scoresaberdata: req.scoresaberdata,
+    permission: req.permissions,
+    pronouns: req.pronouns,
+    roles: req.roles,
+    twitter: req.twitter,
+    twitch: req.twitch,
+    banned: req.banned,
+  };
+  const result = await Information.query<User>(
+    "SELECT * FROM users WHERE id = $1",
+    [req.userId]
+  );
+  if (result.rows.length) {
+    const user = await Information.query<User>(
+      "UPDATE users SET scoresaberdata = $1, permissions = $2, pronouns = $3, roles = $4, twitter = $5, twitch = $6, banned = $7 WHERE id = $8",
+      [
+        data.scoresaberdata,
+        data.permission,
+        data.pronouns,
+        data.roles,
+        data.twitter,
+        data.twitch,
+        data.banned,
+        data.id,
+      ]
+    );
+    if (user.rowCount) {
+      return true;
+    }
+    return false;
+  } else {
+    return false;
+  }
+}
+
+export async function updateSettings(req: any) {
+  if (req.banned == true) {
+    req.banned = 1;
+  } else {
+    req.banned = 0;
+  }
+  const data = {
+    id: req.userId,
+    scoresaberdata: req.scoresaberdata,
+    pronouns: req.pronouns,
+    twitter: req.twitter,
+    twitch: req.twitch,
+  };
+  const result = await Information.query<User>(
+    "SELECT * FROM users WHERE id = $1",
+    [req.userId]
+  );
+  if (result.rows.length) {
+    const user = await Information.query<User>(
+      "UPDATE users SET scoresaberdata = $1, pronouns = $2, twitter = $3, twitch = $4 WHERE id = $5",
+      [data.scoresaberdata, data.pronouns, data.twitter, data.twitch, data.id]
+    );
+    if (user.rowCount) {
+      return true;
+    }
+    return false;
+  } else {
+    return false;
+  }
+}
+
 export async function getUser(user_id: any) {
   const result = await Information.query<User>(
     "SELECT * FROM users WHERE id = $1",

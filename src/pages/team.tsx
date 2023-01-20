@@ -11,20 +11,24 @@ export default function Team() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/staff`, {
-      next: { revalidate: 60 },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setTeam(data.Members);
-        setIsLoading(false);
-        setUrl(window.location.href);
-      });
-    setTimeout(() => {
-      !isLoading &&
-        document.querySelector(".teamDiv")!.classList.add("translate-y-[10px]");
-      document.querySelector(".teamDiv")!.classList.remove("opacity-0");
-    }, 150);
+    if (isLoading) {
+      fetch(`${process.env.NEXT_PUBLIC_URL}/api/staff`, {
+        next: { revalidate: 60 },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setTeam(data.Members);
+          setIsLoading(false);
+          setUrl(window.location.href);
+        });
+      setTimeout(() => {
+        !isLoading &&
+          document
+            .querySelector(".teamDiv")!
+            .classList.add("translate-y-[10px]");
+        document.querySelector(".teamDiv")!.classList.remove("opacity-0");
+      }, 150);
+    }
   }, [isLoading, setIsLoading]);
 
   return (

@@ -12,7 +12,7 @@
  Target Server Version : 140005
  File Encoding         : 65001
 
- Date: 18/01/2023 10:34:22
+ Date: 20/01/2023 00:33:49
 */
 
 
@@ -83,7 +83,7 @@ COMMENT ON COLUMN "public"."apikeys"."request_reason" IS 'Why the key was reques
 -- ----------------------------
 -- Records of apikeys
 -- ----------------------------
-INSERT INTO "public"."apikeys" VALUES (1, 'b0059e0e-8dda-11ed-a1eb-0242ac120002', '["Hawk","592779895084679188"]', 4, '2030-01-01 00:00:00+01', 'User is developer');
+INSERT INTO "public"."apikeys" VALUES (1, 'b0059e0e-8dda-11ed-a1eb-0242ac120002', '["Hawk","592779895084679188"]', 4, '2030-01-01 00:00:00+01', 'CURRENTLY NOT USED FOR ANYTHING | User is developer');
 
 -- ----------------------------
 -- Table structure for banned_mods
@@ -148,11 +148,11 @@ CREATE TABLE "public"."s_roles" (
 -- Records of s_roles
 -- ----------------------------
 INSERT INTO "public"."s_roles" VALUES (6, 'User', 1, 'Default user role');
-INSERT INTO "public"."s_roles" VALUES (3, 'Caster', 4, 'The Casters Role - Doesn''t have access to anything, yet');
-INSERT INTO "public"."s_roles" VALUES (4, 'Coordinator', 4, 'The Coordinator Role - Will have access to Coordinator-tools');
 INSERT INTO "public"."s_roles" VALUES (5, 'Map Pooler', 4, 'The Map-Pooler Role - Will get access to adjusting map-pools for tournaments');
 INSERT INTO "public"."s_roles" VALUES (1, 'Directors', 10, 'The developer role have access to everything, everywhere.');
 INSERT INTO "public"."s_roles" VALUES (2, 'Developer', 9, 'The admin role have full functionality on the website. This means they can access every function and are allowed to send GET/POST-requests through the API.');
+INSERT INTO "public"."s_roles" VALUES (4, 'Coordinator', 5, 'The Coordinator Role - Will have access to Coordinator-tools');
+INSERT INTO "public"."s_roles" VALUES (3, 'Caster', 6, 'The Casters Role - Doesn''t have access to anything, yet');
 
 -- ----------------------------
 -- Table structure for sessions
@@ -173,7 +173,7 @@ COMMENT ON COLUMN "public"."sessions"."created_at" IS 'When the session was crea
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO "public"."sessions" VALUES (73, '592779895084679188', 'U2FsdGVkX19fBlDf4denff/ffem1b/tGBFs5SzUBfW3MD84lMXWn0ZpIfJA+0jr7', '2023-01-18 09:32:14.410885+01');
+INSERT INTO "public"."sessions" VALUES (1, '592779895084679188', 'U2FsdGVkX1/4cZzaivIxakfo32vGoOznvUStX2okjlygQBFUXHM32hTMslgOHIzA', '2023-01-19 17:13:52.359379+01');
 
 -- ----------------------------
 -- Table structure for t_roles
@@ -222,7 +222,7 @@ COMMENT ON COLUMN "public"."users"."pronouns" IS '0: He/Him, 1: She/Her, 2: They
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO "public"."users" VALUES ('592779895084679188', 'NightHawk', 9, '["Website/UI DEV"]', '["76561198086326146",52,2007,"DK"]', 'ThaNightHawkTV', 'ThaNightHawk', '{"tournaments": [""]}', 0, 0, 1, '592779895084679188.png');
+INSERT INTO "public"."users" VALUES ('592779895084679188', 'Hawk', 9, '["WEB DEV, UI DEV"]', '["76561198086326146",51,1997,"DK"]', 'ThaNightHawkTV', 'ThaNightHawk', '{"tournaments": [""]}', 0, 0, 0, '592779895084679188.png');
 
 -- ----------------------------
 -- View structure for staffview
@@ -235,24 +235,45 @@ CREATE VIEW "public"."staffview" AS  SELECT users.id,
     users.twitter,
     users.twitch,
     s_roles.name AS "roleName",
-    users.image
+    users.image,
+    s_roles.id AS "roleId"
    FROM (users
      JOIN s_roles ON ((users.permissions = s_roles.permission)))
   WHERE (users.permissions >= 8);
+
+-- ----------------------------
+-- View structure for getuserperms
+-- ----------------------------
+DROP VIEW IF EXISTS "public"."getuserperms";
+CREATE VIEW "public"."getuserperms" AS  SELECT users.id,
+    users.name,
+    users.permissions,
+    s_roles.name AS "roleName"
+   FROM (users
+     JOIN s_roles ON ((users.permissions = s_roles.permission)));
+
+-- ----------------------------
+-- View structure for getroles
+-- ----------------------------
+DROP VIEW IF EXISTS "public"."getroles";
+CREATE VIEW "public"."getroles" AS  SELECT s_roles.id,
+    s_roles.name,
+    s_roles.permission
+   FROM s_roles;
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."apikeys_id_seq"
 OWNED BY "public"."apikeys"."id";
-SELECT setval('"public"."apikeys_id_seq"', 3, false);
+SELECT setval('"public"."apikeys_id_seq"', 2, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."banned_mods_id_seq"
 OWNED BY "public"."banned_mods"."id";
-SELECT setval('"public"."banned_mods_id_seq"', 9, true);
+SELECT setval('"public"."banned_mods_id_seq"', 8, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -266,7 +287,7 @@ SELECT setval('"public"."rules_id_seq"', 4, true);
 -- ----------------------------
 ALTER SEQUENCE "public"."sessions_id_seq"
 OWNED BY "public"."sessions"."id";
-SELECT setval('"public"."sessions_id_seq"', 74, true);
+SELECT setval('"public"."sessions_id_seq"', 2, true);
 
 -- ----------------------------
 -- Primary Key structure for table apikeys

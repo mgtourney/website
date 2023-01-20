@@ -29,11 +29,13 @@
     "moment": "^2.29.4",
     "next": "latest",
     "next-themes": "^0.2.1",
+    "notiflix": "^3.2.6",
     "pg": "^8.8.0",
     "prettier": "^2.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.6.1",
+    "redux-persist": "^6.0.0",
     "sharp": "^0.31.3",
     "uuid": "^9.0.0"
   },

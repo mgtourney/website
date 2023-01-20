@@ -15,6 +15,23 @@ export async function getStaffRoles(): Promise<{ Members: Team[] }> {
   return { Members: roles };
 }
 
+export async function getSRoles() {
+  let roles;
+  const result = await Information.query(
+    `SELECT * FROM getroles ORDER BY id ASC`
+  );
+  //Return all roles found as an array
+  if (length(result.rows) === 0) {
+    roles = [];
+  }
+  roles = result.rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    permission: row.permission,
+  }));
+  return roles;
+}
+
 export async function getStaffMembers() {
   const staffRoles: { Members: Team[] } = await getStaffRoles();
   const result = await Information.query(`SELECT * FROM staffview`);

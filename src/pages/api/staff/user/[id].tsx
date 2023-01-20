@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getUser, updateSettings } from "@lib/db/users";
+import { getUser, updateUser } from "@lib/db/users";
 import rateLimit from "@lib/api/ratelimit";
 import { decrypt } from "@lib/api/sessioncomp";
 
@@ -48,19 +48,19 @@ export default async function getFullUserdata(
         const session = JSON.parse(decrypt(req.cookies.session));
         const id = session.id;
         const result = await getUser(id);
-        if (!result || result.id !== id) {
+        if (!result || result.permissions < 9) {
           console.log("Unauthorized");
           res.status(401).json({ error: { message: "Unauthorized" } });
           return;
         } else {
-          const result = await updateSettings(req.body);
+          const result = await updateUser(req.body);
           if (!result) {
             res
               .status(404)
               .json({ error: { message: "Something went wrong, try again" } });
             return;
           }
-          res.status(200).json({ user: result });
+          res.status(200).json({ success: { message: "User updated!" } });
           return;
         }
       }

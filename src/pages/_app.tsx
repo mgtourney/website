@@ -7,14 +7,12 @@ import Header from "@comp/UI/Components/Header/Header";
 import Footer from "@comp/UI/Components/Footer/Footer";
 import { User } from "@lib/types/users";
 
-function BST({ Component, pageProps: { ...pageProps } }: AppProps) {
+function Magnesium({ Component, pageProps: { ...pageProps } }: AppProps) {
   const [session, setSession] = useState<User | any>(false);
 
   useEffect(() => {
     if (!session) {
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/getsession`, {
-        cache: "no-cache",
-      })
+      fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/getsession`)
         .then((res) => res.json())
         .then((data) => {
           if (data.session) {
@@ -35,4 +33,4 @@ function BST({ Component, pageProps: { ...pageProps } }: AppProps) {
   );
 }
 
-export default BST;
+export default Magnesium;

@@ -1,6 +1,6 @@
-import rateLimit from "@lib/api/ratelimit";
-import getRules from "@lib/db/rules";
+import { getSRoles } from "@lib/db/staff";
 import { NextApiRequest, NextApiResponse } from "next";
+import rateLimit from "@lib/api/ratelimit";
 
 const ratelimit: number =
   (parseInt(process.env.TOURNAMENT_RATELIMIT!) as number) || 10;
@@ -9,14 +9,14 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 500,
 });
 
-export default async function returnRules(
+export default async function getStaff(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
     await limiter.check(res, ratelimit, "CACHE_TOKEN");
-    const rules = await getRules();
-    res.status(200).json(rules);
+    const staff = await getSRoles();
+    res.status(200).json(staff);
   } catch {
     return res.status(429).json({ error: { message: "Too many requests" } });
   }
