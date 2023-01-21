@@ -43,5 +43,6 @@ next-env.d.ts
 # User images from public folder
 public/assets/images/users/*
 .env
-
+.env.development
 .vercel
+public/assets/mods/ModsChecker.zip

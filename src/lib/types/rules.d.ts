@@ -1,4 +1,4 @@
-export interface RulesType {
+export interface Rules {
   tabHeader: string;
   tabContent: tabContent[];
 }

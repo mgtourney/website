@@ -12,8 +12,6 @@ export default function Rules() {
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
-    document.querySelector(".calendarDiv")!.classList.add("translate-y-[5px]");
-    document.querySelector(".calendarDiv")!.classList.remove("opacity-0");
     const getEvents = async (): Promise<void> => {
       const response = await fetch(`/assets/staff/data.json`);
       const { events }: { events: APICalendarEvent[] } = await response.json();
@@ -36,7 +34,14 @@ export default function Rules() {
     };
     getEvents();
     setUrl(window.location.href);
-  }, [isLoading]);
+    setTimeout(() => {
+      !isLoading &&
+        document.querySelector(".calendarDiv")!.classList.remove("opacity-0");
+      document
+        .querySelector(".calendarDiv")!
+        .classList.add("translate-y-[10px]");
+    }, 150);
+  }, [isLoading, setIsLoading]);
 
   return (
     <>
@@ -48,7 +53,7 @@ export default function Rules() {
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="Calendar" />
         <>
-          <div className="calendarDiv bg-white dark:bg-[#161616] pb-1rem overflow-hidden shadow rounded-lg divide-y-2 divide-gray-200 dark:divide-[#292929] transition-all opcaity-0">
+          <div className="calendarDiv bg-white dark:bg-[#161616] pb-1rem overflow-hidden shadow rounded-lg divide-y-2 divide-gray-200 dark:divide-[#292929] transition-all opacity-0">
             <div className="px-4 py-5 sm:px-6">
               <p className="rulesInfoHeader">The calendar</p>
               <p className="text-gray-900 dark:text-white text-[18px] mt-2">
