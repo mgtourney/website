@@ -53,8 +53,5 @@ EXPOSE 3000
 # Volumes
 VOLUME [ "/app/public/assets/images/users" ]
 
-# Build the application
-RUN npm run build
-
 # Start
 CMD [ "npm", "run", "prod" ]
