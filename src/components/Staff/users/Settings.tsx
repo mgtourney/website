@@ -38,7 +38,7 @@ export default function SettingsPage({
   }, [isBanned, selectedPermissions, pronouns, scoreSaberID]);
 
   const handleSave = () => {
-    fetch(`https://scoresaber.com/api/player/${scoreSaberID}/basic`, {
+    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -59,30 +59,27 @@ export default function SettingsPage({
           setSSLRank(data.countryRank);
           setSSGRank(data.rank);
           setSSCountry(data.country);
-          fetch(
-            `${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`,
-            {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                userId: userData?.id,
-                scoresaberdata: JSON.stringify([
-                  scoreSaberID,
-                  ssLRank,
-                  ssGRank,
-                  ssCountry,
-                ]),
-                permissions: selectedPermissions,
-                pronouns: pronouns,
-                roles: JSON.stringify(userRoles),
-                twitter: twitter,
-                twitch: twitch,
-                banned: isBanned,
-              }),
-            }
-          )
+          fetch(`${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: userData?.id,
+              scoresaberdata: JSON.stringify([
+                scoreSaberID,
+                ssLRank,
+                ssGRank,
+                ssCountry,
+              ]),
+              permissions: selectedPermissions,
+              pronouns: pronouns,
+              roles: JSON.stringify(userRoles),
+              twitter: twitter,
+              twitch: twitch,
+              banned: isBanned,
+            }),
+          })
             .then((res) => res.json())
             .then((data) => {
               if (data.error) {
@@ -187,7 +184,6 @@ export default function SettingsPage({
                             name="userRoles"
                             id="userRoles"
                             value={userRoles}
-                            //Onchange, split the string by comma, wrap all strings in quotes and join them with a comma, and put them in the array
                             onChange={(e) => setUserRoles(e.target.value)}
                             className="mt-1 block w-full border border-gray-300 dark:border-[#242424] dark:bg-[#161616] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
                           />
