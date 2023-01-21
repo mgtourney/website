@@ -30,7 +30,7 @@ export default function Home({ session }: { session: boolean | String }) {
       <Header
         title={`Frontpage`}
         link={url}
-        contents={`Frontpage | The Frontpage of ${process.env.NEXT_PUBLIC_NAME}.`}
+        contents={`Frontpage | The Frontpage of ${process.env.PUBLIC_NAME}.`}
       />
       <div className="bg-gray-100 pt-16 dark:bg-[#1b1b1b] transition-all duration-500">
         <main>

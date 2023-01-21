@@ -8,7 +8,7 @@ export function createBatFile(): void {
   const fileContent = `
 @echo off
 setlocal EnableDelayedExpansion
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('${process.env.NEXT_PUBLIC_URL}/api/mods/', 'BannedMods.txt')"
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile('${process.env.PUBLIC_URL}/api/mods/', 'BannedMods.txt')"
 set "BannedMods=BannedMods.txt"
 set "Plugins=../Plugins"
 set "DisabledModsFolder=../Plugins/Disabled Mods"
@@ -115,7 +115,7 @@ export function createModsFile(mods: Mods[]): void {
 }
 
 export async function bannedModsFunc(): Promise<void> {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/mods/`)
+  const data = await fetch(`${process.env.PUBLIC_URL}/api/mods/`)
     .then((res) => res.json())
     .then((data) => data);
   if (data.mods) {

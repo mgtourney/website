@@ -68,12 +68,12 @@ export default function Footer() {
               </Link>
             ))}
             <a
-              href={`https://github.com/${process.env.NEXT_PUBLIC_REPO}/commit/${process.env.NEXT_PUBLIC_SHA}`}
+              href={`https://github.com/${process.env.PUBLIC_REPO}/commit/${process.env.PUBLIC_SHA}`}
               target="blank_"
               className="ml-5 uppercase font-semibold text-[#009FFB] dark:text-[#009FFB]"
-              title={process.env.NEXT_PUBLIC_SHA}
+              title={process.env.PUBLIC_SHA}
             >
-              {process.env.NEXT_PUBLIC_VERSION}
+              {process.env.PUBLIC_VERSION}
             </a>
           </div>
           <div className="md:order-1">

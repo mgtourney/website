@@ -41,7 +41,7 @@ export default function SettingsPage({
           setSSLRank(data.countryRank);
           setSSGRank(data.rank);
           setSSCountry(data.country);
-          fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/${userData.id}`, {
+          fetch(`${process.env.PUBLIC_URL}/api/user/${userData.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

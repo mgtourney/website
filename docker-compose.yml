@@ -3,8 +3,8 @@ services:
   web:
     image: chksm/magnesium-web
     environment:
-      - NEXT_PUBLIC_URL=http://localhost:3000
-      - NEXT_PUBLIC_NAME=Magnesium
+      - PUBLIC_URL=http://localhost:3000
+      - PUBLIC_NAME=Magnesium
       - DB_HOST=db
       - DB_PORT=5432
       - DB_DATABASE=mydb

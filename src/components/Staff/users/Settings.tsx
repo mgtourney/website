@@ -30,7 +30,7 @@ export default function SettingsPage({
   const [twitter, setTwitter] = useState(userData?.twitter);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/staff/roles`)
+    fetch(`${process.env.PUBLIC_URL}/api/staff/roles`)
       .then((res) => res.json())
       .then((data) => {
         setRoles(data);
@@ -59,7 +59,7 @@ export default function SettingsPage({
           setSSGRank(data.rank);
           setSSCountry(data.country);
           fetch(
-            `${process.env.NEXT_PUBLIC_URL}/api/staff/user/${userData.id}`,
+            `${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`,
             {
               method: "PATCH",
               headers: {

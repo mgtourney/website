@@ -13,7 +13,7 @@ export default function RulesPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/rules`, {
+    fetch(`${process.env.PUBLIC_URL}/api/rules`, {
       next: { revalidate: 120 },
     })
       .then((response) => response.json())
@@ -34,7 +34,7 @@ export default function RulesPage() {
       <Header
         title={`Rules`}
         link={url}
-        contents={`Rules | The Rules on ${process.env.NEXT_PUBLIC_NAME}.`}
+        contents={`Rules | The Rules on ${process.env.PUBLIC_NAME}.`}
       />
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="Rulesets" />

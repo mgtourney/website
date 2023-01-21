@@ -12,12 +12,12 @@ export default function Header({
   contents?: string;
 }) {
   const picture = image ? image : "/assets/images/base/Logo.png";
-  const description = contents ? contents : `${process.env.NEXT_PUBLIC_NAME}`;
-  const url = link ? link : `${process.env.NEXT_PUBLIC_URL}`;
+  const description = contents ? contents : `${process.env.PUBLIC_NAME}`;
+  const url = link ? link : `${process.env.PUBLIC_URL}`;
   return (
     <>
       <Head>
-        <title key="title">{`${title} - ${process.env.NEXT_PUBLIC_NAME}`}</title>
+        <title key="title">{`${title} - ${process.env.PUBLIC_NAME}`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <meta property="og:image" content={picture} />
@@ -26,7 +26,7 @@ export default function Header({
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
-      <meta property="og:site_name" content={process.env.NEXT_PUBLIC_NAME} />
+      <meta property="og:site_name" content={process.env.PUBLIC_NAME} />
     </>
   );
 }

@@ -12,7 +12,7 @@ function Magnesium({ Component, pageProps: { ...pageProps } }: AppProps) {
 
   useEffect(() => {
     if (!session) {
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/getsession`)
+      fetch(`${process.env.PUBLIC_URL}/api/auth/getsession`)
         .then((res) => res.json())
         .then((data) => {
           if (data.session) {

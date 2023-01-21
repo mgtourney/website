@@ -12,7 +12,7 @@ export default function Team() {
 
   useEffect(() => {
     if (isLoading) {
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/staff`, {
+      fetch(`${process.env.PUBLIC_URL}/api/staff`, {
         next: { revalidate: 60 },
       })
         .then((res) => res.json())
@@ -36,7 +36,7 @@ export default function Team() {
       <Header
         title={`Team`}
         link={url}
-        contents={`Team | The Staffteam on ${process.env.NEXT_PUBLIC_NAME}.`}
+        contents={`Team | The Staffteam on ${process.env.PUBLIC_NAME}.`}
       />
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="TEAM" />

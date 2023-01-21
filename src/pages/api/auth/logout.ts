@@ -17,11 +17,11 @@ export default async function logout(
     await limiter.check(res, ratelimit, "CACHE_TOKEN");
     if (req.method == "GET") {
       if (!req.cookies.session) {
-        return res.redirect(`${process.env.NEXT_PUBLIC_URL}`);
+        return res.redirect(`${process.env.PUBLIC_URL}`);
       }
       const delCookie = await deleteSession(req.cookies.session);
       if (!delCookie) {
-        return res.redirect(`${process.env.NEXT_PUBLIC_URL}`);
+        return res.redirect(`${process.env.PUBLIC_URL}`);
       }
       res.setHeader(
         "Set-Cookie",
@@ -29,7 +29,7 @@ export default async function logout(
           Date.now() + 1
         ).toUTCString()}`
       );
-      res.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/logout`);
+      res.redirect(`${process.env.PUBLIC_URL}/auth/logout`);
     } else {
       res.status(405).json({ message: "Method not allowed" });
     }

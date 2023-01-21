@@ -24,7 +24,7 @@ export default function UserAdmin({
 
   useEffect(() => {
     if (router.isReady && isSessionLoading) {
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/getsession`)
+      fetch(`${process.env.PUBLIC_URL}/api/auth/getsession`)
         .then((res) => res.json())
         .then((data) => {
           if (data.session) {
@@ -45,7 +45,7 @@ export default function UserAdmin({
           router.push("/");
           return;
         }
-        fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/${id}`)
+        fetch(`${process.env.PUBLIC_URL}/api/user/${id}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.error) {
@@ -101,7 +101,7 @@ export default function UserAdmin({
               <Header
                 title={`User Panel`}
                 link={url}
-                contents={`User Panel | The User Panel on ${process.env.NEXT_PUBLIC_NAME}.`}
+                contents={`User Panel | The User Panel on ${process.env.PUBLIC_NAME}.`}
               />
               <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
                 <PageHeader title={`User-settings for ${userData?.name}`} />

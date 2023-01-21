@@ -48,7 +48,7 @@ export default function Rules() {
       <Header
         title={`Calendar`}
         link={url}
-        contents={`Calendar | The Calendar on ${process.env.NEXT_PUBLIC_NAME}.`}
+        contents={`Calendar | The Calendar on ${process.env.PUBLIC_NAME}.`}
       />
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <PageHeader title="Calendar" />
