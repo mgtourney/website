@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/mgtourney/website/compare/v0.2.0...v0.2.1) (2023-01-21)
+
+
+### Bug Fixes
+
+* :ambulance: Change NEXT_PUBLIC to PUBLIC ([3d68548](https://github.com/mgtourney/website/commit/3d68548c02015885cc75e286658c1aa9e4949dae))
+
+
+
 # [0.2.0](https://github.com/mgtourney/website/compare/v0.1.1...v0.2.0) (2023-01-21)
 
 
