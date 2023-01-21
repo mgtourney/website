@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/mgtourney/website/compare/v0.2.1...v0.2.2) (2023-01-21)
+
+
+### Bug Fixes
+
+* :bug: ScoreSaber CORS header ([8348005](https://github.com/mgtourney/website/commit/8348005efe7f63616d7b14fe6fdd0b600019177d))
+
+
+
 ## [0.2.1](https://github.com/mgtourney/website/compare/v0.2.0...v0.2.1) (2023-01-21)
 
 
