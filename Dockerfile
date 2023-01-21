@@ -57,4 +57,4 @@ VOLUME [ "/app/public/assets/images/users" ]
 RUN npm run build
 
 # Start
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "prod" ]
