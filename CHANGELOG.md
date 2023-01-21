@@ -1,3 +1,12 @@
+## [0.2.4](https://github.com/mgtourney/website/compare/v0.2.3...v0.2.4) (2023-01-21)
+
+
+### Bug Fixes
+
+* :bug: Removed "Content-Type" from Fetch, since cors-header complained. ([36ac9e9](https://github.com/mgtourney/website/commit/36ac9e9d7c76cb89fa2bc8d5cddea91a497ea19c))
+
+
+
 ## [0.2.3](https://github.com/mgtourney/website/compare/v0.2.2...v0.2.3) (2023-01-21)
 
 
@@ -35,15 +44,6 @@
 * :sparkles: Added admin-panel to access user-settings, and added user-settings for users to access. - API routes added, fixed ratelimits, and some other stuff.... ([094a53f](https://github.com/mgtourney/website/commit/094a53fc796ecce0e225c8fd5e95efff2ce1af2b))
 * :sparkles: Adminpanel changes, Profile-page, User-API routes with Auth, fixing useEffect hooks, Header-styling added ([0d0c6b8](https://github.com/mgtourney/website/commit/0d0c6b827593f1a9eaee1f1cc676871e014c00c6))
 * :sparkles: Fixed AUTH/Registration of users, when logging in with Discord! ([2cba878](https://github.com/mgtourney/website/commit/2cba87846fcae480e7b9d5b6ea49a35abb437b61))
-
-
-
-## [0.1.1](https://github.com/mgtourney/website/compare/v0.1.0...v0.1.1) (2023-01-14)
-
-
-### Bug Fixes
-
-* prefix the current running version if its `dev` or `prod` ([ddd2b0d](https://github.com/mgtourney/website/commit/ddd2b0d213b90ddeca7800ffc3c0843ceef86a55))
 
 
 
