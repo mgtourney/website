@@ -32,10 +32,8 @@ export async function deleteSession(cookie: string) {
     `DELETE FROM sessions WHERE "user_id" = $1`,
     [data.id]
   );
-  if (!result.rowCount) {
-    return false;
-  }
-  return true;
+  return result.rowCount;
+
 }
 
 export async function getSession(cookie: any) {

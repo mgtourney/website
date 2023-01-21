@@ -54,10 +54,8 @@ export async function updateUser(req: any) {
         data.id,
       ]
     );
-    if (user.rowCount) {
-      return true;
-    }
-    return false;
+    return !!user.rowCount;
+
   } else {
     return false;
   }
@@ -85,10 +83,8 @@ export async function updateSettings(req: any) {
       "UPDATE users SET scoresaberdata = $1, pronouns = $2, twitter = $3, twitch = $4 WHERE id = $5",
       [data.scoresaberdata, data.pronouns, data.twitter, data.twitch, data.id]
     );
-    if (user.rowCount) {
-      return true;
-    }
-    return false;
+    return !!user.rowCount;
+
   } else {
     return false;
   }

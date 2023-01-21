@@ -44,7 +44,7 @@ export default function FilterMenu({
     if (allSelected) {
       setSelectedMenuFilter(false);
     }
-    setNoneSelected(Object.values(filters).every((filter) => filter === false));
+    setNoneSelected(Object.values(filters).every((filter) => !filter));
 
     setSomeSelected(Object.values(filters).some((filter) => !filter));
   }, [filters, setSelectedMenuFilter, setNoneSelected]);

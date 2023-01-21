@@ -58,30 +58,27 @@ export default function SettingsPage({
           setSSLRank(data.countryRank);
           setSSGRank(data.rank);
           setSSCountry(data.country);
-          fetch(
-            `${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`,
-            {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                userId: userData?.id,
-                scoresaberdata: JSON.stringify([
-                  scoreSaberID,
-                  ssLRank,
-                  ssGRank,
-                  ssCountry,
-                ]),
-                permissions: selectedPermissions,
-                pronouns: pronouns,
-                roles: JSON.stringify(userRoles),
-                twitter: twitter,
-                twitch: twitch,
-                banned: isBanned,
-              }),
-            }
-          )
+          fetch(`${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: userData?.id,
+              scoresaberdata: JSON.stringify([
+                scoreSaberID,
+                ssLRank,
+                ssGRank,
+                ssCountry,
+              ]),
+              permissions: selectedPermissions,
+              pronouns: pronouns,
+              roles: JSON.stringify(userRoles),
+              twitter: twitter,
+              twitch: twitch,
+              banned: isBanned,
+            }),
+          })
             .then((res) => res.json())
             .then((data) => {
               if (data.error) {

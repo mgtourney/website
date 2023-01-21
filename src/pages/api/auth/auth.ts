@@ -83,7 +83,7 @@ export default async function LoginCallback(req: any, res: any) {
         ).toUTCString()}`
       );
 
-      createSession(user.id, token.refresh_token);
+      await createSession(user.id, token.refresh_token);
       res.redirect("/");
     } catch (error) {
       let errorMessage: string = "";
