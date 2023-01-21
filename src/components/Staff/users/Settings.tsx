@@ -41,7 +41,6 @@ export default function SettingsPage({
     fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
         "User-Agent": "MagnesiumTourneys/1.0.0",
         "Allow-Access-Control-Origin": "*",
       },
