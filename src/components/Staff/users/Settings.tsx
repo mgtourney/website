@@ -43,6 +43,7 @@ export default function SettingsPage({
       headers: {
         "Content-Type": "application/json",
         "User-Agent": "MagnesiumTourneys/1.0.0",
+        "Allow-Access-Control-Origin": "*",
       },
     })
       .then((res) => res.json())
