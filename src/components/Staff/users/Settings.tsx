@@ -38,15 +38,10 @@ export default function SettingsPage({
   }, [isBanned, selectedPermissions, pronouns, scoreSaberID]);
 
   const handleSave = () => {
-    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
-      method: "GET",
-      headers: {
-        "User-Agent": "MagnesiumTourneys/1.0.0",
-        "Allow-Access-Control-Origin": "*",
-      },
-    })
+    fetch(`${process.env.PUBLIC_URL}/api/ss/${scoreSaberID}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.errorMessage) {
           Notify.failure("Control the ScoreSaber ID", {
             position: "right-bottom",

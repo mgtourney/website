@@ -21,13 +21,7 @@ export default function SettingsPage({
   const [twitch, setTwitch] = useState(userData?.twitch);
   const [twitter, setTwitter] = useState(userData?.twitter);
   const handleSave = () => {
-    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
-      method: "GET",
-      headers: {
-        "User-Agent": "MagnesiumTourneys/1.0.0",
-        "Allow-Access-Control-Origin": "*",
-      },
-    })
+    fetch(`${process.env.PUBLIC_URL}/api/ss/${scoreSaberID}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.errorMessage) {
