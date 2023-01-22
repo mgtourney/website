@@ -1,3 +1,12 @@
+## [0.2.5](https://github.com/mgtourney/website/compare/v0.2.4...v0.2.5) (2023-01-22)
+
+
+### Bug Fixes
+
+* Try this, Check ([da7136b](https://github.com/mgtourney/website/commit/da7136bfe9b1d67cb2f8bcdd47b6f8fe2a4b48f9))
+
+
+
 ## [0.2.4](https://github.com/mgtourney/website/compare/v0.2.3...v0.2.4) (2023-01-21)
 
 
@@ -31,19 +40,6 @@
 ### Bug Fixes
 
 * :ambulance: Change NEXT_PUBLIC to PUBLIC ([3d68548](https://github.com/mgtourney/website/commit/3d68548c02015885cc75e286658c1aa9e4949dae))
-
-
-
-# [0.2.0](https://github.com/mgtourney/website/compare/v0.1.1...v0.2.0) (2023-01-21)
-
-
-### Features
-
-* :lipstick: Added placeholder UI on admin-panel, auto-prettied code. ([29c4d46](https://github.com/mgtourney/website/commit/29c4d46751cfadb6a31526cee2678b4d46351124))
-* :passport_control: Added semi-functional Discord AUTH. Missing saving data to DB ([b169863](https://github.com/mgtourney/website/commit/b1698639010769ef0d894eb1611ee0b16f180f11))
-* :sparkles: Added admin-panel to access user-settings, and added user-settings for users to access. - API routes added, fixed ratelimits, and some other stuff.... ([094a53f](https://github.com/mgtourney/website/commit/094a53fc796ecce0e225c8fd5e95efff2ce1af2b))
-* :sparkles: Adminpanel changes, Profile-page, User-API routes with Auth, fixing useEffect hooks, Header-styling added ([0d0c6b8](https://github.com/mgtourney/website/commit/0d0c6b827593f1a9eaee1f1cc676871e014c00c6))
-* :sparkles: Fixed AUTH/Registration of users, when logging in with Discord! ([2cba878](https://github.com/mgtourney/website/commit/2cba87846fcae480e7b9d5b6ea49a35abb437b61))
 
 
 
