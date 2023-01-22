@@ -112,3 +112,14 @@ export async function getUser(user_id: any) {
   };
   return user;
 }
+
+export async function getAllSSIds() {
+  const result = await Information.query(
+    "SELECT scoresaberdata FROM users WHERE scoresaberdata IS NOT NULL"
+  );
+  if (!result.rows.length) {
+    return false;
+  }
+  const ssids = result.rows.map((row) => JSON.parse(row.scoresaberdata)[0]);
+  return ssids;
+}

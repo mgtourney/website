@@ -10,65 +10,76 @@ export default function SettingsPage({
 }) {
   const scoreSab = JSON.parse(userData?.scoresaberdata);
   const [scoreSaberID, setScoreSaberID] = useState(scoreSab[0]);
-  const [ssLRank, setSSLRank] = useState(scoreSab[1]);
-  const [ssGRank, setSSGRank] = useState(scoreSab[2]);
-  const [ssCountry, setSSCountry] = useState(scoreSab[3]);
   const [pronouns, setPronouns] = useState<number>(userData?.pronouns);
   const [twitch, setTwitch] = useState(userData?.twitch);
   const [twitter, setTwitter] = useState(userData?.twitter);
-  const handleSave = () => {
-    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
-      method: "GET",
-    })
+  const [idSet, setIdSet] = useState(false);
+
+  const handleSave = async () => {
+    await fetch(`${process.env.PUBLIC_URL}/api/user/list`)
       .then((res) => res.json())
       .then((data) => {
-        if (data.errorMessage) {
-          Notify.failure("Control the ScoreSaber ID", {
-            position: "right-bottom",
-            timeout: 5000,
-            clickToClose: true,
-          });
-          return;
-        } else {
-          setSSLRank(data.countryRank);
-          setSSGRank(data.rank);
-          setSSCountry(data.country);
-          fetch(`${process.env.PUBLIC_URL}/api/user/${userData.id}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userId: userData?.id,
-              scoresaberdata: JSON.stringify([
-                scoreSaberID,
-                ssLRank,
-                ssGRank,
-                ssCountry,
-              ]),
-              pronouns: pronouns,
-              twitter: twitter,
-              twitch: twitch,
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.error) {
-                Notify.failure(data.error.message, {
-                  position: "right-bottom",
-                  timeout: 5000,
-                  clickToClose: true,
-                });
-              } else {
-                Notify.success("Settings got saved!", {
-                  position: "right-bottom",
-                  timeout: 5000,
-                  clickToClose: true,
-                });
-              }
+        if (scoreSaberID !== scoreSab[0]) {
+          if (data.list.includes(scoreSaberID)) {
+            return Notify.failure("This ScoreSaber ID is already in use!", {
+              position: "right-bottom",
+              timeout: 5000,
+              clickToClose: true,
             });
+          }
         }
+        fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.errorMessage) {
+              Notify.failure("Control the ScoreSaber ID", {
+                position: "right-bottom",
+                timeout: 5000,
+                clickToClose: true,
+              });
+              return;
+            } else {
+              fetch(`${process.env.PUBLIC_URL}/api/user/${userData.id}`, {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  userId: userData?.id,
+                  scoresaberdata: JSON.stringify([
+                    scoreSaberID,
+                    data.countryRank,
+                    data.rank,
+                    data.country,
+                  ]),
+                  pronouns: pronouns,
+                  twitter: twitter,
+                  twitch: twitch,
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.error) {
+                    Notify.failure(data.error.message, {
+                      position: "right-bottom",
+                      timeout: 5000,
+                      clickToClose: true,
+                    });
+                  } else {
+                    setIdSet(true);
+                    Notify.success("Settings got saved!", {
+                      position: "right-bottom",
+                      timeout: 5000,
+                      clickToClose: true,
+                    });
+                  }
+                });
+            }
+          });
       });
+
   };
 
   return (
@@ -80,7 +91,7 @@ export default function SettingsPage({
               <div className="lg:col-span-9 flex justify-center align-middle">
                 <div className="py-6 px-4 sm:p-6 lg:pb-8">
                   <div className="mt-6 grid grid-cols-12 gap-6">
-                    {scoreSab[0] === "0" && (
+                    {(scoreSab[0] === "0" && !idSet) && (
                       <div className="ssIDDiv col-span-12 sm:col-span-6">
                         <label
                           htmlFor="scoresaber-id"
@@ -94,7 +105,7 @@ export default function SettingsPage({
                           id="scoresaber-id"
                           placeholder={scoreSaberID}
                           onChange={(e) => setScoreSaberID(e.target.value)}
-                          className="mt-1 block w-full border border-gray-300 dark:border-[#242424] dark:bg-[#161616] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                          className="ssIDField mt-1 block w-full border border-gray-300 dark:border-[#242424] dark:bg-[#161616] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
                         />
                       </div>
                     )}

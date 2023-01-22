@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Switch } from "@headlessui/react";
 import { User } from "@lib/types/users";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { getAllSSIds } from "@lib/db/users";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -15,19 +16,14 @@ export default function SettingsPage({
   userData: User | any;
 }) {
   const scoreSab = JSON.parse(userData?.scoresaberdata);
-  const [scoreSaberID, setScoreSaberID] = useState(scoreSab[0]);
-  const [ssLRank, setSSLRank] = useState(scoreSab[1]);
-  const [ssGRank, setSSGRank] = useState(scoreSab[2]);
-  const [ssCountry, setSSCountry] = useState(scoreSab[3]);
-  const [userRoles, setUserRoles] = useState<any>(JSON.parse(userData?.roles));
+  const [scoreSaberID, setScoreSaberID] = useState(scoreSab[0] || 0);
+  const [userRoles, setUserRoles] = useState<any>(JSON.parse(userData.roles) || []);
   const [roles, setRoles] = useState([]);
-  const [selectedPermissions, setSelectedPermissions] = useState<any>(
-    userData.permissions
-  );
-  const [pronouns, setPronouns] = useState<number>(userData?.pronouns);
+  const [selectedPermissions, setSelectedPermissions] = useState<any>(userData.permissions || 0);
+  const [pronouns, setPronouns] = useState<number>(userData.pronouns || 0);
   const [isBanned, setIsBanned] = useState(false);
-  const [twitch, setTwitch] = useState(userData?.twitch);
-  const [twitter, setTwitter] = useState(userData?.twitter);
+  const [twitch, setTwitch] = useState(userData.twitch || "");
+  const [twitter, setTwitter] = useState(userData.twitter || "");
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/api/staff/roles`)
@@ -37,62 +33,67 @@ export default function SettingsPage({
       });
   }, []);
 
-  const handleSave = () => {
-    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.errorMessage) {
-          Notify.failure("Control the ScoreSaber ID", {
-            position: "right-bottom",
-            timeout: 5000,
-            clickToClose: true,
-          });
-          return;
-        } else {
-          setSSLRank(data.countryRank);
-          setSSGRank(data.rank);
-          setSSCountry(data.country);
-          fetch(`${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userId: userData?.id,
-              scoresaberdata: JSON.stringify([
-                scoreSaberID,
-                ssLRank,
-                ssGRank,
-                ssCountry,
-              ]),
-              permissions: selectedPermissions,
-              pronouns: pronouns,
-              roles: JSON.stringify(userRoles),
-              twitter: twitter,
-              twitch: twitch,
-              banned: isBanned,
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.error) {
-                Notify.failure(data.error.message, {
-                  position: "right-bottom",
-                  timeout: 5000,
-                  clickToClose: true,
-                });
-              } else {
-                Notify.success("Settings got saved!", {
-                  position: "right-bottom",
-                  timeout: 5000,
-                  clickToClose: true,
-                });
-              }
+  const handleSave = async () => {
+    try {
+      await fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.errorMessage) {
+            Notify.failure("Control the ScoreSaber ID", {
+              position: "right-bottom",
+              timeout: 5000,
+              clickToClose: true,
             });
-        }
+            return;
+          } else {
+            fetch(`${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: userData?.id,
+                scoresaberdata: JSON.stringify([
+                  scoreSaberID,
+                  data.countryRank,
+                  data.rank,
+                  data.country,
+                ]),
+                permissions: selectedPermissions,
+                pronouns: pronouns,
+                roles: (`["${userRoles}"]`),
+                twitter: twitter,
+                twitch: twitch,
+                banned: isBanned,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.error) {
+                  Notify.failure(data.error.message, {
+                    position: "right-bottom",
+                    timeout: 5000,
+                    clickToClose: true,
+                  });
+                } else {
+                  Notify.success("Settings got saved!", {
+                    position: "right-bottom",
+                    timeout: 5000,
+                    clickToClose: true,
+                  });
+                }
+              });
+          }
+        });
+    } catch (e) {
+      Notify.failure("Control the ScoreSaber ID", {
+        position: "right-bottom",
+        timeout: 5000,
+        clickToClose: true,
       });
+    }
   };
 
   return (
@@ -142,49 +143,49 @@ export default function SettingsPage({
                       </select>
                     </div>
 
-                    {userData?.id !== session.id && (
-                      <>
-                        <div className="col-span-12 sm:col-span-6">
-                          <label
-                            htmlFor="role"
-                            className="block text-sm font-medium text-gray-700 dark:text-white"
-                          >
-                            Role
-                          </label>
-                          <select
-                            id="role"
-                            name="role"
-                            value={Number(selectedPermissions)}
-                            onChange={(e) =>
-                              setSelectedPermissions(Number(e.target.value))
-                            }
-                            className="mt-1 block w-full bg-white border dark:border-[#242424] dark:bg-[#161616] border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
-                          >
-                            {roles.map((role: any) => (
-                              <option key={role.id} value={role.permission}>
-                                {role.name}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="col-span-12 sm:col-span-6">
-                          <label
-                            htmlFor="userRoles"
-                            className="block text-sm font-medium text-gray-700 dark:text-white"
-                          >
-                            Other Roles (Comma seperated)
-                          </label>
-                          <input
-                            type="text"
-                            name="userRoles"
-                            id="userRoles"
-                            value={userRoles}
-                            onChange={(e) => setUserRoles(e.target.value)}
-                            className="mt-1 block w-full border border-gray-300 dark:border-[#242424] dark:bg-[#161616] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-                          />
-                        </div>
-                      </>
-                    )}
+                    {/* {userData?.id !== session.id && (  )}*/}
+                    <>
+                      <div className="col-span-12 sm:col-span-6">
+                        <label
+                          htmlFor="role"
+                          className="block text-sm font-medium text-gray-700 dark:text-white"
+                        >
+                          Role
+                        </label>
+                        <select
+                          id="role"
+                          name="role"
+                          value={Number(selectedPermissions)}
+                          onChange={(e) =>
+                            setSelectedPermissions(Number(e.target.value))
+                          }
+                          className="mt-1 block w-full bg-white border dark:border-[#242424] dark:bg-[#161616] border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                        >
+                          {roles.map((role: any) => (
+                            <option key={role.id} value={role.permission}>
+                              {role.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="col-span-12 sm:col-span-6">
+                        <label
+                          htmlFor="userRoles"
+                          className="block text-sm font-medium text-gray-700 dark:text-white"
+                        >
+                          Other Roles (Comma seperated)
+                        </label>
+                        <input
+                          type="text"
+                          name="userRoles"
+                          id="userRoles"
+                          value={userRoles}
+                          onChange={(e) => setUserRoles(e.target.value)}
+                          className="mt-1 block w-full border border-gray-300 dark:border-[#242424] dark:bg-[#161616] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                        />
+                      </div>
+                    </>
+
                   </div>
                   <div className="mt-6 grid grid-cols-12 gap-6">
                     <div className="col-span-12 sm:col-span-6">
