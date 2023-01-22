@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/mgtourney/website/compare/v0.3.0...v0.3.1) (2023-01-22)
+
+
+### Bug Fixes
+
+* :bug: window.location.href should not have been there. ([39c7467](https://github.com/mgtourney/website/commit/39c7467bc5b6e8aa1e3213a78481a21306bd5e20))
+
+
+
 # [0.3.0](https://github.com/mgtourney/website/compare/v0.2.5...v0.3.0) (2023-01-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: We love ScoreSaber API! ([9e600c1](https://github.com/mgtourney/website/commit/9e600c18ead0b07bff77cb334297c97a52063f09))
-
-
-
-## [0.2.2](https://github.com/mgtourney/website/compare/v0.2.1...v0.2.2) (2023-01-21)
-
-
-### Bug Fixes
-
-* :bug: ScoreSaber CORS header ([8348005](https://github.com/mgtourney/website/commit/8348005efe7f63616d7b14fe6fdd0b600019177d))
 
 
 
