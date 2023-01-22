@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/mgtourney/website/compare/v0.2.5...v0.3.0) (2023-01-22)
+
+
+### Features
+
+* :bug: Final, hopefully, change to fetching ScoreSaber data. ([4cbc330](https://github.com/mgtourney/website/commit/4cbc3300b67f20f81766df55a433005a9444bc00))
+
+
+
 ## [0.2.5](https://github.com/mgtourney/website/compare/v0.2.4...v0.2.5) (2023-01-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: ScoreSaber CORS header ([8348005](https://github.com/mgtourney/website/commit/8348005efe7f63616d7b14fe6fdd0b600019177d))
-
-
-
-## [0.2.1](https://github.com/mgtourney/website/compare/v0.2.0...v0.2.1) (2023-01-21)
-
-
-### Bug Fixes
-
-* :ambulance: Change NEXT_PUBLIC to PUBLIC ([3d68548](https://github.com/mgtourney/website/commit/3d68548c02015885cc75e286658c1aa9e4949dae))
 
 
 
