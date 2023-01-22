@@ -55,7 +55,6 @@ export async function updateUser(req: any) {
       ]
     );
     return !!user.rowCount;
-
   } else {
     return false;
   }
@@ -84,7 +83,6 @@ export async function updateSettings(req: any) {
       [data.scoresaberdata, data.pronouns, data.twitter, data.twitch, data.id]
     );
     return !!user.rowCount;
-
   } else {
     return false;
   }

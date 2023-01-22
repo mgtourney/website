@@ -12,7 +12,7 @@ export function Redirect({ redirectTo }: { redirectTo: string }) {
       undefined,
       {}
     );
-  }, [router, redirectTo]);
+  }, [redirectTo, router]);
 
   return null;
 }

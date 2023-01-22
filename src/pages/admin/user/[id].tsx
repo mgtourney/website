@@ -36,7 +36,7 @@ export default function UserAdmin({
           router.push("/");
         });
     }
-  }, [isSessionLoading, router.isReady, setSession, setPerm, router]);
+  }, [isSessionLoading, router, setSession]);
 
   useEffect(() => {
     if (router.isReady && !isSessionLoading) {
@@ -72,16 +72,7 @@ export default function UserAdmin({
         setIsLoading(false);
       }, 2000);
     }
-  }, [
-    isSessionLoading,
-    session,
-    perm,
-    id,
-    router,
-    isLoading,
-    setPerm,
-    setIsLoading,
-  ]);
+  }, [id, isLoading, isSessionLoading, perm, router, session]);
 
   return (
     <>

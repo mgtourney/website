@@ -26,7 +26,6 @@ export default function UserPanel({
         .then((res) => res.json())
         .then((data) => {
           if (data.session) {
-            console.log("Getting session");
             setSession(data.session);
             setPerm(data.session.permissions);
             setIsSessionLoading(false);
@@ -35,7 +34,7 @@ export default function UserPanel({
           router.push("/");
         });
     }
-  }, [isSessionLoading, router.isReady, setSession, setPerm, router]);
+  }, [isSessionLoading, router, setSession]);
 
   useEffect(() => {
     if (!isSessionLoading) {

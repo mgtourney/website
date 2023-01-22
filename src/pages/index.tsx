@@ -23,7 +23,7 @@ export default function Home({ session }: { session: boolean | String }) {
       document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
       document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
     }
-  }, [isLoading, setIsLoading, setUrl]);
+  }, [isLoading]);
 
   return (
     <>

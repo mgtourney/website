@@ -19,17 +19,14 @@ export default async function logout(
       if (!req.cookies.session) {
         return res.redirect(`${process.env.PUBLIC_URL}`);
       }
-      const delCookie = await deleteSession(req.cookies.session);
-      if (!delCookie) {
-        return res.redirect(`${process.env.PUBLIC_URL}`);
-      }
+      await deleteSession(req.cookies.session);
       res.setHeader(
         "Set-Cookie",
         `session=; path=/; SameSite=Strict; HttpOnly; expires=${new Date(
           Date.now() + 1
         ).toUTCString()}`
       );
-      res.redirect(`${process.env.PUBLIC_URL}/auth/logout`);
+      res.redirect(`${process.env.PUBLIC_URL}/`);
     } else {
       res.status(405).json({ message: "Method not allowed" });
     }

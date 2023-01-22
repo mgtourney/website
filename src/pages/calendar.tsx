@@ -41,13 +41,13 @@ export default function Rules() {
         .querySelector(".calendarDiv")!
         .classList.add("translate-y-[10px]");
     }, 150);
-  }, [isLoading, setIsLoading]);
+  }, [isLoading]);
 
   return (
     <>
       <Header
         title={`Calendar`}
-        link={url}
+        link={window.location.href}
         contents={`Calendar | The Calendar on ${process.env.PUBLIC_NAME}.`}
       />
       <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">

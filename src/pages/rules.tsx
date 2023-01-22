@@ -27,7 +27,7 @@ export default function RulesPage() {
         document.querySelector(".rulesDiv")!.classList.remove("opacity-0");
       document.querySelector(".rulesDiv")!.classList.add("translate-y-[10px]");
     }, 150);
-  }, [isLoading, url]);
+  }, [isLoading]);
 
   return (
     <>

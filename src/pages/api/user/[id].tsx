@@ -49,7 +49,6 @@ export default async function getFullUserdata(
         const id = session.id;
         const result = await getUser(id);
         if (!result || result.id !== id) {
-          console.log("Unauthorized");
           res.status(401).json({ error: { message: "Unauthorized" } });
           return;
         } else {

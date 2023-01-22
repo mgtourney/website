@@ -29,7 +29,7 @@ export default function Team() {
         document.querySelector(".teamDiv")!.classList.remove("opacity-0");
       }, 150);
     }
-  }, [isLoading, setIsLoading]);
+  }, [isLoading]);
 
   return (
     <>

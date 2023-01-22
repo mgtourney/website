@@ -33,7 +33,6 @@ export async function deleteSession(cookie: string) {
     [data.id]
   );
   return result.rowCount;
-
 }
 
 export async function getSession(cookie: any) {

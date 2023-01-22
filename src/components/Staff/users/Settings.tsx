@@ -35,13 +35,14 @@ export default function SettingsPage({
       .then((data) => {
         setRoles(data);
       });
-  }, [isBanned, selectedPermissions, pronouns, scoreSaberID]);
+  }, []);
 
   const handleSave = () => {
-    fetch(`${process.env.PUBLIC_URL}/api/ss/${scoreSaberID}`)
+    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.errorMessage) {
           Notify.failure("Control the ScoreSaber ID", {
             position: "right-bottom",

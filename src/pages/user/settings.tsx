@@ -33,7 +33,7 @@ export default function UserSettings({
           router.push("/");
         });
     }
-  }, [isSessionLoading, router.isReady, setSession, setPerm, router]);
+  }, [isSessionLoading, router, setSession]);
 
   useEffect(() => {
     if (router.isReady && !isSessionLoading) {
@@ -61,7 +61,7 @@ export default function UserSettings({
           });
       }
     }
-  }, [isSessionLoading, session, id, router, isLoading, setIsLoading]);
+  }, [isLoading, isSessionLoading, router, session]);
 
   return (
     <>

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { User } from "@lib/types/users";
-import Unauthorized from "@lib/general/admin/unauthorized";
 import {
   AcademicCapIcon,
   CheckBadgeIcon,
@@ -100,7 +99,7 @@ export default function AdminMods({
           router.push("/");
         });
     }
-  }, [isSessionLoading, router.isReady, setSession, setPerm, router]);
+  }, [isSessionLoading, router, setSession]);
 
   useEffect(() => {
     if (router.isReady && !isSessionLoading) {
@@ -122,15 +121,7 @@ export default function AdminMods({
         }, 150);
       }
     }
-  }, [
-    isSessionLoading,
-    session,
-    perm,
-    setPerm,
-    isLoading,
-    router,
-    router.isReady,
-  ]);
+  }, [isLoading, isSessionLoading, perm, router, session]);
 
   return (
     <>

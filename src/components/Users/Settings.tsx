@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { User } from "@lib/types/users";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function SettingsPage({
   userData,
@@ -21,7 +17,9 @@ export default function SettingsPage({
   const [twitch, setTwitch] = useState(userData?.twitch);
   const [twitter, setTwitter] = useState(userData?.twitter);
   const handleSave = () => {
-    fetch(`${process.env.PUBLIC_URL}/api/ss/${scoreSaberID}`)
+    fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.errorMessage) {

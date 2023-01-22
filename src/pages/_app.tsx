@@ -20,7 +20,7 @@ function Magnesium({ Component, pageProps: { ...pageProps } }: AppProps) {
           }
         });
     }
-  }, [session, setSession]);
+  }, [session]);
 
   return (
     <>

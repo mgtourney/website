@@ -33,7 +33,7 @@ export default function AdminMods({
           router.push("/");
         });
     }
-  }, [isSessionLoading, router.isReady, setSession, router]);
+  }, [isSessionLoading, router, setSession]);
 
   useEffect(() => {
     if (router.isReady && !isSessionLoading) {
@@ -57,7 +57,7 @@ export default function AdminMods({
           }
         });
     }
-  }, [isSessionLoading, setData, setIsLoading, isLoading, id, router]);
+  }, [id, isLoading, isSessionLoading, router]);
 
   return (
     <>

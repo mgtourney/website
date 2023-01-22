@@ -53,7 +53,7 @@ export default function NavBar({ session }: { session: User }) {
     });
     navigation = nav;
     setMounted(true);
-  }, [session]);
+  }, []);
 
   const renderThemeSwitcher = () => {
     if (!mounted) return null;
