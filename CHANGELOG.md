@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/mgtourney/website/compare/v0.3.1...v0.3.2) (2023-01-22)
+
+
+### Bug Fixes
+
+* :bug: Limit ScoreSaber-ID to 1-use only. - Fix secondary roles. ([eb8b260](https://github.com/mgtourney/website/commit/eb8b26038a0771ae268b54968bf7ef978fd30375))
+
+
+
 ## [0.3.1](https://github.com/mgtourney/website/compare/v0.3.0...v0.3.1) (2023-01-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: Removed "Content-Type" from Fetch, since cors-header complained. ([36ac9e9](https://github.com/mgtourney/website/commit/36ac9e9d7c76cb89fa2bc8d5cddea91a497ea19c))
-
-
-
-## [0.2.3](https://github.com/mgtourney/website/compare/v0.2.2...v0.2.3) (2023-01-21)
-
-
-### Bug Fixes
-
-* :bug: We love ScoreSaber API! ([9e600c1](https://github.com/mgtourney/website/commit/9e600c18ead0b07bff77cb334297c97a52063f09))
 
 
 
