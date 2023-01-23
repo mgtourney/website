@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/mgtourney/website/compare/v0.4.0...v0.5.0) (2023-01-23)
+
+
+### Features
+
+* :sparkles: User-search function to admin-panel. DB-update. ([feb0863](https://github.com/mgtourney/website/commit/feb08633bee8ad4ff6237077e2a4363c806bb18f))
+
+
+
 # [0.4.0](https://github.com/mgtourney/website/compare/v0.3.2...v0.4.0) (2023-01-23)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * :bug: Final, hopefully, change to fetching ScoreSaber data. ([4cbc330](https://github.com/mgtourney/website/commit/4cbc3300b67f20f81766df55a433005a9444bc00))
-
-
-
-## [0.2.5](https://github.com/mgtourney/website/compare/v0.2.4...v0.2.5) (2023-01-22)
-
-
-### Bug Fixes
-
-* Try this, Check ([da7136b](https://github.com/mgtourney/website/commit/da7136bfe9b1d67cb2f8bcdd47b6f8fe2a4b48f9))
 
 
 
