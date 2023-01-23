@@ -27,7 +27,6 @@ export default function SettingsPage({
   const [isBanned, setIsBanned] = useState(false);
   const [twitch, setTwitch] = useState(userData.twitch || "");
   const [twitter, setTwitter] = useState(userData.twitter || "");
-  const [skillSaberData, setSkillSaberData] = useState<any>([]);
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/api/staff/roles`)
@@ -38,46 +37,47 @@ export default function SettingsPage({
   }, []);
 
   async function handleSave() {
-
     try {
-      const skillSaberRes = await fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`);
+      const skillSaberRes = await fetch(
+        `https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`
+      );
+      const skillSaberData = await skillSaberRes.json();
 
       if (skillSaberData.errorMessage) {
         return Error({ text: "Control the ScoreSaber ID" });
       }
-
-      setSkillSaberData(await skillSaberRes.json());
-
+      const apiPatchRes = await fetch(
+        `${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: userData?.id,
+            scoresaberdata: JSON.stringify([
+              scoreSaberID,
+              skillSaberData.countryRank,
+              skillSaberData.rank,
+              skillSaberData.country,
+            ]),
+            permissions: selectedPermissions,
+            pronouns: pronouns,
+            roles: `["${userRoles}"]`,
+            twitter: twitter,
+            twitch: twitch,
+            banned: isBanned,
+          }),
+        }
+      );
+      const apiPatchData = await apiPatchRes.json();
+      if (apiPatchData.error) {
+        return Error({ text: apiPatchData.error.message });
+      } else {
+        return Success({ text: "Settings got saved!" });
+      }
     } catch (error) {
       return Error({ text: "Control the ScoreSaber ID" });
-    }
-
-    const apiPatchRes = await fetch(`${process.env.PUBLIC_URL}/api/staff/user/${userData.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userData?.id,
-        scoresaberdata: JSON.stringify([
-          scoreSaberID,
-          skillSaberData.countryRank,
-          skillSaberData.rank,
-          skillSaberData.country,
-        ]),
-        permissions: selectedPermissions,
-        pronouns: pronouns,
-        roles: (`["${userRoles}"]`),
-        twitter: twitter,
-        twitch: twitch,
-        banned: isBanned,
-      }),
-    })
-    const apiPatchData = await apiPatchRes.json();
-    if (apiPatchData.error) {
-      return Error({ text: apiPatchData.error.message });
-    } else {
-      return Success({ text: "Settings got saved!" });
     }
   }
 
