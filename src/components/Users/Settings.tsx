@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { User } from "@lib/types/users";
-import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Success, Error, Warning } from "@comp/UI/General/Notifiers";
 
 export default function SettingsPage({
   userData,
@@ -14,73 +14,56 @@ export default function SettingsPage({
   const [twitch, setTwitch] = useState(userData?.twitch);
   const [twitter, setTwitter] = useState(userData?.twitter);
   const [idSet, setIdSet] = useState(false);
+  const [skillSaberData, setSkillSaberData] = useState<any>([]);
 
-  const handleSave = async () => {
-    await fetch(`${process.env.PUBLIC_URL}/api/user/list`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (scoreSaberID !== scoreSab[0]) {
-          if (data.list.includes(scoreSaberID)) {
-            return Notify.failure("This ScoreSaber ID is already in use!", {
-              position: "right-bottom",
-              timeout: 5000,
-              clickToClose: true,
-            });
-          }
-        }
-        fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`, {
-          method: "GET",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.errorMessage) {
-              Notify.failure("Control the ScoreSaber ID", {
-                position: "right-bottom",
-                timeout: 5000,
-                clickToClose: true,
-              });
-              return;
-            } else {
-              fetch(`${process.env.PUBLIC_URL}/api/user/${userData.id}`, {
-                method: "PATCH",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  userId: userData?.id,
-                  scoresaberdata: JSON.stringify([
-                    scoreSaberID,
-                    data.countryRank,
-                    data.rank,
-                    data.country,
-                  ]),
-                  pronouns: pronouns,
-                  twitter: twitter,
-                  twitch: twitch,
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  if (data.error) {
-                    Notify.failure(data.error.message, {
-                      position: "right-bottom",
-                      timeout: 5000,
-                      clickToClose: true,
-                    });
-                  } else {
-                    setIdSet(true);
-                    Notify.success("Settings got saved!", {
-                      position: "right-bottom",
-                      timeout: 5000,
-                      clickToClose: true,
-                    });
-                  }
-                });
-            }
-          });
-      });
+  async function handleSave() {
+    const userListRes = await fetch(`${process.env.PUBLIC_URL}/api/user/list`)
+    const userListData = await userListRes.json();
 
-  };
+    if (scoreSaberID !== scoreSab[0]) {
+      if (userListData.list.includes(scoreSaberID)) {
+        return Warning({ text: "This ScoreSaber ID is already in use!" });
+      }
+    }
+
+    try {
+      const skillSaberRes = await fetch(`https://skillsaber.vercel.app/api/player?id=${scoreSaberID}`);
+
+      if (skillSaberData.errorMessage) {
+        return Error({ text: "Control the ScoreSaber ID" });
+      }
+
+      setSkillSaberData(await skillSaberRes.json());
+    } catch (error) {
+      return Error({ text: "Control the ScoreSaber ID" });
+    }
+
+    const apiPatchRes = await fetch(`${process.env.PUBLIC_URL}/api/user/${userData.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: userData?.id,
+        scoresaberdata: JSON.stringify([
+          scoreSaberID,
+          skillSaberData.countryRank,
+          skillSaberData.rank,
+          skillSaberData.country,
+        ]),
+        pronouns: pronouns,
+        twitter: twitter,
+        twitch: twitch,
+      }),
+    })
+    const apiPatchData = await apiPatchRes.json();
+    if (apiPatchData.error) {
+      return Error({ text: apiPatchData.error.message });
+    } else {
+      setIdSet(true);
+      return Success({ text: "Settings got saved!" });
+    }
+  }
 
   return (
     <div>
@@ -91,7 +74,7 @@ export default function SettingsPage({
               <div className="lg:col-span-9 flex justify-center align-middle">
                 <div className="py-6 px-4 sm:p-6 lg:pb-8">
                   <div className="mt-6 grid grid-cols-12 gap-6">
-                    {(scoreSab[0] === "0" && !idSet) && (
+                    {scoreSab[0] === "0" && !idSet && (
                       <div className="ssIDDiv col-span-12 sm:col-span-6">
                         <label
                           htmlFor="scoresaber-id"
