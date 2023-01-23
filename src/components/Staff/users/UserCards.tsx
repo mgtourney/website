@@ -42,7 +42,7 @@ export default function UserCards() {
         setSuggestions([]);
       }
     })();
-  }, [debouncedQuery]);
+  }, [debouncedQuery, inputType]);
 
 
   return (
