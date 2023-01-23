@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/mgtourney/website/compare/v0.5.0...v0.5.1) (2023-01-23)
+
+
+### Bug Fixes
+
+* :bug: Added inputType to useEffect-hook. :skull: ([d09d46a](https://github.com/mgtourney/website/commit/d09d46ab19fa795f0f4f29df5be411ae408372de))
+
+
+
 # [0.5.0](https://github.com/mgtourney/website/compare/v0.4.0...v0.5.0) (2023-01-23)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: window.location.href should not have been there. ([39c7467](https://github.com/mgtourney/website/commit/39c7467bc5b6e8aa1e3213a78481a21306bd5e20))
-
-
-
-# [0.3.0](https://github.com/mgtourney/website/compare/v0.2.5...v0.3.0) (2023-01-22)
-
-
-### Features
-
-* :bug: Final, hopefully, change to fetching ScoreSaber data. ([4cbc330](https://github.com/mgtourney/website/commit/4cbc3300b67f20f81766df55a433005a9444bc00))
 
 
 
