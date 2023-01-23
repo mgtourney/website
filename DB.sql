@@ -205,7 +205,7 @@ DROP TABLE IF EXISTS "public"."users";
 CREATE TABLE "public"."users" (
   "id" text COLLATE "pg_catalog"."default" NOT NULL,
   "name" varchar(255) COLLATE "pg_catalog"."default",
-  "permissions" int2 NOT NULL DEFAULT 0,
+  "permissions" int2 NOT NULL DEFAULT 1,
   "roles" varchar(300) COLLATE "pg_catalog"."default" DEFAULT '[""]'::character varying,
   "scoresaberdata" varchar(200) COLLATE "pg_catalog"."default" NOT NULL DEFAULT '["0",0,0,"NA"]'::character varying,
   "twitter" varchar(255) COLLATE "pg_catalog"."default",

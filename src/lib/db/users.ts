@@ -123,3 +123,17 @@ export async function getAllSSIds() {
   const ssids = result.rows.map((row) => JSON.parse(row.scoresaberdata)[0]);
   return ssids;
 }
+
+export async function userList(type: any,val: any) {
+  if (type == "name") {
+    type = "lower(name)";
+  } else {
+    type = "id";
+  }
+  const result = await Information.query(`SELECT * FROM usersearch WHERE ${type} LIKE '%${val}%'`);
+
+  if (!result.rows.length) {
+    return false;
+  }
+  return result.rows;
+}

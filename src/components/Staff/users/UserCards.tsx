@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Menu } from "@headlessui/react";
 import {
   AcademicCapIcon,
   CheckBadgeIcon,
@@ -7,12 +8,47 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
+function useDebounceValue(value: string, time: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, time);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, time]);
+  return debouncedValue;
+}
+
 export default function UserCards() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputType, setInputType] = useState("name");
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const debouncedQuery = useDebounceValue(query, 500);
+
+  useEffect(() => {
+    (async () => {
+      setSuggestions([]);
+      if (debouncedQuery.length > 0 && debouncedQuery !== ".") {
+        const response = await fetch(`${process.env.PUBLIC_URL}/api/user/search/${inputType}/${debouncedQuery}`);
+        const data = await response.json();
+        if (data.list === false) {
+          setSuggestions([]);
+        } else {
+          setSuggestions(data.list);
+        }
+      } else {
+        setSuggestions([]);
+      }
+    })();
+  }, [debouncedQuery]);
+
+
   return (
     <>
       <div
-        key={"EditUser"}
+        key={"EditUsers"}
         className={
           "rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg sm:rounded relative group bg-white dark:bg-[#272727] hover:dark:bg-[#202020] p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 transition-all duration-150"
         }
@@ -28,23 +64,56 @@ export default function UserCards() {
         </div>
         <div className="mt-8">
           <h3 className="text-lg font-medium">
-            <Link
-              href={`/admin/user/${inputValue}`}
+            <div
               className="focus:outline-none"
             >
               <span className="absolute inset-0" aria-hidden="true" />
               <span className="dark:text-white text-gray-900 transition-all duration-500">
                 Edit user
               </span>
-            </Link>
+            </div>
           </h3>
-          <div className="mt-2 text-sm text-gray-500">
-            <div className="max-w-lg w-full lg:max-w-xs">
+          <div className="mt-2 text-sm">
+            <div className="max-w-[50rem] w-full lg:max-w-xs">
               <label htmlFor="search" className="sr-only" unselectable="on">
                 Search
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="relative flex flex-row">
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Menu.Button
+                      className="hover:text-cyan-500 hover:bg-gray-50 text-gray-500 bg-white border-gray-300 dark:bg-[#161616] dark:border-[#131313] dark:text-gray-200 ml-2 relative inline-flex items-center px-2 py-2 shadow-md rounded-l-md border text-sm focus:outline-none">
+                      <span className="sr-only">Type</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-[22px] h-[22px]"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
+                        />
+                      </svg>
+                    </Menu.Button>
+                  </div>
+                  <Menu.Items className="z-10 origin-top-right absolute left-2 w-35 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Item>
+                      <div onClick={() => { setInputType("id"), setQuery(""); }} className="bg-gray-100 hover:bg-gray-200 text-cyan-900 group flex items-center px-4 py-2 text-sm cursor-pointer">
+                        ID
+                      </div>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <div onClick={() => { setInputType("name"), setQuery(""); }} className="bg-gray-100 hover:bg-gray-200 text-cyan-900 group flex items-center px-4 py-2 text-sm cursor-pointer">
+                        Name
+                      </div>
+                    </Menu.Item>
+                  </Menu.Items>
+                </Menu>
+                <div className="absolute inset-y-0 left-[3.5rem] pl-1 flex items-center pointer-events-none">
                   <MagnifyingGlassIcon
                     className="h-5 w-5 text-gray-400"
                     aria-hidden="true"
@@ -53,12 +122,25 @@ export default function UserCards() {
                 <input
                   id="search"
                   name="search"
-                  className="block w-full h-[40px] pl-10 border text-black border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="Search by Discord ID"
-                  type="number"
-                  onChange={(e) => setInputValue(e.target.value)}
+                  className="block w-full h-[40px] pl-10 border text-black border-gray-300 rounded-r-md focus:rounded-br-none leading-5 bg-white placeholder-gray-500 dark:text-white dark:border-[#131313] dark:bg-[#161616] focus:placeholder-gray-400"
+                  placeholder={`Search by ${inputType}`}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
               </div>
+            </div>
+
+            <div className={`absolute left-[4.5rem] max-h-32 overflow-x-hidden flex items-center flex-col z-10 last:rounded-b-[10px] ${suggestions.length <= 8 ? 'h-8rem' : ''}`}>
+              {suggestions.map((suggestion: any) => (
+                <Link
+                  className="text-[18px] w-[16rem] bg-white border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-gray-900 focus:border-gray-900 dark:border-[#131313] dark:bg-[#161616] dark:hover:bg-[#131313] text-black dark:text-white border min-h-[40px] pt-2 pl-2 border-1 last:rounded-b-[10px]"
+                  key={suggestion.id}
+                  href={`/admin/user/${suggestion.id}`}
+                >
+                  {suggestion.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

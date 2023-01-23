@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Switch } from "@headlessui/react";
 import { User } from "@lib/types/users";
 import { Success, Error } from "@comp/UI/General/Notifiers";
+import router from "next/router";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -119,7 +120,7 @@ export default function SettingsPage({
                         name="pronouns"
                         value={Number(pronouns)}
                         onChange={(e) => setPronouns(Number(e.target.value))}
-                        className="mt-1 block w-full bg-white border dark:border-[#242424] dark:bg-[#161616] border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                        className="mt-1 block w-full bg-white border dark:border-[#242424] dark:bg-[#161616] border-gray-300 focus:outline-none focus:ring-gray-900 focus:border-gray-900 rounded-md shadow-sm py-2 px-3 sm:text-sm"
                       >
                         <option value={0}>He/Him</option>
                         <option value={1}>She/Her</option>
@@ -177,7 +178,7 @@ export default function SettingsPage({
                         htmlFor="twitch"
                         className="block text-sm font-medium text-gray-700 dark:text-white"
                       >
-                        Twitch
+                        Twitch-name
                       </label>
                       <input
                         type="text"
@@ -194,7 +195,7 @@ export default function SettingsPage({
                         htmlFor="twitter"
                         className="block text-sm font-medium text-gray-700 dark:text-white"
                       >
-                        Twitter
+                        Twitter-@
                       </label>
                       <input
                         type="text"
@@ -239,12 +240,18 @@ export default function SettingsPage({
                         </Switch>
                       </Switch.Group>
                     )}
-                    <div className="flex justify-end">
+                    <div className="flex justify-end gap-2">
                       <button
                         onClick={handleSave}
                         className="bg-[#B97EF5] border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-[#8f5dc2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
                       >
                         Save
+                      </button>
+                      <button
+                        onClick={() => router.push("/admin/user/")}
+                        className="bg-[#7ea6f5] border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-[#8f5dc2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                      >
+                        Back
                       </button>
                     </div>
                   </div>
