@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/mgtourney/website/compare/v0.3.2...v0.4.0) (2023-01-23)
+
+
+### Features
+
+* :sparkles: Added Notifier-library using Notiflix. | Changed formatting on Admin/user-settings ([22c8c45](https://github.com/mgtourney/website/commit/22c8c45c86fac15031d6be3a09f62ffbbe6f6608))
+
+
+
 ## [0.3.2](https://github.com/mgtourney/website/compare/v0.3.1...v0.3.2) (2023-01-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * Try this, Check ([da7136b](https://github.com/mgtourney/website/commit/da7136bfe9b1d67cb2f8bcdd47b6f8fe2a4b48f9))
-
-
-
-## [0.2.4](https://github.com/mgtourney/website/compare/v0.2.3...v0.2.4) (2023-01-21)
-
-
-### Bug Fixes
-
-* :bug: Removed "Content-Type" from Fetch, since cors-header complained. ([36ac9e9](https://github.com/mgtourney/website/commit/36ac9e9d7c76cb89fa2bc8d5cddea91a497ea19c))
 
 
 
