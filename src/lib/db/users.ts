@@ -124,13 +124,15 @@ export async function getAllSSIds() {
   return ssids;
 }
 
-export async function userList(type: any,val: any) {
+export async function userList(type: any, val: any) {
   if (type == "name") {
     type = "lower(name)";
   } else {
     type = "id";
   }
-  const result = await Information.query(`SELECT * FROM usersearch WHERE ${type} LIKE '%${val}%'`);
+  const result = await Information.query(
+    `SELECT * FROM usersearch WHERE ${type} LIKE '%${val}%'`
+  );
 
   if (!result.rows.length) {
     return false;

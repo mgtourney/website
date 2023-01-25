@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { User } from "@lib/types/users";
-import { Redirect } from "@lib/general/user/redirect";
 
 export default function AdminMods({
   session,

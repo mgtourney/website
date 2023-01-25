@@ -18,7 +18,19 @@ const clientSecret = process.env.DISCORD_CLIENT_SECRET || "";
 const redirectUri = process.env.DISCORD_REDIRECT_URI || "";
 let userImage: string = "";
 
+async function postData(url: string, data: { url: string; name: string }) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return await response.json();
+}
+
 const download = (url: string, filename: string) => {
+  let userImage: string = "";
   https.get(url, (res) => {
     const contentType = res.headers["content-type"];
     userImage = `${filename}${
@@ -31,21 +43,30 @@ const download = (url: string, filename: string) => {
         : ".jpg"
     }`;
 
-    const fileStream = fs.createWriteStream(
-      `./public/assets/images/users/${filename}${
-        contentType === "image/gif"
-          ? ".gif"
-          : contentType === "image/png"
-          ? ".png"
-          : contentType === "image/webp"
-          ? ".webp"
-          : ".jpg"
-      }`
-    );
-    res.pipe(fileStream);
-    fileStream.on("finish", () => {
-      fileStream.close();
-    });
+    /*
+    Temp fix until CDN/Other method of storing image is up
+    */
+    postData("https://api.danesaber.cf/MG/upload", { url, name: userImage });
+
+
+    /*
+    Temp disabled writing files to own server, until CDN/Other method of storing image is up
+    */
+    // const fileStream = fs.createWriteStream(
+    //   `./public/assets/images/users/${filename}${
+    //     contentType === "image/gif"
+    //       ? ".gif"
+    //       : contentType === "image/png"
+    //       ? ".png"
+    //       : contentType === "image/webp"
+    //       ? ".webp"
+    //       : ".jpg"
+    //   }`
+    // );
+    // res.pipe(fileStream);
+    // fileStream.on("finish", () => {
+    //   fileStream.close();
+    // });
   });
 };
 

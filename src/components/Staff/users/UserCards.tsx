@@ -31,7 +31,9 @@ export default function UserCards() {
     (async () => {
       setSuggestions([]);
       if (debouncedQuery.length > 0 && debouncedQuery !== ".") {
-        const response = await fetch(`${process.env.PUBLIC_URL}/api/user/search/${inputType}/${debouncedQuery}`);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/api/user/search/${inputType}/${debouncedQuery}`
+        );
         const data = await response.json();
         if (data.list === false) {
           setSuggestions([]);
@@ -43,7 +45,6 @@ export default function UserCards() {
       }
     })();
   }, [debouncedQuery, inputType]);
-
 
   return (
     <>
@@ -64,9 +65,7 @@ export default function UserCards() {
         </div>
         <div className="mt-8">
           <h3 className="text-lg font-medium">
-            <div
-              className="focus:outline-none"
-            >
+            <div className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               <span className="dark:text-white text-gray-900 transition-all duration-500">
                 Edit user
@@ -81,8 +80,7 @@ export default function UserCards() {
               <div className="relative flex flex-row">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
-                    <Menu.Button
-                      className="hover:text-cyan-500 hover:bg-gray-50 text-gray-500 bg-white border-gray-300 dark:bg-[#161616] dark:border-[#131313] dark:text-gray-200 ml-2 relative inline-flex items-center px-2 py-2 shadow-md rounded-l-md border text-sm focus:outline-none">
+                    <Menu.Button className="hover:text-cyan-500 hover:bg-gray-50 text-gray-500 bg-white border-gray-300 dark:bg-[#161616] dark:border-[#131313] dark:text-gray-200 ml-2 relative inline-flex items-center px-2 py-2 shadow-md rounded-l-md border text-sm focus:outline-none">
                       <span className="sr-only">Type</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -102,12 +100,22 @@ export default function UserCards() {
                   </div>
                   <Menu.Items className="z-10 origin-top-right absolute left-2 w-35 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <Menu.Item>
-                      <div onClick={() => { setInputType("id"), setQuery(""); }} className="bg-gray-100 hover:bg-gray-200 text-cyan-900 group flex items-center px-4 py-2 text-sm cursor-pointer">
+                      <div
+                        onClick={() => {
+                          setInputType("id"), setQuery("");
+                        }}
+                        className="bg-gray-100 hover:bg-gray-200 text-cyan-900 group flex items-center px-4 py-2 text-sm cursor-pointer"
+                      >
                         ID
                       </div>
                     </Menu.Item>
                     <Menu.Item>
-                      <div onClick={() => { setInputType("name"), setQuery(""); }} className="bg-gray-100 hover:bg-gray-200 text-cyan-900 group flex items-center px-4 py-2 text-sm cursor-pointer">
+                      <div
+                        onClick={() => {
+                          setInputType("name"), setQuery("");
+                        }}
+                        className="bg-gray-100 hover:bg-gray-200 text-cyan-900 group flex items-center px-4 py-2 text-sm cursor-pointer"
+                      >
                         Name
                       </div>
                     </Menu.Item>
@@ -131,7 +139,11 @@ export default function UserCards() {
               </div>
             </div>
 
-            <div className={`absolute left-[4.5rem] max-h-32 overflow-x-hidden flex items-center flex-col z-10 last:rounded-b-[10px] ${suggestions.length <= 8 ? 'h-8rem' : ''}`}>
+            <div
+              className={`absolute left-[4.5rem] max-h-32 overflow-x-hidden flex items-center flex-col z-10 last:rounded-b-[10px] ${
+                suggestions.length <= 8 ? "h-8rem" : ""
+              }`}
+            >
               {suggestions.map((suggestion: any) => (
                 <Link
                   className="text-[18px] w-[16rem] bg-white border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-gray-900 focus:border-gray-900 dark:border-[#131313] dark:bg-[#161616] dark:hover:bg-[#131313] text-black dark:text-white border min-h-[40px] pt-2 pl-2 border-1 last:rounded-b-[10px]"

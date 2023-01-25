@@ -16,7 +16,7 @@ export default function ProfileMenu({ session }: { session: User }) {
           <Menu.Button className="rounded-md flex focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-pink-600 dark:focus:ring-indigo-500 hover:cursor-pointer">
             <Image
               className="h-8 w-8 rounded-md"
-              src={session.image}
+              src={`https://api.danesaber.cf/MG${session.image}`}
               alt={""}
               width={32}
               height={32}
