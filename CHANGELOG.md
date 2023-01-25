@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/mgtourney/website/compare/v0.5.1...v0.5.2) (2023-01-25)
+
+
+### Bug Fixes
+
+* :bug: Changed API-endpoints from TSX to TS, as they should be. TEMP fix for loading/saving user-images. ([3b67c83](https://github.com/mgtourney/website/commit/3b67c83fce868c2c7e88337a3745861598289fd1))
+
+
+
 ## [0.5.1](https://github.com/mgtourney/website/compare/v0.5.0...v0.5.1) (2023-01-23)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: Limit ScoreSaber-ID to 1-use only. - Fix secondary roles. ([eb8b260](https://github.com/mgtourney/website/commit/eb8b26038a0771ae268b54968bf7ef978fd30375))
-
-
-
-## [0.3.1](https://github.com/mgtourney/website/compare/v0.3.0...v0.3.1) (2023-01-22)
-
-
-### Bug Fixes
-
-* :bug: window.location.href should not have been there. ([39c7467](https://github.com/mgtourney/website/commit/39c7467bc5b6e8aa1e3213a78481a21306bd5e20))
 
 
 
