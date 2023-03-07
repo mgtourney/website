@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/mgtourney/website/compare/v0.5.2...v0.6.0) (2023-03-07)
+
+
+### Features
+
+* :sparkles: Quals rank-check, notification + admin-panel page to enable/change it, redid the user-search field in the adminpanel ([352193b](https://github.com/mgtourney/website/commit/352193b253d6d9af0613cbec610d1ae56d1beea4))
+
+
+
 ## [0.5.2](https://github.com/mgtourney/website/compare/v0.5.1...v0.5.2) (2023-01-25)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * :sparkles: Added Notifier-library using Notiflix. | Changed formatting on Admin/user-settings ([22c8c45](https://github.com/mgtourney/website/commit/22c8c45c86fac15031d6be3a09f62ffbbe6f6608))
-
-
-
-## [0.3.2](https://github.com/mgtourney/website/compare/v0.3.1...v0.3.2) (2023-01-22)
-
-
-### Bug Fixes
-
-* :bug: Limit ScoreSaber-ID to 1-use only. - Fix secondary roles. ([eb8b260](https://github.com/mgtourney/website/commit/eb8b26038a0771ae268b54968bf7ef978fd30375))
 
 
 
