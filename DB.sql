@@ -61,6 +61,17 @@ START 1
 CACHE 1;
 
 -- ----------------------------
+-- Sequence structure for sitealert_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."sitealert_id_seq";
+CREATE SEQUENCE "public"."sitealert_id_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
 -- Table structure for apikeys
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."apikeys";
@@ -174,6 +185,30 @@ COMMENT ON COLUMN "public"."sessions"."created_at" IS 'When the session was crea
 -- Records of sessions
 -- ----------------------------
 INSERT INTO "public"."sessions" VALUES (1, '592779895084679188', 'U2FsdGVkX1/4cZzaivIxakfo32vGoOznvUStX2okjlygQBFUXHM32hTMslgOHIzA', '2023-01-19 17:13:52.359379+01');
+
+-- ----------------------------
+-- Table structure for sitealert
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."sitealert";
+CREATE TABLE "public"."sitealert" (
+  "id" int4 NOT NULL GENERATED ALWAYS AS IDENTITY (
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+),
+  "headline" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "message" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "link" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "linktext" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "visible" bool NOT NULL
+)
+;
+
+-- ----------------------------
+-- Records of sitealert
+-- ----------------------------
+INSERT INTO "public"."sitealert" OVERRIDING SYSTEM VALUE VALUES (2, 'Quals are coming!', 'Quals are coming! Got a teammate?', 'https://magnesium.gg/qualscheck', 'Check eligibility!', 't');
 
 -- ----------------------------
 -- Table structure for t_roles
@@ -290,6 +325,13 @@ OWNED BY "public"."sessions"."id";
 SELECT setval('"public"."sessions_id_seq"', 2, true);
 
 -- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "public"."sitealert_id_seq"
+OWNED BY "public"."sitealert"."id";
+SELECT setval('"public"."sitealert_id_seq"', 3, true);
+
+-- ----------------------------
 -- Primary Key structure for table apikeys
 -- ----------------------------
 ALTER TABLE "public"."apikeys" ADD CONSTRAINT "apikeys_pkey" PRIMARY KEY ("id", "key");
@@ -320,6 +362,11 @@ CREATE UNIQUE INDEX "access_token" ON "public"."sessions" USING btree (
 -- Primary Key structure for table sessions
 -- ----------------------------
 ALTER TABLE "public"."sessions" ADD CONSTRAINT "sessions_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table sitealert
+-- ----------------------------
+ALTER TABLE "public"."sitealert" ADD CONSTRAINT "sitealert_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table t_roles
