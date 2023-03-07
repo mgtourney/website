@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/mgtourney/website/compare/v0.6.0...v0.7.0) (2023-03-07)
+
+
+### Features
+
+* :sparkles: Site-alert DB update ([6af6ab7](https://github.com/mgtourney/website/commit/6af6ab70d8016fc52136f357c703a1a270364982))
+
+
+
 # [0.6.0](https://github.com/mgtourney/website/compare/v0.5.2...v0.6.0) (2023-03-07)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * :sparkles: User-search function to admin-panel. DB-update. ([feb0863](https://github.com/mgtourney/website/commit/feb08633bee8ad4ff6237077e2a4363c806bb18f))
-
-
-
-# [0.4.0](https://github.com/mgtourney/website/compare/v0.3.2...v0.4.0) (2023-01-23)
-
-
-### Features
-
-* :sparkles: Added Notifier-library using Notiflix. | Changed formatting on Admin/user-settings ([22c8c45](https://github.com/mgtourney/website/commit/22c8c45c86fac15031d6be3a09f62ffbbe6f6608))
 
 
 
