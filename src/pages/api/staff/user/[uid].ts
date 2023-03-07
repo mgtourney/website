@@ -17,10 +17,10 @@ export default async function getFullUserdata(
   try {
     await limiter.check(res, ratelimit, "CACHE_TOKEN");
     try {
-      const { id } = req.query as unknown as { id: number };
+      const { uid } = req.query as unknown as { uid: number };
 
-      if (!req.cookies.session) {
-        res.status(401).json({ error: { message: "Unauthorized" } });
+      if (isNaN(uid)) {
+        res.status(400).json({ error: { message: "ID should be a number" } });
         return;
       }
 
@@ -30,13 +30,13 @@ export default async function getFullUserdata(
           .json({ error: { message: "Method not allowed." } });
       }
 
-      if (isNaN(id)) {
-        res.status(400).json({ error: { message: "ID should be a number" } });
+      if (!req.cookies.session) {
+        res.status(401).json({ error: { message: "Unauthorized" } });
         return;
       }
 
       if (req.method == "GET") {
-        const result = await getUser(id);
+        const result = await getUser(uid);
         if (!result) {
           res.status(404).json({ error: { message: "User not found" } });
           return;
@@ -46,8 +46,8 @@ export default async function getFullUserdata(
       }
       if (req.method == "PATCH") {
         const session = JSON.parse(decrypt(req.cookies.session));
-        const id = session.id;
-        const result = await getUser(id);
+        const pid = session.id;
+        const result = await getUser(pid);
         if (!result || result.permissions < 9) {
           res.status(401).json({ error: { message: "Unauthorized" } });
           return;

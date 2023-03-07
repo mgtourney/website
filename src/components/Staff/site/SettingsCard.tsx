@@ -1,56 +1,22 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu } from "@headlessui/react";
 import {
   AcademicCapIcon,
   CheckBadgeIcon,
   UsersIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import UserSearch from "./UserSearch";
 
-function useDebounceValue(value: string, time: number) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, time);
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, time]);
-  return debouncedValue;
-}
-
-export default function UserCards() {
-  const [inputType, setInputType] = useState("name");
-  const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const debouncedQuery = useDebounceValue(query, 500);
+export default function SiteCards() {
 
   useEffect(() => {
-    (async () => {
-      setSuggestions([]);
-      if (debouncedQuery.length > 0 && debouncedQuery !== ".") {
-        const response = await fetch(
-          `${process.env.PUBLIC_URL}/api/user/search/${inputType}/${debouncedQuery}`
-        );
-        const data = await response.json();
-        if (data.list === false) {
-          setSuggestions([]);
-        } else {
-          setSuggestions(data.list);
-        }
-      } else {
-        setSuggestions([]);
-      }
-    })();
-  }, [debouncedQuery, inputType]);
+
+  }, []);
 
   return (
     <>
       <div
-        key={"EditUsers"}
+        key={"ManagePage"}
         className={
           "pb-20 rounded-tl-lg z-10 rounded-tr-lg rounded-bl-lg rounded-br-lg sm:rounded relative group bg-white dark:bg-[#272727] hover:dark:bg-[#202020] p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 transition-all duration-150"
         }
@@ -66,15 +32,15 @@ export default function UserCards() {
         </div>
         <div className="mt-8">
           <h3 className="text-lg font-medium">
-            <div className="focus:outline-none">
+            <Link href={`/admin/site/alert`} className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               <span className="dark:text-white text-gray-900 transition-all duration-500">
-                Search for a user
+                General Settings [WIP]
               </span>
-            </div>
+            </Link>
           </h3>
-          <div className="mt-1">
-            <UserSearch />
+          <div className="mt-2 text-sm text-gray-500">
+            Manage Maintenance, Site Name, Site Description, Site Logo, and more.
           </div>
         </div>
         <span
@@ -92,7 +58,7 @@ export default function UserCards() {
         </span>
       </div>
       <div
-        key={"APIKeys"}
+        key={"Alerts"}
         className={
           "rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg sm:rounded relative group bg-white dark:bg-[#272727] hover:dark:bg-[#202020] p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 transition-all duration-150"
         }
@@ -108,16 +74,15 @@ export default function UserCards() {
         </div>
         <div className="mt-8">
           <h3 className="text-lg font-medium">
-            <Link href={`#`} className="focus:outline-none">
+            <Link href={`/admin/site/alert`} className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               <span className="dark:text-white text-gray-900 transition-all duration-500">
-                API-Verification
+                Site-notifications
               </span>
             </Link>
           </h3>
           <div className="mt-2 text-sm text-gray-500">
-            Someone asked for API access? Verify their account, and give them an
-            API key!
+            Want to announce something? You can do it here!
           </div>
         </div>
         <span
@@ -135,7 +100,7 @@ export default function UserCards() {
         </span>
       </div>
       <div
-        key={"UserList"}
+        key={"Rules"}
         className={
           "rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg sm:rounded relative group bg-white dark:bg-[#272727] hover:dark:bg-[#202020] p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 transition-all duration-150"
         }
@@ -154,12 +119,12 @@ export default function UserCards() {
             <Link href={`#`} className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               <span className="dark:text-white text-gray-900 transition-all duration-500">
-                Userlist
+                Rules [WIP]
               </span>
             </Link>
           </h3>
           <div className="mt-2 text-sm text-gray-500">
-            See a list of users, and their roles!
+            Manage your rules here!
           </div>
         </div>
         <span
@@ -193,15 +158,15 @@ export default function UserCards() {
         </div>
         <div className="mt-8">
           <h3 className="text-lg font-medium">
-            <Link href={`/admin/stats`} className="focus:outline-none">
+            <Link href={`#`} className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               <span className="dark:text-white text-gray-900 transition-all duration-500">
-                Stats
+                API-Settings [WIP]
               </span>
             </Link>
           </h3>
           <div className="mt-2 text-sm text-gray-500">
-            An overview of the user-stats on the website
+            Change API-settings here.
           </div>
         </div>
         <span

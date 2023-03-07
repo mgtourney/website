@@ -5,7 +5,7 @@ import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { User } from "@lib/types/users";
 import Unauthorized from "@lib/general/admin/unauthorized";
-import UserCards from "@comp/Staff/users/UserCards";
+import SiteCards from "@comp/Staff/site/SettingsCard";
 
 export default function UserPanel({
   session,
@@ -82,21 +82,21 @@ export default function UserPanel({
           ) : (
             <>
               <Header
-                title={`User Panel`}
+                title={`Site-settings`}
                 link={url}
-                contents={`User Panel | The User Panel on ${process.env.PUBLIC_NAME}.`}
+                contents={`Site-settings | The Site-settings on ${process.env.PUBLIC_NAME}.`}
               />
               <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
-                <PageHeader title={`User Panel`} />
+                <PageHeader title={`Site-settings`} />
                 <>
                   <div className="adminPanel overflow-visible bg-white dark:bg-[#161616] pb-1rem rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
                     <div className="px-4 py-5 sm:px-6">
                       <p className="rulesInfoHeader">
-                        User administration-panel
+                        Site-settings
                       </p>
                     </div>
                     <div className="rounded-lg bg-gray-200 dark:bg-[#161616] overflow-hidden shadow divide-y sm:divide-y-0 dark:divide-[#202020] sm:grid sm:grid-cols-2 sm:gap-px transition-all duration-500">
-                      <UserCards />
+                      <SiteCards />
                     </div>
                   </div>
                 </>

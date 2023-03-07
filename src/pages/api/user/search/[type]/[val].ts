@@ -22,7 +22,9 @@ export default async function getFullUserdata(
     await limiter.check(res, ratelimit, "CACHE_TOKEN");
 
     if (type !== "id" && type !== "name") {
-      return res.status(400).json({ error: { message: "Invalid search type" } });
+      return res
+        .status(400)
+        .json({ error: { message: "Invalid search type" } });
     }
 
     res.status(200).json({ list: await userList(type, lowerVal) });

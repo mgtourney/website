@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import BottomBanner from "@comp/UI/Components/Footer/Banner";
 
 const navigation = [
   {
@@ -52,6 +54,36 @@ const navigation = [
 ];
 
 export default function Footer() {
+  const router = useRouter();
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [headline, setHeadline] = useState("");
+  const [message, setMessage] = useState("");
+  const [link, setLink] = useState("");
+  const [linkText, setLinkText] = useState("");
+  const [buttonText, setButtonText] = useState("");
+  //Fetch the banner from the /api/site/alert endpoint
+  useEffect(() => {
+    if (router.isReady && isBannerLoading) {
+      fetch(`${process.env.PUBLIC_URL}/api/site/alert`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.alert) {
+            setIsBannerLoading(data.alert);
+            setVisible(data.alert.visible);
+            setHeadline(data.alert.headline);
+            setMessage(data.alert.message);
+            setLink(data.alert.link);
+            setLinkText(data.alert.linktext);
+            setButtonText(data.alert.buttonText);
+            setIsBannerLoading(false);
+            return;
+          }
+          router.push("/");
+        });
+    }
+  }, [isBannerLoading, router]);
+
   return (
     <>
       <footer className="bg-white dark:bg-[#080808] fixed bottom-0 min-w-[100%] select-none transition-all duration-500">
@@ -86,6 +118,7 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+      <BottomBanner visible={visible} headline={headline} message={message} link={link} linkText={linkText} button={buttonText} />
     </>
   );
 }

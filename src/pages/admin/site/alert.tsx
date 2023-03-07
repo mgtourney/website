@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import React from "react";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { User } from "@lib/types/users";
 import Unauthorized from "@lib/general/admin/unauthorized";
-import UserCards from "@comp/Staff/users/UserCards";
+import SettingsPage from "@comp/Staff/site/Settings";
 
-export default function UserPanel({
+export default function UserAdmin({
   session,
   setSession,
 }: {
@@ -16,8 +15,11 @@ export default function UserPanel({
 }) {
   const router = useRouter();
   const [isSessionLoading, setIsSessionLoading] = useState(true);
+  const { id } = router.query as unknown as { id: number };
+
   const [isLoading, setIsLoading] = useState(true);
   const [perm, setPerm] = useState(0);
+  const [alertData, setData] = useState<any>(null);
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
@@ -37,34 +39,40 @@ export default function UserPanel({
   }, [isSessionLoading, router, setSession]);
 
   useEffect(() => {
-    if (!isSessionLoading) {
+    if (router.isReady && !isSessionLoading) {
       if (session && perm) {
         if (perm < 8) {
-          router.push("/admin/");
+          router.push("/");
           return;
         }
-        setUrl(window.location.href);
-        setIsLoading(false);
-        setTimeout(() => {
-          !isLoading &&
-            document
-              .querySelector(".adminPanel")!
-              .classList.remove("opacity-0");
-          document
-            .querySelector(".adminPanel")!
-            .classList.add("translate-y-[10px]");
-        }, 150);
+        fetch(`${process.env.PUBLIC_URL}/api/site/alert`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.error) {
+              return router.push(`/admin/user`);
+            }
+            setData(data.alert);
+            if (data) {
+              setUrl(window.location.href);
+              setIsLoading(false);
+              setTimeout(() => {
+                perm >= 8 &&
+                  !isLoading &&
+                  document
+                    .querySelector(".adminPanel")!
+                    .classList.add("translate-y-[10px]");
+                document
+                  .querySelector(".adminPanel")!
+                  .classList.remove("opacity-0");
+              }, 150);
+            }
+          });
       }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
     }
-  }, [
-    isSessionLoading,
-    session,
-    perm,
-    setPerm,
-    isLoading,
-    router.isReady,
-    router,
-  ]);
+  }, [id, isLoading, isSessionLoading, perm, router, session]);
 
   return (
     <>
@@ -82,22 +90,18 @@ export default function UserPanel({
           ) : (
             <>
               <Header
-                title={`User Panel`}
+                title={`Site alert`}
                 link={url}
-                contents={`User Panel | The User Panel on ${process.env.PUBLIC_NAME}.`}
+                contents={`Site alert-panel | The Site alert-panel on ${process.env.PUBLIC_NAME}.`}
               />
               <div className="max-w-[1340px] mx-auto pt-10 px-4 sm:px-6 lg:px-8">
-                <PageHeader title={`User Panel`} />
+                <PageHeader title={`Site alert`} />
                 <>
-                  <div className="adminPanel overflow-visible bg-white dark:bg-[#161616] pb-1rem rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
+                  <div className="adminPanel bg-white dark:bg-[#161616] pb-1rem overflow-hidden rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
                     <div className="px-4 py-5 sm:px-6">
-                      <p className="rulesInfoHeader">
-                        User administration-panel
-                      </p>
+                      <SettingsPage session={session} alertData={alertData} />
                     </div>
-                    <div className="rounded-lg bg-gray-200 dark:bg-[#161616] overflow-hidden shadow divide-y sm:divide-y-0 dark:divide-[#202020] sm:grid sm:grid-cols-2 sm:gap-px transition-all duration-500">
-                      <UserCards />
-                    </div>
+                    <div className="rounded-lg bg-gray-200 dark:bg-[#161616] overflow-hidden shadow divide-y sm:divide-y-0 dark:divide-[#202020] sm:grid sm:grid-cols-2 sm:gap-px transition-all duration-500"></div>
                   </div>
                 </>
               </div>

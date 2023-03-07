@@ -17,7 +17,7 @@ const actions = [
     title: "Site Settings",
     description:
       "Admin or Developer? You can configure maintenance-mode, rules, API-setting and all the other fun stuff, right here!",
-    href: "#",
+    href: "/admin/site/",
     icon: WrenchIcon,
     iconForeground: "text-teal-700 dark:bg-[#1b211a]",
     iconBackground: "bg-teal-50 dark:bg-[#1b211a]",

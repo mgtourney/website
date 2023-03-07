@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getAllSSIds } from "@lib/db/users";
+import { getAllStats } from "@lib/db/stats";
 import rateLimit from "@lib/api/ratelimit";
 
 const ratelimit: any = process.env.USER_RATELIMIT || 10;
@@ -8,7 +8,7 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 500,
 });
 
-export default async function getFullUserdata(
+export default async function getWebsiteStats(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -16,7 +16,7 @@ export default async function getFullUserdata(
   try {
     await limiter.check(res, ratelimit, "CACHE_TOKEN");
 
-    res.status(200).json({ list: await getAllSSIds() });
+    res.status(200).json({ stats: await getAllStats() });
   } catch (err: any) {
     res.status(500).json({ error: { message: "Too many requests" } });
   }
