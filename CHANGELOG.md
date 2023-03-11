@@ -40,6 +40,3 @@
 ### Features
 
 * :sparkles: Site-alert DB update ([6af6ab7](https://github.com/mgtourney/website/commit/6af6ab70d8016fc52136f357c703a1a270364982))
-
-
-
