@@ -1,3 +1,12 @@
+## [0.7.5](https://github.com/mgtourney/website/compare/v0.7.4...v0.7.5) (2023-03-11)
+
+
+### Bug Fixes
+
+* :bug: Escaping characters, woops ([63ba03e](https://github.com/mgtourney/website/commit/63ba03e11768f5e4ad431190e9635ad0de18ddb4))
+
+
+
 ## [0.7.4](https://github.com/mgtourney/website/compare/v0.7.3...v0.7.4) (2023-03-11)
 
 
@@ -34,9 +43,3 @@
 
 
 
-# [0.7.0](https://github.com/mgtourney/website/compare/v0.6.0...v0.7.0) (2023-03-07)
-
-
-### Features
-
-* :sparkles: Site-alert DB update ([6af6ab7](https://github.com/mgtourney/website/commit/6af6ab70d8016fc52136f357c703a1a270364982))
