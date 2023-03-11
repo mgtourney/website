@@ -1,3 +1,12 @@
+## [0.7.3](https://github.com/mgtourney/website/compare/v0.7.2...v0.7.3) (2023-03-11)
+
+
+### Bug Fixes
+
+* :bug: Fixed depracation notice, useEffects and more ([f178cff](https://github.com/mgtourney/website/commit/f178cff6909dfde3f7f47058bae877f969051f97))
+
+
+
 ## [0.7.2](https://github.com/mgtourney/website/compare/v0.7.1...v0.7.2) (2023-03-11)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * :sparkles: Quals rank-check, notification + admin-panel page to enable/change it, redid the user-search field in the adminpanel ([352193b](https://github.com/mgtourney/website/commit/352193b253d6d9af0613cbec610d1ae56d1beea4))
-
-
-
-## [0.5.2](https://github.com/mgtourney/website/compare/v0.5.1...v0.5.2) (2023-01-25)
-
-
-### Bug Fixes
-
-* :bug: Changed API-endpoints from TSX to TS, as they should be. TEMP fix for loading/saving user-images. ([3b67c83](https://github.com/mgtourney/website/commit/3b67c83fce868c2c7e88337a3745861598289fd1))
 
 
 
