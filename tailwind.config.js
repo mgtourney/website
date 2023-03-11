@@ -28,8 +28,12 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms"),
     require("flowbite/plugin"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
     purgecss({
       content: ["./**/*.html"],
     }),
   ],
+  variants: {
+    scrollbar: ["rounded"],
+  },
 };

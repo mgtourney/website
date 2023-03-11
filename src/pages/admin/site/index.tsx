@@ -91,9 +91,7 @@ export default function UserPanel({
                 <>
                   <div className="adminPanel overflow-visible bg-white dark:bg-[#161616] pb-1rem rounded-lg divide-y dark:divide-[#202020] transition-all opacity-0 duration-500">
                     <div className="px-4 py-5 sm:px-6">
-                      <p className="rulesInfoHeader">
-                        Site-settings
-                      </p>
+                      <p className="rulesInfoHeader">Site-settings</p>
                     </div>
                     <div className="rounded-lg bg-gray-200 dark:bg-[#161616] overflow-hidden shadow divide-y sm:divide-y-0 dark:divide-[#202020] sm:grid sm:grid-cols-2 sm:gap-px transition-all duration-500">
                       <SiteCards />
