@@ -1,3 +1,12 @@
+## [0.7.2](https://github.com/mgtourney/website/compare/v0.7.1...v0.7.2) (2023-03-11)
+
+
+### Bug Fixes
+
+* :bug: Banner "rel" added, fixed fetch on stats/index, formatting on qualscheck ([651e95d](https://github.com/mgtourney/website/commit/651e95dd459dcfe8469760cd43a643e498e73eef))
+
+
+
 ## [0.7.1](https://github.com/mgtourney/website/compare/v0.7.0...v0.7.1) (2023-03-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: Changed API-endpoints from TSX to TS, as they should be. TEMP fix for loading/saving user-images. ([3b67c83](https://github.com/mgtourney/website/commit/3b67c83fce868c2c7e88337a3745861598289fd1))
-
-
-
-## [0.5.1](https://github.com/mgtourney/website/compare/v0.5.0...v0.5.1) (2023-01-23)
-
-
-### Bug Fixes
-
-* :bug: Added inputType to useEffect-hook. :skull: ([d09d46a](https://github.com/mgtourney/website/commit/d09d46ab19fa795f0f4f29df5be411ae408372de))
 
 
 
