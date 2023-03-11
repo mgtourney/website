@@ -52,15 +52,6 @@ export default async function getFullUserdata(
           res.status(401).json({ error: { message: "Unauthorized" } });
           return;
         } else {
-          //POST request with body of req.body to https://ptsv3.com/t/HawkTATest/post/
-          const post = await fetch("https://ptsv3.com/t/HawkTATest/post/", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(req.body),
-          });
-
           const result = await updateUser(req.body);
           if (!result) {
             res
