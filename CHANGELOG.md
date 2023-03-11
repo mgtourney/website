@@ -1,3 +1,12 @@
+## [0.7.4](https://github.com/mgtourney/website/compare/v0.7.3...v0.7.4) (2023-03-11)
+
+
+### Reverts
+
+* :fire: Removed debug-POST used in development ([e803672](https://github.com/mgtourney/website/commit/e803672c2ca9528635b5f9c18fdbaad7c6680d34))
+
+
+
 ## [0.7.3](https://github.com/mgtourney/website/compare/v0.7.2...v0.7.3) (2023-03-11)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * :sparkles: Site-alert DB update ([6af6ab7](https://github.com/mgtourney/website/commit/6af6ab70d8016fc52136f357c703a1a270364982))
-
-
-
-# [0.6.0](https://github.com/mgtourney/website/compare/v0.5.2...v0.6.0) (2023-03-07)
-
-
-### Features
-
-* :sparkles: Quals rank-check, notification + admin-panel page to enable/change it, redid the user-search field in the adminpanel ([352193b](https://github.com/mgtourney/website/commit/352193b253d6d9af0613cbec610d1ae56d1beea4))
 
 
 
