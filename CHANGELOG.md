@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/mgtourney/website/compare/v0.7.0...v0.7.1) (2023-03-11)
+
+
+### Bug Fixes
+
+* :bug: Escaping characters, woops ([05e3901](https://github.com/mgtourney/website/commit/05e3901b7e779b72bf180968d57f827955279d04))
+
+
+
 # [0.7.0](https://github.com/mgtourney/website/compare/v0.6.0...v0.7.0) (2023-03-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * :bug: Added inputType to useEffect-hook. :skull: ([d09d46a](https://github.com/mgtourney/website/commit/d09d46ab19fa795f0f4f29df5be411ae408372de))
-
-
-
-# [0.5.0](https://github.com/mgtourney/website/compare/v0.4.0...v0.5.0) (2023-01-23)
-
-
-### Features
-
-* :sparkles: User-search function to admin-panel. DB-update. ([feb0863](https://github.com/mgtourney/website/commit/feb08633bee8ad4ff6237077e2a4363c806bb18f))
 
 
 
