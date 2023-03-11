@@ -39,7 +39,12 @@ export default function StaffPanel({
                   index: React.Key
                 ) => (
                   <React.Fragment key={index}>
-                    <div key={index} className="staffCard skew-x-[-10deg]">
+                    <div
+                      key={index}
+                      className="staffCard skew-x-[-10deg] group select-none"
+                    >
+                      {/* Edit this span, to edit the hover-effect when hovering the staffCard. Remember to use group-hover: <3 */}
+                      <span className="staffCard h-[120px] absolute group-hover:animate-pulse dark:group-hover:bg-[#3C416B] group-hover:bg-[#ffffff00]" />
                       <Image
                         width={124}
                         height={124}
@@ -47,7 +52,7 @@ export default function StaffPanel({
                         alt="PFP"
                         placeholder="empty"
                         className="staffImage select-none skew-x-[10deg]"
-                        src={`https://raw.githubusercontent.com/mgtourney/website/team/data/images/${item.Image}`}
+                        src={`https://api.danesaber.cf/MG/assets/images/users/${item.Image}`}
                       />
                       <div className="flex flex-col -ml-[60px] pt-3 min-w-[220px] items-start">
                         <span className="text-[#008DDE] text-[22px] font-semibold dark:text-slate-200 z-10 hover:cursor-default">

@@ -10,26 +10,27 @@ import {
   Twitter,
 } from "@comp/UI/Components/Frontpage/Logos";
 
-export default function Home() {
-  const [load, setLoading] = useState(true);
+export default function Home({ session }: { session: boolean | String }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState<string>("");
   useEffect(() => {
-    setLoading(false);
+    setIsLoading(false);
     setUrl(window.location.href);
     {
-      !load && document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
+      !isLoading &&
+        document.querySelector(".ImgDiv")!.classList.remove("opacity-0");
       document.querySelector(".ImgDiv")!.classList.add("translate-y-[10px]");
       document.querySelector(".TxtDiv")!.classList.remove("opacity-0");
       document.querySelector(".TxtDiv")!.classList.add("translate-y-[10px]");
     }
-  }, [load, setLoading, setUrl]);
+  }, [isLoading]);
 
   return (
     <>
       <Header
         title={`Frontpage`}
         link={url}
-        contents={`Frontpage | The Frontpage of ${process.env.NEXT_PUBLIC_NAME}.`}
+        contents={`Frontpage | The Frontpage of ${process.env.PUBLIC_NAME}.`}
       />
       <div className="bg-gray-100 pt-16 dark:bg-[#1b1b1b] transition-all duration-500">
         <main>

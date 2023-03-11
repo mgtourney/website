@@ -23,11 +23,9 @@
   *:before {
     @apply box-border;
   }
-
   .linkText {
     @apply text-white;
   }
-
   .staffPanel {
     @apply mt-6 flex flex-wrap gap-[10px] justify-center;
   }
@@ -35,11 +33,11 @@
     @apply h-[110px] w-[310px] rounded-xl;
     @apply bg-white ring-1 ring-black/5 dark:bg-[#1b1b1b];
     @apply relative flex flex-col items-center gap-2 overflow-hidden;
+    @apply hover:translate-y-[-3px] duration-300 hover:shadow-lg;
   }
   .staffImage {
-    @apply absolute -right-8 -top-2 w-[124px] h-[124px] opacity-[40%] rounded-full shadow-lg z-0 select-none;
+    @apply absolute -right-8 -top-2 w-[124px] h-[124px] opacity-[60%] rounded-full shadow-lg z-0 select-none;
   }
-
   ::selection {
     @apply bg-blue-500 text-white;
   }
@@ -71,6 +69,15 @@
   .phoneNavItem {
     @apply block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-500;
   }
+  .phoneButton {
+    @apply block rounded-[0.375rem] px-4 py-2 text-base font-medium;
+  }
+  .phoneNavButtonLight {
+    @apply text-gray-500 hover:text-gray-800 hover:bg-gray-100;
+  }
+  .phoneNavButtonDark {
+    @apply dark:text-white dark:hover:bg-gray-800;
+  }
   .navButtonLight {
     @apply inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500;
   }
@@ -86,7 +93,7 @@
     @apply flex items-center justify-center rounded-[0.375rem] p-[0.5rem] hover:bg-gray-100 dark:hover:bg-gray-600 hover:cursor-pointer;
   }
   .darkModeIcon {
-    @apply select-none opacity-25 hover:opacity-100 hover:drop-shadow-[1px_1px_1px_rgba(0,0,0,0.30)] hover:cursor-pointer transition-all;
+    @apply select-none opacity-25 hover:opacity-100 hover:cursor-pointer transition-all;
   }
   .bannerDiv {
     @apply w-auto;

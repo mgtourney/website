@@ -2,16 +2,16 @@ export interface User {
   id: string;
   name: string;
   permissions: number;
-  avatar: string;
+  image: string;
   roles: string[];
   scoresaberdata: ScoreSaber[];
   twitter: string;
   twitch: string;
   discord: string;
   previous_tourneys: PlayerTournament[];
-  rating: number;
+  rating?: number;
   pronouns: string;
-  banned: boolean;
+  banned?: boolean;
 }
 
 export interface ScoreSaber {

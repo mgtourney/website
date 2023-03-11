@@ -4,32 +4,38 @@ The official website for Magnesium!
 
 ## Consists of
 
-| Page | Route |
-| :----: | :-: |
-| Frontpage | `/` |
-| Team | `/team` |
-| Calendar (WIP) | `/calendar` |
-| Rules | `/rules` |
+| Page | Route | Description |
+| :----: | :-: | :-: |
+| Frontpage | `/` | The frontpage of the website. |
+| Team | `/team` | The team-page of the website. |
+| Calendar (WIP) | `/calendar` | The calendar-page of the website. |
+| Rules | `/rules` | The rules-page of the website. |
+| Admin | `/admin` | The admin-page of the website. Requires authorization |
 
 ## JSON-paths:
 | File | Hydrates |
 | :----: | :-: |
-| `/public/assets/staff/data.json` | `/calendar` |
-| `/public/assets/staff/rules.json` | `/rules` |
-| `/public/assets/staff/team.json` | `/team` |
+| `https://URL/assets/staff/data.json` | `/calendar` |
+| `https://URL/api/rules` | `/rules` |
+| `https://URL/api/rules` | `/team` |
 
 ## TODO:
 
-
 ### Frontend
-- [ ]  Restyle calendar/rules-page
-
+- [x]  Restyle calendar/rules-page
 - [ ]  Panel for controlling calendar/rules/team-page
-
 ### Backend
-- [ ]  Error handling on data-fetching
-- [ ]  API routes for calendar/rules/team-page
-     - [ ]  Move everything to a database of sorts.
+- [x]  Error handling on data-fetching
+- [x]  API routes for calendar/rules/team-page
+     - [ ]  Move calendar to database.
+     - [x]  Move rules to database.
+     - [x]  Move team-page to database.
+
+#
+
+## Database 🗄️
+- [Explanation of the arrays in the database](DATABASE.MD)
+- [SQL-file for creating the database](DB.sql)
 
 # Want to help?
 ## Getting Started

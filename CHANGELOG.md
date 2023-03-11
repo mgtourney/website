@@ -1,0 +1,45 @@
+# [0.7.0](https://github.com/mgtourney/website/compare/v0.6.0...v0.7.0) (2023-03-07)
+
+
+### Features
+
+* :sparkles: Site-alert DB update ([6af6ab7](https://github.com/mgtourney/website/commit/6af6ab70d8016fc52136f357c703a1a270364982))
+
+
+
+# [0.6.0](https://github.com/mgtourney/website/compare/v0.5.2...v0.6.0) (2023-03-07)
+
+
+### Features
+
+* :sparkles: Quals rank-check, notification + admin-panel page to enable/change it, redid the user-search field in the adminpanel ([352193b](https://github.com/mgtourney/website/commit/352193b253d6d9af0613cbec610d1ae56d1beea4))
+
+
+
+## [0.5.2](https://github.com/mgtourney/website/compare/v0.5.1...v0.5.2) (2023-01-25)
+
+
+### Bug Fixes
+
+* :bug: Changed API-endpoints from TSX to TS, as they should be. TEMP fix for loading/saving user-images. ([3b67c83](https://github.com/mgtourney/website/commit/3b67c83fce868c2c7e88337a3745861598289fd1))
+
+
+
+## [0.5.1](https://github.com/mgtourney/website/compare/v0.5.0...v0.5.1) (2023-01-23)
+
+
+### Bug Fixes
+
+* :bug: Added inputType to useEffect-hook. :skull: ([d09d46a](https://github.com/mgtourney/website/commit/d09d46ab19fa795f0f4f29df5be411ae408372de))
+
+
+
+# [0.5.0](https://github.com/mgtourney/website/compare/v0.4.0...v0.5.0) (2023-01-23)
+
+
+### Features
+
+* :sparkles: User-search function to admin-panel. DB-update. ([feb0863](https://github.com/mgtourney/website/commit/feb08633bee8ad4ff6237077e2a4363c806bb18f))
+
+
+

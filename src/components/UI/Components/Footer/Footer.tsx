@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import BottomBanner from "@comp/UI/Components/Footer/Banner";
 
 const navigation = [
   {
@@ -51,33 +54,71 @@ const navigation = [
 ];
 
 export default function Footer() {
+  const router = useRouter();
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [headline, setHeadline] = useState("");
+  const [message, setMessage] = useState("");
+  const [link, setLink] = useState("");
+  const [linkText, setLinkText] = useState("");
+  const [buttonText, setButtonText] = useState("");
+  //Fetch the banner from the /api/site/alert endpoint
+  useEffect(() => {
+    if (router.isReady && isBannerLoading) {
+      fetch(`${process.env.PUBLIC_URL}/api/site/alert`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.alert) {
+            setIsBannerLoading(data.alert);
+            setVisible(data.alert.visible);
+            setHeadline(data.alert.headline);
+            setMessage(data.alert.message);
+            setLink(data.alert.link);
+            setLinkText(data.alert.linktext);
+            setButtonText(data.alert.buttonText);
+            setIsBannerLoading(false);
+            return;
+          }
+          router.push("/");
+        });
+    }
+  }, [isBannerLoading, router]);
+
   return (
-    <footer className="bg-white dark:bg-[#080808] fixed bottom-0 min-w-[100%] select-none transition-all duration-500">
-      <div className="max-w-7xl mx-auto py-3 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-        <div className="flex justify-center space-x-6 md:order-2">
-          {navigation.map((item) => (
-            <Link key={item.name} href={item.href} target={"_blank"}>
-              <item.icon
-                h={24}
-                w={24}
-                className="h-6 w-6 fill-[#009FFB] dark:fill-[#009FFB] transition-all duration-500"
-                aria-hidden="true"
-              />
-            </Link>
-          ))}
-          <span className="ml-5 uppercase font-semibold text-[#009FFB] dark:text-[#009FFB]">
-            {process.env.NEXT_PUBLIC_VERSION}
-          </span>
+    <>
+      <footer className="bg-white dark:bg-[#080808] fixed bottom-0 min-w-[100%] select-none transition-all duration-500">
+        <div className="max-w-7xl mx-auto py-3 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+          <div className="flex justify-center space-x-6 md:order-2">
+            {navigation.map((item) => (
+              <Link key={item.name} href={item.href} target={"_blank"}>
+                <item.icon
+                  h={24}
+                  w={24}
+                  className="h-6 w-6 fill-[#009FFB] dark:fill-[#009FFB]"
+                  aria-hidden="true"
+                />
+              </Link>
+            ))}
+            <a
+              href={`https://github.com/${process.env.PUBLIC_REPO}/commit/${process.env.PUBLIC_SHA}`}
+              target="blank_"
+              className="ml-5 uppercase font-semibold text-[#009FFB] dark:text-[#009FFB]"
+              title={process.env.PUBLIC_SHA}
+            >
+              {process.env.PUBLIC_VERSION}
+            </a>
+          </div>
+          <div className="md:order-1">
+            <p className="dark:text-[#0069A8] uppercase font-semibold text-[#009FFB] flex">
+              <span className="hidden md:block ml-2">
+                &copy; {new Date().getFullYear()} MAGNESIUM, Licensed under GNU
+                GPLv3.
+              </span>
+            </p>
+          </div>
         </div>
-        <div className="md:order-1">
-          <p className="dark:text-[#0069A8] uppercase font-semibold text-[#009FFB] flex">
-            <span className="hidden md:block ml-2">
-              &copy; {process.env.NEXT_PUBLIC_YEAR} MAGNESIUM, All rights
-              reserved.
-            </span>
-          </p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+      <BottomBanner visible={visible} headline={headline} message={message} link={link} linkText={linkText} button={buttonText} />
+    </>
   );
 }
