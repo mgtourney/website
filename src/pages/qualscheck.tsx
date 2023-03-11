@@ -65,7 +65,7 @@ export default function Team() {
             <div className="px-4 py-5 sm:px-6">
               <p className="rulesInfoHeader">Rank checker</p>
               <p className="text-gray-900 dark:text-white text-[18px] mt-2">
-                Check to see, if you're allowed to team up with a specific player!
+                Check to see, if you&apos;re allowed to team up with a specific player!
               </p>
             </div>
             <header className="relative z-20 flex items-center justify-center border-gray-200 py-4 px-6 lg:flex-none">
