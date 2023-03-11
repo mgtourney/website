@@ -9,10 +9,6 @@ import {
 
 export default function SiteCards() {
 
-  useEffect(() => {
-
-  }, []);
-
   return (
     <>
       <div
@@ -40,7 +36,8 @@ export default function SiteCards() {
             </Link>
           </h3>
           <div className="mt-2 text-sm text-gray-500">
-            Manage Maintenance, Site Name, Site Description, Site Logo, and more.
+            Manage Maintenance, Site Name, Site Description, Site Logo, and
+            more.
           </div>
         </div>
         <span

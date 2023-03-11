@@ -75,7 +75,6 @@ export default function Footer() {
             setMessage(data.alert.message);
             setLink(data.alert.link);
             setLinkText(data.alert.linktext);
-            setButtonText(data.alert.buttonText);
             setIsBannerLoading(false);
             return;
           }
@@ -118,7 +117,13 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <BottomBanner visible={visible} headline={headline} message={message} link={link} linkText={linkText} button={buttonText} />
+      <BottomBanner
+        visible={visible}
+        headline={headline}
+        message={message}
+        link={link}
+        linkText={linkText}
+      />
     </>
   );
 }

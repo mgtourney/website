@@ -48,7 +48,6 @@ const download = (url: string, filename: string) => {
     */
     postData("https://api.danesaber.cf/MG/upload", { url, name: userImage });
 
-
     /*
     Temp disabled writing files to own server, until CDN/Other method of storing image is up
     */

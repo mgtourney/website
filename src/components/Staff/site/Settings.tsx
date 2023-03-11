@@ -36,7 +36,7 @@ export default function SettingsPage({
             headline: headline,
             message: message,
             link: link,
-            linktext: linkText
+            linktext: linkText,
           }),
         }
       );
@@ -128,34 +128,34 @@ export default function SettingsPage({
                         className="mt-1 block w-[420px] border border-gray-300 dark:border-[#242424] dark:bg-[#161616] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
                       />
                     </div>
-                      
-                      <Switch.Group as="li" className="py-4 flex flex-wrap">
-                          <div className="flex flex-col">
-                            <Switch.Label
-                              as="p"
-                              className="text-sm font-medium text-gray-900 dark:text-white"
-                              passive
-                            >
-                              Visible
-                            </Switch.Label>
-                          </div>
-                          <Switch
-                            checked={alertVisible}
-                            onChange={setAlertVisible}
-                            className={classNames(
-                              alertVisible ? "bg-teal-500" : "bg-gray-200",
-                              "ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
-                            )}
-                          >
-                            <span
-                              aria-hidden="true"
-                              className={classNames(
-                                alertVisible ? "translate-x-5" : "translate-x-0",
-                                "inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
-                              )}
-                            />
-                          </Switch>
-                        </Switch.Group>
+
+                    <Switch.Group as="li" className="py-4 flex flex-wrap">
+                      <div className="flex flex-col">
+                        <Switch.Label
+                          as="p"
+                          className="text-sm font-medium text-gray-900 dark:text-white"
+                          passive
+                        >
+                          Visible
+                        </Switch.Label>
+                      </div>
+                      <Switch
+                        checked={alertVisible}
+                        onChange={setAlertVisible}
+                        className={classNames(
+                          alertVisible ? "bg-teal-500" : "bg-gray-200",
+                          "ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                        )}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={classNames(
+                            alertVisible ? "translate-x-5" : "translate-x-0",
+                            "inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                          )}
+                        />
+                      </Switch>
+                    </Switch.Group>
                   </div>
                   <div className="mt-6">
                     <div className="flex justify-end gap-2">

@@ -39,12 +39,6 @@ export default function PageStats(
   const [perm, setPerm] = useState(session.permissions);
   const [url, setUrl] = useState<string>("");
 
-  const cacheTime = 5 * 60 * 1000;
-  const request = new Request(`${process.env.PUBLIC_URL}/api/stats`, {
-    cache: "force-cache",
-    headers: new Headers({ "cache-control": `max-age=${cacheTime}` }),
-  });
-
   useEffect(() => {
     if (router.isReady && isSessionLoading) {
       fetch(`${process.env.PUBLIC_URL}/api/auth/getsession`)
@@ -70,7 +64,10 @@ export default function PageStats(
           return;
         }
 
-        fetch(request)
+        fetch(`${process.env.PUBLIC_URL}/api/stats`, {
+          cache: "force-cache",
+          headers: new Headers({ "cache-control": `max-age=300` }),
+        })
           .then((res) => res.json())
           .then((data) => {
             if (!data.stats) {

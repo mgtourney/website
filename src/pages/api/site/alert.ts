@@ -30,8 +30,8 @@ export default async function getFullUserdata(
       }
       if (req.method == "PATCH") {
         if (!req.cookies.session) {
-            res.status(401).json({ error: { message: "Unauthorized" } });
-            return;
+          res.status(401).json({ error: { message: "Unauthorized" } });
+          return;
         }
         const session = JSON.parse(decrypt(req.cookies.session));
         const id = session.id;
@@ -52,7 +52,7 @@ export default async function getFullUserdata(
         }
       }
     } catch (err: any) {
-      console.log(err)
+      console.log(err);
       res.status(500).json({ error: { message: err } });
     }
   } catch {
