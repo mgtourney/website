@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/mgtourney/website/compare/v0.9.0...v0.9.1) (2023-03-12)
+
+
+### Bug Fixes
+
+* :bug: Fixed quals-images aaaaaaaaaaaaaaaa ([9b81a68](https://github.com/mgtourney/website/commit/9b81a681291d4fbbe7c79dc8a85bcf4dde9e5a26))
+
+
+
 # [0.9.0](https://github.com/mgtourney/website/compare/v0.8.0...v0.9.0) (2023-03-12)
 
 
@@ -36,15 +45,6 @@
 ### Bug Fixes
 
 * :bug: Escaping characters, woops ([63ba03e](https://github.com/mgtourney/website/commit/63ba03e11768f5e4ad431190e9635ad0de18ddb4))
-
-
-
-## [0.7.4](https://github.com/mgtourney/website/compare/v0.7.3...v0.7.4) (2023-03-11)
-
-
-### Reverts
-
-* :fire: Removed debug-POST used in development ([e803672](https://github.com/mgtourney/website/commit/e803672c2ca9528635b5f9c18fdbaad7c6680d34))
 
 
 
