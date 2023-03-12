@@ -23,7 +23,6 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.github_token }}
-          git-branch: "dev"
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
