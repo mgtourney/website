@@ -104,7 +104,15 @@ export default function Footer() {
               className="ml-5 uppercase font-semibold text-[#009FFB] dark:text-[#009FFB]"
               title={process.env.PUBLIC_SHA}
             >
-              {process.env.PUBLIC_VERSION}
+              {process.env.PUBLIC_VERSION === "DEV" ? (
+                <span className="text-red-500 dark:text-red-600">
+                  {process.env.PUBLIC_VERSION}
+                </span>
+              ) : (
+                <span className="text-green-500 dark:text-green-600">
+                  {process.env.PUBLIC_VERSION}
+                </span>
+              )}
             </a>
           </div>
           <div className="md:order-1">
