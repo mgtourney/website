@@ -28,15 +28,14 @@ export function createData(
     `https://cdn.discordapp.com/avatars/${id}/${avatar}?size=1024`,
     (res) => {
       const contentType = res.headers["content-type"];
-      userImage = `${id}${
-        contentType === "image/gif"
+      userImage = `${id}${contentType === "image/gif"
           ? ".gif"
           : contentType === "image/png"
-          ? ".png"
-          : contentType === "image/webp"
-          ? ".webp"
-          : ".jpg"
-      }`;
+            ? ".png"
+            : contentType === "image/webp"
+              ? ".webp"
+              : ".jpg"
+        }`;
       saveUser(id, username, userImage);
     }
   );
