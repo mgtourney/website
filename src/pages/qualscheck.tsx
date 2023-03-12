@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
+import Image from "next/image";
 
 const rankNumber: number = 500;
 
@@ -13,7 +14,10 @@ export default function Team() {
   const [ranks, setRanks] = useState<number[]>([0, 0]);
   const [eligible, setEligible] = useState<string>("🔎");
   const [reason, setReason] = useState<string>("");
-  const [images, setImages] = useState<string[]>(["./assets/images/base/Placeholder.png", "./assets/images/base/Placeholder.png"]);
+  const [images, setImages] = useState<string[]>([
+    "./assets/images/base/Placeholder.png",
+    "./assets/images/base/Placeholder.png",
+  ]);
 
   useEffect(() => {
     setUrl(window.location.href);
@@ -26,58 +30,77 @@ export default function Team() {
   }, []);
 
   async function handleCheck() {
-
     try {
       setEligible("🔎");
       setReason("");
-      if (id1 === id2 || id1 === "" || id2 === "") {
+
+      if (!id1 || !id2) {
+        setEligible(`❌`);
+        setReason(`Control empty IDs!`);
+        return;
+      }
+
+      if (id1 === id2) {
         setEligible(`❌`);
         setReason(`Can't go solo!`);
         return;
-      } else {
-        setEligible("🔎");
       }
-      const skillSaberRes1 = await fetch(
-        `https://skillsaber.vercel.app/api/player?id=${id1}`
-      );
-      const skillSaberData1 = await skillSaberRes1.json();
-      const skillSaberRes2 = await fetch(
-        `https://skillsaber.vercel.app/api/player?id=${id2}`
-      );
-      const skillSaberData2 = await skillSaberRes2.json();
 
-      setImages([skillSaberData1.profilePicture, skillSaberData2.profilePicture]);
-      setNames([skillSaberData1.name, skillSaberData2.name]);
-      setRanks([skillSaberData1.rank, skillSaberData2.rank]);
+      setEligible("⌛");
+      setReason("");
 
-      if (skillSaberData1.errorMessage) {
+      const fetchPlayer = async (id: string) => {
+        const res = await fetch(
+          `https://skillsaber.vercel.app/api/player?id=${id}`
+        );
+        const data = await res.json();
+        return { data, errorMessage: data.errorMessage };
+      };
+
+      const [player1, player2] = await Promise.all([
+        fetchPlayer(id1),
+        fetchPlayer(id2),
+      ]);
+
+      setImages([player1.data.profilePicture, player2.data.profilePicture]);
+      setNames([player1.data.name, player2.data.name]);
+      setRanks([player1.data.rank, player2.data.rank]);
+
+      if (player1.errorMessage) {
         setEligible(`❌`);
         setReason(`Control ID 1`);
         return;
       }
-      if (skillSaberData2.errorMessage) {
-
+      if (player2.errorMessage) {
         setEligible(`❌`);
         setReason(`Control ID 2`);
         return;
       }
-      if (skillSaberData1.rank + skillSaberData2.rank <= rankNumber) {
-
+      if (player1.data.rank <= 50) {
         setEligible(`❌`);
-        setReason(`Exceeds by ${rankNumber - (skillSaberData1.rank + skillSaberData2.rank)
-          } ranks!`);
-        return;
-      } else {
-
-        setEligible(`✔️`);
-        setReason(`You can team up!`);
+        setReason(`Player 1 is inside top 50!`);
         return;
       }
+      if (player2.data.rank <= 50) {
+        setEligible(`❌`);
+        setReason(`Player 1 is inside top 50!`);
+        return;
+      }
+      if (player1.data.rank + player2.data.rank <= rankNumber) {
+        setEligible(`❌`);
+        setReason(
+          `Exceeds by ${
+            rankNumber - (player1.data.rank + player2.data.rank)
+          } ranks!`
+        );
+        return;
+      }
+      setEligible(`✔️`);
+      setReason(`You can team up!`);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setEligible("❌");
       setReason("Control IDs");
-      return;
     }
   }
 
@@ -102,7 +125,11 @@ export default function Team() {
             <header className="relative z-20 flex flex-wrap items-end justify-center border-gray-200 py-4 px-6 lg:flex-none">
               <div className="container flex justify-center gap-[100px] mt-6 py-10 rounded-md bg-[#1d1d1d]">
                 <div className="player1 flex flex-col items-center">
-                  <img src={images[0]} className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)]" />
+                  <Image
+                    src={images[0]}
+                    className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)]"
+                    alt={""}
+                  />
                   <p className="min-h-[40px]">{names[0] || "Name"}</p>
                   <p className="min-h-[26px]">#{ranks[0] || "Rank"}</p>
                   <div className="pt-5 col-span-12 sm:col-span-6">
@@ -130,7 +157,11 @@ export default function Team() {
                   </button>
                 </div>
                 <div className="player2 flex flex-col items-center">
-                  <img src={images[1]} className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)]" />
+                  <Image
+                    src={images[1]}
+                    className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)]"
+                    alt={""}
+                  />
                   <p className="min-h-[40px]">{names[1] || "Name"}</p>
                   <p className="min-h-[26px]">#{ranks[1] || "Rank"}</p>
                   <div className="pt-5 col-span-12 sm:col-span-6">
