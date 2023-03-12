@@ -1,9 +1,14 @@
-## [0.8.1](https://github.com/mgtourney/website/compare/v0.8.0...v0.8.1) (2023-03-12)
+# [0.9.0](https://github.com/mgtourney/website/compare/v0.8.0...v0.9.0) (2023-03-12)
 
 
 ### Bug Fixes
 
 * fix github ([49e7dae](https://github.com/mgtourney/website/commit/49e7dae365b43ad4ac762aea39207a3b69c703f7))
+
+
+### Features
+
+* :sparkles: Top 50 checks ([d5d5a6d](https://github.com/mgtourney/website/commit/d5d5a6d0dc74d7409547cddff2815ab13c7a1997))
 
 
 
