@@ -1,3 +1,12 @@
+## [0.8.1](https://github.com/mgtourney/website/compare/v0.8.0...v0.8.1) (2023-03-12)
+
+
+### Bug Fixes
+
+* fix github ([49e7dae](https://github.com/mgtourney/website/commit/49e7dae365b43ad4ac762aea39207a3b69c703f7))
+
+
+
 # [0.8.0](https://github.com/mgtourney/website/compare/v0.7.6...v0.8.0) (2023-03-12)
 
 
@@ -31,15 +40,6 @@
 ### Reverts
 
 * :fire: Removed debug-POST used in development ([e803672](https://github.com/mgtourney/website/commit/e803672c2ca9528635b5f9c18fdbaad7c6680d34))
-
-
-
-## [0.7.3](https://github.com/mgtourney/website/compare/v0.7.2...v0.7.3) (2023-03-11)
-
-
-### Bug Fixes
-
-* :bug: Fixed depracation notice, useEffects and more ([f178cff](https://github.com/mgtourney/website/commit/f178cff6909dfde3f7f47058bae877f969051f97))
 
 
 
