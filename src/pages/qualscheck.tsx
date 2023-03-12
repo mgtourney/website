@@ -15,8 +15,8 @@ export default function Team() {
   const [eligible, setEligible] = useState<string>("🔎");
   const [reason, setReason] = useState<string>("");
   const [images, setImages] = useState<string[]>([
-    "./assets/images/base/Placeholder.png",
-    "./assets/images/base/Placeholder.png",
+    `https://i.imgur.com/C3wtwlJ.png`,
+    `https://i.imgur.com/C3wtwlJ.png`,
   ]);
 
   useEffect(() => {
