@@ -4,6 +4,8 @@ import Header from "@comp/Meta/Title";
 import PageHeader from "@comp/UI/General/PageHeader";
 import { Success, Error } from "@comp/UI/General/Notifiers";
 
+const rankNumber: number = 600;
+
 export default function Team() {
   const [url, setUrl] = useState<string>("");
   const [id1, setId1] = useState<string>("");
@@ -36,12 +38,12 @@ export default function Team() {
       if (skillSaberData2.errorMessage) {
         return Error({ text: "Control Player 2 ID" });
       }
-      if (skillSaberData1.rank + skillSaberData2.rank <= 500) {
+      if (skillSaberData1.rank + skillSaberData2.rank <= rankNumber) {
         return Error({
           text: `<b>${skillSaberData1.name}</b></br> <b>${
             skillSaberData2.name
           }</b><br> Exceeds the limit by: <br> <b>${
-            500 - (skillSaberData1.rank + skillSaberData2.rank)
+            rankNumber - (skillSaberData1.rank + skillSaberData2.rank)
           }</b> ranks!`,
         });
       } else {
@@ -68,7 +70,8 @@ export default function Team() {
             <div className="px-4 py-5 sm:px-6">
               <p className="rulesInfoHeader">Rank checker</p>
               <p className="text-gray-900 dark:text-white text-[18px] mt-2">
-                Check to see, if you&apos;re allowed to team up with a specific player!
+                Check to see, if you&apos;re allowed to team up with a specific
+                player!
               </p>
             </div>
             <header className="relative z-20 flex items-center justify-center border-gray-200 py-4 px-6 lg:flex-none">
