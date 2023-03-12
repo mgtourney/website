@@ -17,7 +17,8 @@ jobs:
       - id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Conventional Changelog Action
+      - if: ${{ github.ref == 'refs/heads/prod' }}
+        name: Conventional Changelog Action
         id: cc
         uses: TriPSs/conventional-changelog-action@v3
         with:
@@ -44,7 +45,7 @@ jobs:
           context: .
           build-args: |
             NODE_ENV=DEV
-            PUBLIC_VERSION=D${{ steps.cc.outputs.version }}
+            PUBLIC_VERSION=DEV
             PUBLIC_REPO=${{ github.repository }}
             PUBLIC_SHA=${{ steps.vars.outputs.sha_short }}
           push: true
