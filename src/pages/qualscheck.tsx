@@ -123,15 +123,17 @@ export default function Team() {
               </p>
             </div>
             <header className="relative z-20 flex flex-wrap items-end justify-center border-gray-200 py-4 px-6 lg:flex-none">
-              <div className="container flex justify-center gap-[100px] mt-6 py-10 rounded-md bg-[#1d1d1d]">
+              <div className="container flex justify-center gap-[100px] mt-6 py-10 rounded-md dark:bg-[#1d1d1d]">
                 <div className="player1 flex flex-col items-center">
                   <Image
                     src={images[0]}
-                    className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)]"
+                    width={138}
+                    height={138}
+                    className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.2)]"
                     alt={""}
                   />
-                  <p className="min-h-[40px]">{names[0] || "Name"}</p>
-                  <p className="min-h-[26px]">#{ranks[0] || "Rank"}</p>
+                  <p className="min-h-[40px] text-black dark:text-white">{names[0] || "Name"}</p>
+                  <p className="min-h-[26px] text-black dark:text-white">#{ranks[0] || "Rank"}</p>
                   <div className="pt-5 col-span-12 sm:col-span-6">
                     <input
                       type="number"
@@ -159,11 +161,13 @@ export default function Team() {
                 <div className="player2 flex flex-col items-center">
                   <Image
                     src={images[1]}
-                    className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.4)]"
+                    width={138}
+                    height={138}
+                    className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.2)]"
                     alt={""}
                   />
-                  <p className="min-h-[40px]">{names[1] || "Name"}</p>
-                  <p className="min-h-[26px]">#{ranks[1] || "Rank"}</p>
+                  <p className="min-h-[40px] text-black dark:text-white">{names[1] || "Name"}</p>
+                  <p className="min-h-[26px] text-black dark:text-white">#{ranks[1] || "Rank"}</p>
                   <div className="pt-5 col-span-12 sm:col-span-6">
                     <input
                       type="number"
