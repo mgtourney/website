@@ -26,6 +26,11 @@ let navigation = [
     href: "/team",
     current: false,
   },
+  {
+    name: "Qualifiers",
+    href: "/quals",
+    current: false,
+  },
   // {
   //   name: "Our Rules",
   //   href: "/rules",

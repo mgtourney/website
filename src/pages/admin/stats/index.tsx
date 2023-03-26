@@ -94,7 +94,7 @@ export default function PageStats(
   useEffect(() => {
     const valuesToAnimate = [
       { ref: uCRef, count: stats.user_count },
-      { ref: aCRef, count: stats.apikey_count }, //
+      { ref: aCRef, count: stats.apikey_count },
       { ref: lqCRef, count: stats.active_qualifiers_count },
       { ref: etCRef, count: stats.ended_tournament_count },
       { ref: tCRef, count: stats.total_tournament_count },

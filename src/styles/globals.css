@@ -99,7 +99,7 @@
     @apply w-auto;
   }
   .textTag {
-    @apply text-[30px] md:text-[30px] lg:text-[30px];
+    @apply text-[12px] sm:text-[18px] md:text-[24px] lg:text-[30px];
   }
   .ruleLi {
     @apply mb-2 text-gray-900 dark:text-white;
