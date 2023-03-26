@@ -63,7 +63,7 @@ export default function UserAdmin({
         setIsLoading(false);
       }, 2000);
     }
-  }, [id, isLoading, isSessionLoading, perm, router, session]);
+  }, [id, isLoading, isSessionLoading, perm, router, session, tid]);
 
   return (
     <>
