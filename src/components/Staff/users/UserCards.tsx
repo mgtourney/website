@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu } from "@headlessui/react";
 import {
   AcademicCapIcon,
   CheckBadgeIcon,

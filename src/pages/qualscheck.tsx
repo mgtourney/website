@@ -132,8 +132,12 @@ export default function Team() {
                     className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.2)]"
                     alt={""}
                   />
-                  <p className="min-h-[40px] text-black dark:text-white">{names[0] || "Name"}</p>
-                  <p className="min-h-[26px] text-black dark:text-white">#{ranks[0] || "Rank"}</p>
+                  <p className="min-h-[40px] text-black dark:text-white">
+                    {names[0] || "Name"}
+                  </p>
+                  <p className="min-h-[26px] text-black dark:text-white">
+                    #{ranks[0] || "Rank"}
+                  </p>
                   <div className="pt-5 col-span-12 sm:col-span-6">
                     <input
                       type="number"
@@ -166,8 +170,12 @@ export default function Team() {
                     className="h-[138px] w-[138px] rounded-full mb-2 drop-shadow-[1px_0px_2px_rgba(0,0,0,0.2)]"
                     alt={""}
                   />
-                  <p className="min-h-[40px] text-black dark:text-white">{names[1] || "Name"}</p>
-                  <p className="min-h-[26px] text-black dark:text-white">#{ranks[1] || "Rank"}</p>
+                  <p className="min-h-[40px] text-black dark:text-white">
+                    {names[1] || "Name"}
+                  </p>
+                  <p className="min-h-[26px] text-black dark:text-white">
+                    #{ranks[1] || "Rank"}
+                  </p>
                   <div className="pt-5 col-span-12 sm:col-span-6">
                     <input
                       type="number"

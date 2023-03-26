@@ -26,7 +26,7 @@ const actions = [
     title: "Manage Tournaments",
     description:
       "Planning a tournament, or just want to adjust the settings of the current one? This is the place to do it!",
-    href: "#",
+    href: "/admin/tourneys/",
     icon: CheckBadgeIcon,
     iconForeground: "text-purple-700 dark:bg-[#211a23]",
     iconBackground: "bg-purple-50 dark:bg-[#211a23]",

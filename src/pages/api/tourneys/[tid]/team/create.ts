@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getUser, updateUser } from "@lib/db/users";
+import { getUser } from "@lib/db/users";
+import { saveTeam } from "@lib/db/tournaments";
 import rateLimit from "@lib/api/ratelimit";
 import { decrypt } from "@lib/api/sessioncomp";
 
@@ -9,7 +10,7 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 500, // Max 500 users per second
 });
 
-export default async function getFullUserdata(
+export default async function getTeamDatas(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -17,14 +18,14 @@ export default async function getFullUserdata(
   try {
     await limiter.check(res, ratelimit, "CACHE_TOKEN");
     try {
-      const { uid } = req.query as unknown as { uid: number };
+      const { tid } = req.query as unknown as { tid: number };
 
-      if (isNaN(uid)) {
+      if (isNaN(tid)) {
         res.status(400).json({ error: { message: "ID should be a number" } });
         return;
       }
 
-      if (req.method !== "GET" && req.method !== "PATCH") {
+      if (req.method !== "PUT") {
         return res
           .status(405)
           .json({ error: { message: "Method not allowed." } });
@@ -34,17 +35,7 @@ export default async function getFullUserdata(
         res.status(401).json({ error: { message: "Unauthorized" } });
         return;
       }
-
-      if (req.method == "GET") {
-        const result = await getUser(uid);
-        if (!result) {
-          res.status(404).json({ error: { message: "User not found" } });
-          return;
-        } else {
-          res.status(200).json({ user: result });
-        }
-      }
-      if (req.method == "PATCH") {
+      if (req.method == "PUT") {
         try {
           const session = JSON.parse(decrypt(req.cookies.session));
           const pid = session.id;
@@ -53,14 +44,14 @@ export default async function getFullUserdata(
             res.status(401).json({ error: { message: "Unauthorized" } });
             return;
           } else {
-            const result = await updateUser(req.body);
+            const result = await saveTeam(tid, req.body);
             if (!result) {
               res.status(404).json({
                 error: { message: "Something went wrong, try again" },
               });
               return;
             }
-            res.status(200).json({ success: { message: "User updated!" } });
+            res.status(200).json({ success: { message: result } });
             return;
           }
         } catch {
@@ -70,10 +61,8 @@ export default async function getFullUserdata(
       }
     } catch (err: any) {
       res.status(500).json({ error: { message: err } });
-      return;
     }
   } catch {
     res.status(429).json({ error: { message: "Too many requests" } });
-    return;
   }
 }
