@@ -1,3 +1,12 @@
+## [0.10.2](https://github.com/mgtourney/website/compare/v0.10.1...v0.10.2) (2023-03-26)
+
+
+### Bug Fixes
+
+* :bug: Fuck SQLite, it's trash to work with ([7ed8e9a](https://github.com/mgtourney/website/commit/7ed8e9a0fb7f70215155b2a49ccea722924fc79a))
+
+
+
 ## [0.10.1](https://github.com/mgtourney/website/compare/v0.10.0...v0.10.1) (2023-03-26)
 
 
@@ -41,15 +50,6 @@
 ### Features
 
 * :sparkles: Top 50 checks ([d5d5a6d](https://github.com/mgtourney/website/commit/d5d5a6d0dc74d7409547cddff2815ab13c7a1997))
-
-
-
-# [0.8.0](https://github.com/mgtourney/website/compare/v0.7.6...v0.8.0) (2023-03-12)
-
-
-### Features
-
-* :sparkles: Top 50 checks ([1021772](https://github.com/mgtourney/website/commit/1021772bbcf19b084881ac9d5762164a1d42ba74))
 
 
 
