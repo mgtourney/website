@@ -11,7 +11,6 @@ export default function TeamCreationPage({
   const [teamImage, setTeamImage] = useState<string>("");
   const [p1, setP1] = useState<string>("");
   const [p2, setP2] = useState<string>("");
-  const [saved, setSaved] = useState<boolean>(false);
   const [clicked, setClicked] = useState<boolean>(false);
 
   async function handleSave() {
@@ -21,7 +20,6 @@ export default function TeamCreationPage({
     if (teamImage.length < 3)
       return Error({ text: "Please provide a teamimage." });
     if (p1 == p2) return Error({ text: "A team need 2 players." });
-    
     try {
       const fetchPlayer = async (id: string) => {
         const res = await fetch(
@@ -56,24 +54,18 @@ export default function TeamCreationPage({
       if (apiPatchData.error) {
         return Error({ text: apiPatchData.error.message });
       } else {
-        setSaved(true);
+        setTeamName("");
+        setTeamImage("");
+        setP1("");
+        setP2("");
+        setClicked(false);
         return Success({ text: "Settings got saved!" });
       }
     } catch (error) {
+      setClicked(false);
       return Error({ text: "Control the ScoreSaber ID" });
     }
   }
-
-  useEffect(() => {
-    if (saved) {
-      setTeamName("");
-      setTeamImage("");
-      setP1("");
-      setP2("");
-      setSaved(false);
-      setClicked(false);
-    }
-  }, [saved]);
 
   return (
     <div>
