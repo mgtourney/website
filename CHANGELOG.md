@@ -1,3 +1,12 @@
+## [0.10.3](https://github.com/mgtourney/website/compare/v0.10.2...v0.10.3) (2023-03-26)
+
+
+### Bug Fixes
+
+* :bug: Prevent-double saving a team. ([a94da6b](https://github.com/mgtourney/website/commit/a94da6bb16ce40d640ecd2bb268c3526d5a5917e))
+
+
+
 ## [0.10.2](https://github.com/mgtourney/website/compare/v0.10.1...v0.10.2) (2023-03-26)
 
 
@@ -36,20 +45,6 @@
 ### Bug Fixes
 
 * :bug: Fixed quals-images aaaaaaaaaaaaaaaa ([9b81a68](https://github.com/mgtourney/website/commit/9b81a681291d4fbbe7c79dc8a85bcf4dde9e5a26))
-
-
-
-# [0.9.0](https://github.com/mgtourney/website/compare/v0.8.0...v0.9.0) (2023-03-12)
-
-
-### Bug Fixes
-
-* fix github ([49e7dae](https://github.com/mgtourney/website/commit/49e7dae365b43ad4ac762aea39207a3b69c703f7))
-
-
-### Features
-
-* :sparkles: Top 50 checks ([d5d5a6d](https://github.com/mgtourney/website/commit/d5d5a6d0dc74d7409547cddff2815ab13c7a1997))
 
 
 
