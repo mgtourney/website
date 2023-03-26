@@ -12,13 +12,16 @@ export default function TeamCreationPage({
   const [p1, setP1] = useState<string>("");
   const [p2, setP2] = useState<string>("");
   const [saved, setSaved] = useState<boolean>(false);
+  const [clicked, setClicked] = useState<boolean>(false);
 
   async function handleSave() {
+    if (clicked) return;
+    setClicked(true);
     if (teamName.length < 3) return Error({ text: "Teamname is too short." });
     if (teamImage.length < 3)
       return Error({ text: "Please provide a teamimage." });
     if (p1 == p2) return Error({ text: "A team need 2 players." });
-    //Controls if the ScoreSaber IDs are valid
+    
     try {
       const fetchPlayer = async (id: string) => {
         const res = await fetch(
@@ -68,6 +71,7 @@ export default function TeamCreationPage({
       setP1("");
       setP2("");
       setSaved(false);
+      setClicked(false);
     }
   }, [saved]);
 
