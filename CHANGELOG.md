@@ -1,3 +1,12 @@
+## [0.10.1](https://github.com/mgtourney/website/compare/v0.10.0...v0.10.1) (2023-03-26)
+
+
+### Bug Fixes
+
+* :bug: I hate NPM ([bae74eb](https://github.com/mgtourney/website/commit/bae74eb93ca650f4e29a0b8c4bbb55d3fd97094e))
+
+
+
 # [0.10.0](https://github.com/mgtourney/website/compare/v0.9.1...v0.10.0) (2023-03-26)
 
 
@@ -41,15 +50,6 @@
 ### Features
 
 * :sparkles: Top 50 checks ([1021772](https://github.com/mgtourney/website/commit/1021772bbcf19b084881ac9d5762164a1d42ba74))
-
-
-
-## [0.7.6](https://github.com/mgtourney/website/compare/v0.7.5...v0.7.6) (2023-03-12)
-
-
-### Bug Fixes
-
-* :bug: Qualchecks => 600 instead of 500 ([89acf43](https://github.com/mgtourney/website/commit/89acf430efbca968dc3ad0282c90269d131ad2d4))
 
 
 
